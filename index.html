@@ -394,6 +394,27 @@
       { ru: 'Обедать', en: 'To have lunch' }
     ];
 
+    const verbGloss = {
+      думать: 'To think',
+      отдыхать: 'To relax, to rest',
+      гулять: 'To go for a walk',
+      уметь: 'To know how to do something',
+      читать: 'To read',
+      работать: 'To work',
+      говорить: 'To speak',
+      ужинать: 'To have dinner',
+      мечтать: 'To dream about',
+      знать: 'To know',
+      жить: 'To live',
+      понимать: 'To understand',
+      писать: 'To write',
+      играть: 'To play',
+      учиться: 'To study',
+      мочь: 'Can',
+      делать: 'To do',
+      обедать: 'To have lunch'
+    };
+
   // LocalStorage key
     const STORAGE_KEY = 'russian-conj-tally-v1';
 
@@ -453,10 +474,12 @@
 
     // Build the prompt string per spec:
     // "[Pronoun display] + [infinitive] ([eng]) — choose the correct form"
-    function buildPrompt(pronounKey /*, verbKey not shown */){
-      // Always show only the Cyrillic pronoun. No English translation or instruction.
+    function buildPrompt(pronounKey, verbKey){
+      // Show the pronoun plus the target verb cue so the quiz is clearly about conjugation.
       const pron = pronouns[pronounKey].cyr;
-      return `${pron}`;
+      const verb = verbs[verbKey];
+      const gloss = verbGloss[verbKey] ? ` (${verbGloss[verbKey]})` : '';
+      return `${pron} — ${verb.infinitive}${gloss}`;
     }
 
     // Map a chosen pronoun key to the conjugation key used in verbs.conjugations
@@ -466,9 +489,9 @@
       return pronKey;
     }
 
-    // Make exactly 4 options: correct + 3 distractors
-    function makeOptions(correctForm, verbKey, pronounKey){
-      // Build 4 options: always include the correct form, ensure at least one distractor comes from other verbs
+    // Make a larger option set: correct + distractors from the same verb and other verbs.
+    function makeOptions(correctForm, verbKey, optionCount = 8){
+      // Always include the correct form, then fill from the rest of the verb pool.
       const opts = new Set();
       opts.add(correctForm);
 
@@ -489,12 +512,12 @@
       if(otherForms.length>0) opts.add(otherForms.shift());
 
       // Fill remaining slots, preferring remaining same-verb then other-verb forms
-      while(opts.size<4 && sameVerbForms.length>0){ opts.add(sameVerbForms.shift()); }
-      while(opts.size<4 && otherForms.length>0){ opts.add(otherForms.shift()); }
+      while(opts.size<optionCount && sameVerbForms.length>0){ opts.add(sameVerbForms.shift()); }
+      while(opts.size<optionCount && otherForms.length>0){ opts.add(otherForms.shift()); }
 
       // Final fallback: use any forms across the dataset
       const allForms = [].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)));
-      while(opts.size<4){ const pick = allForms[Math.floor(Math.random()*allForms.length)]; opts.add(pick); }
+      while(opts.size<optionCount){ const pick = allForms[Math.floor(Math.random()*allForms.length)]; opts.add(pick); }
 
       return shuffle(Array.from(opts));
     }
@@ -538,16 +561,16 @@
         }
 
       } else if(mode === 'vocabulary'){
-        // Vocabulary quiz: show Russian, choose the English meaning
+        // Vocabulary quiz: show English, choose the Russian word
         const item = vocabulary[Math.floor(Math.random()*vocabulary.length)];
-        currentAnswer = { mode:'vocabulary', ru:item.ru, correctForm:item.en };
-        promptEl.textContent = item.ru;
+        currentAnswer = { mode:'vocabulary', en:item.en, correctForm:item.ru };
+        promptEl.textContent = item.en;
         promptEl.setAttribute('aria-live','polite');
 
-        const opts = new Set([item.en]);
-        const otherMeanings = shuffle(vocabulary.filter(v=>v.ru !== item.ru).map(v=>v.en));
-        for(const meaning of otherMeanings){
-          opts.add(meaning);
+        const opts = new Set([item.ru]);
+        const otherRussian = shuffle(vocabulary.filter(v=>v.en !== item.en).map(v=>v.ru));
+        for(const russianWord of otherRussian){
+          opts.add(russianWord);
           if(opts.size >= 4) break;
         }
         const options = shuffle(Array.from(opts));
@@ -582,7 +605,7 @@
         promptEl.setAttribute('aria-live','polite');
 
         // Create options
-        const options = makeOptions(correctForm, verbKey, pronounKey);
+        const options = makeOptions(correctForm, verbKey, 8);
 
         for(const optText of options){
           const btn = document.createElement('button');
