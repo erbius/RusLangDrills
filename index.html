@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Russian Drills</title>
+  <style>
+    /* Dark-only theme, accessible focus outlines, subdued scrollbar */
+    :root{
+      --bg:#0b0f12;
+      --card:#0f1619;
+      --muted:#9aa6ad;
+      --text:#e6f0f2;
+      --accent:#60b3ff;
+      --success:#27c26a;
+      --danger:#ff6b6b;
+      --glass: rgba(255,255,255,0.02);
+      --card-border: rgba(255,255,255,0.04);
+      --shadow: 0 6px 18px rgba(2,6,8,0.7);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    /* Use border-box sizing so padding doesn't increase element boxes unexpectedly */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    /* Ensure body always fills viewport but padding does not cause overflow */
+    html,body{min-height:100vh;margin:0;padding:0}
+    body{
+      margin:0; padding:28px; background:linear-gradient(180deg,var(--bg), #071013 120%);
+      color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      font-size:18px; /* larger base for users zooming in */
+      line-height:1.35;
+    }
+    .wrap{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+    header{grid-column:1/-1}
+  h1{margin:0 0 10px;font-size:26px}
+    p.lead{margin:0;color:var(--muted)}
+
+    .controls{
+      display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center
+    }
+    select[multiple]{height:86px;padding:8px;border-radius:8px;border:1px solid var(--card-border);background:var(--card);color:var(--text)}
+    select, button{font-size:14px}
+
+    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));border:1px solid var(--card-border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+    .quiz{padding:18px;display:flex;flex-direction:column;gap:12px}
+  #prompt{font-weight:700;font-size:28px;color:var(--text)}
+    #prompt[aria-live]{min-height:44px}
+
+    /* Force options into two columns (two rows of two). Collapse to one column on small screens. */
+    #options{display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:12px}
+
+    @media (max-width:520px){
+      #options{grid-template-columns:1fr}
+    }
+    .option-btn{
+      background:var(--glass);border:1px solid rgba(255,255,255,0.04);color:var(--text);padding:14px 12px;border-radius:10px;cursor:pointer;text-align:left;
+      font-size:20px; /* larger choices */
+      transition:transform .06s ease, box-shadow .06s ease, background .12s ease;box-shadow:none;
+    }
+    .option-btn:hover{transform:translateY(-2px)}
+    .option-btn:active{transform:translateY(0)}
+    .option-btn[disabled]{opacity:0.7;cursor:default;transform:none}
+
+    .option-btn.correct{background:linear-gradient(90deg, rgba(39,194,106,0.14), rgba(39,194,106,0.06));border-color:rgba(39,194,106,0.25);box-shadow:0 6px 18px rgba(39,194,106,0.06)}
+    .option-btn.wrong{background:linear-gradient(90deg, rgba(255,107,107,0.08), rgba(255,107,107,0.02));border-color:rgba(255,107,107,0.18)}
+
+  .tally{display:flex;flex-direction:column;gap:10px}
+    .tally-row{display:flex;justify-content:space-between;align-items:center}
+    .muted{color:var(--muted);font-size:13px}
+
+  /* make small labels a bit larger */
+  .muted{font-size:14px}
+
+    footer{grid-column:1/-1;margin-top:14px;color:var(--muted);font-size:13px}
+
+    /* Focus styles for accessibility */
+    :focus{outline:none}
+    button:focus, select:focus, .option-btn:focus{box-shadow:0 0 0 3px rgba(96,179,255,0.16);border-radius:8px}
+
+  /* Ensure buttons with class "card" (our small control buttons) have readable text and larger touch area */
+  button.card{ color: var(--text) !important; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--card-border); padding:12px 14px }
+  button.card[aria-pressed="true"]{ opacity:0.95 }
+
+    /* Small screens: single column */
+    @media (max-width:880px){.wrap{grid-template-columns:1fr}}
+
+    /* Subdued WebKit scrollbar */
+    ::-webkit-scrollbar{height:10px;width:10px}
+    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.04);border-radius:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Russian Drills</h1>
+  <p class="lead">Practice various beginner Russian topics</p>
+    </header>
+
+    <main class="card quiz" aria-labelledby="main-heading">
+
+      <div class="controls" style="align-items:center;">
+        <div style="display:flex;gap:12px;align-items:center;margin-left:auto;flex-wrap:wrap;">
+          <div style="display:flex;flex-direction:column;gap:6px;min-width:180px;">
+            <label for="quiz-type" class="muted">Quiz type</label>
+            <select id="quiz-type" aria-label="Choose quiz type">
+              <option value="pronouns" selected>Verb conjugations</option>
+              <option value="numbers">Numbers 0–20</option>
+              <option value="vocabulary">Vocabulary</option>
+            </select>
+          </div>
+          <button id="next-btn" class="card" style="cursor:pointer;padding:10px 12px;border-radius:8px;background:var(--glass);">New Question</button>
+          <button id="reset-btn" class="card" style="cursor:pointer;padding:10px 12px;border-radius:8px;background:transparent;border:1px solid var(--card-border);">Reset Tally</button>
+        </div>
+      </div>
+
+      <section class="card" style="margin-top:6px;">
+        <div id="prompt" aria-live="polite">Loading…</div>
+        <div id="options" role="list" aria-label="Answer options" style="margin-top:12px"></div>
+      </section>
+
+    </main>
+
+    <aside class="card tally" aria-labelledby="tally-heading">
+      <h3 id="tally-heading" style="margin:0 0 6px 0;font-size:16px">Tally</h3>
+      <div class="tally-row"><div class="muted">Correct</div><div id="correct">0</div></div>
+      <div class="tally-row"><div class="muted">Incorrect</div><div id="incorrect">0</div></div>
+      <div class="tally-row"><div class="muted">Attempts</div><div id="attempts">0</div></div>
+      <div style="height:1px;background:var(--card-border);margin:6px 0;border-radius:2px"></div>
+      <div class="muted">Last result</div>
+      <div id="last-result" aria-live="polite" style="font-weight:600">—</div>
+    </aside>
+
+  </div>
+
+  <script>
+    // Russian verbs and pronouns data model
+    const verbs = {
+      "работать":{
+        infinitive: "работать",
+        conjugations: {
+          ya: "работаю",
+          ty: "работаешь",
+          on: "работает",
+          my: "работаем",
+          vy: "работаете",
+          oni: "работают"
+        }
+      },
+      "говорить":{
+        infinitive: "говорить",
+        conjugations: {
+          ya: "говорю",
+          ty: "говоришь",
+          on: "говорит",
+          my: "говорим",
+          vy: "говорите",
+          oni: "говорят"
+        }
+      }
+    };
+
+    const pronouns = {
+      ya: { translit: "Ya", cyr: "Я" },
+      ty: { translit: "Ty", cyr: "Ты" },
+      on: { translit: "On", cyr: "Он" },
+      ona: { translit: "Ona", cyr: "Она" },
+      ono: { translit: "Ono", cyr: "Оно" },
+      my: { translit: "My", cyr: "Мы" },
+      vy: { translit: "Vy", cyr: "Вы" },
+      oni:{ translit: "Oni", cyr: "Они" }
+    };
+
+    // Numbers 0-20 (Cyrillic words)
+    const numbers = {
+      0: 'ноль',
+      1: 'один',
+      2: 'два',
+      3: 'три',
+      4: 'четыре',
+      5: 'пять',
+      6: 'шесть',
+      7: 'семь',
+      8: 'восемь',
+      9: 'девять',
+      10: 'десять',
+      11: 'одиннадцать',
+      12: 'двенадцать',
+      13: 'тринадцать',
+      14: 'четырнадцать',
+      15: 'пятнадцать',
+      16: 'шестнадцать',
+      17: 'семнадцать',
+      18: 'восемнадцать',
+      19: 'девятнадцать',
+      20: 'двадцать'
+    };
+
+    const vocabulary = [
+      { ru: 'Думать', en: 'To think' },
+      { ru: 'Отдыхать', en: 'To relax, to rest' },
+      { ru: 'Гулять', en: 'To go for a walk' },
+      { ru: 'Уметь', en: 'To know how to do something' },
+      { ru: 'Читать', en: 'To read' },
+      { ru: 'Говорить', en: 'To speak' },
+      { ru: 'Ужинать', en: 'To have dinner' },
+      { ru: 'Мечтать', en: 'To dream about' },
+      { ru: 'Работать', en: 'To work' },
+      { ru: 'Ты можешь', en: 'You can' },
+      { ru: 'Знать', en: 'To know' },
+      { ru: 'Жить', en: 'To live' },
+      { ru: 'Понимать', en: 'To understand' },
+      { ru: 'Писать', en: 'To write' },
+      { ru: 'Я могу', en: 'I can' },
+      { ru: 'Играть', en: 'To play' },
+      { ru: 'Учиться', en: 'To study' },
+      { ru: 'Мочь', en: 'Can' },
+      { ru: 'Делать', en: 'To do' },
+      { ru: 'Обедать', en: 'To have lunch' }
+    ];
+
+  // LocalStorage key
+    const STORAGE_KEY = 'russian-conj-tally-v1';
+
+    // State for tally
+    let tally = { correct:0, incorrect:0, attempts:0 };
+
+  // DOM refs
+    const quizType = document.getElementById('quiz-type');
+    const nextBtn = document.getElementById('next-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const promptEl = document.getElementById('prompt');
+    const optionsEl = document.getElementById('options');
+    const correctEl = document.getElementById('correct');
+    const incorrectEl = document.getElementById('incorrect');
+    const attemptsEl = document.getElementById('attempts');
+    const lastResultEl = document.getElementById('last-result');
+
+    // Utility: shuffle array in-place
+    function shuffle(arr){
+      for(let i=arr.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+      }
+      return arr;
+    }
+
+    // Load and save tally
+    function loadState(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(raw){
+          const parsed = JSON.parse(raw);
+          tally = Object.assign(tally, parsed);
+        }
+      }catch(e){ console.warn('Failed to load state', e); }
+    }
+    function saveState(){
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }
+      catch(e){ console.warn('Failed to save state', e); }
+    }
+    function resetState(){
+      tally = { correct:0, incorrect:0, attempts:0 };
+      saveState();
+      renderTally();
+    }
+
+    function renderTally(){
+      correctEl.textContent = tally.correct;
+      incorrectEl.textContent = tally.incorrect;
+      attemptsEl.textContent = tally.attempts;
+    }
+
+    function getSelectedVerbs(){
+      // Verbs are fixed for this local drill; always use all verbs in the data model
+      return Object.keys(verbs);
+    }
+
+    // Build the prompt string per spec:
+    // "[Pronoun display] + [infinitive] ([eng]) — choose the correct form"
+    function buildPrompt(pronounKey /*, verbKey not shown */){
+      // Always show only the Cyrillic pronoun. No English translation or instruction.
+      const pron = pronouns[pronounKey].cyr;
+      return `${pron}`;
+    }
+
+    // Map a chosen pronoun key to the conjugation key used in verbs.conjugations
+    // 'ona' and 'ono' use the same conjugation as 'on'
+    function pronounToConjKey(pronKey){
+      if(pronKey === 'ona' || pronKey === 'ono') return 'on';
+      return pronKey;
+    }
+
+    // Make exactly 4 options: correct + 3 distractors
+    function makeOptions(correctForm, verbKey, pronounKey){
+      // Build 4 options: always include the correct form, ensure at least one distractor comes from other verbs
+      const opts = new Set();
+      opts.add(correctForm);
+
+      // Gather other forms from same verb (excluding correct)
+      const sameVerbForms = Object.values(verbs[verbKey].conjugations).filter(f=>f!==correctForm);
+      shuffle(sameVerbForms);
+
+      // Gather forms from other verbs
+      const otherVerbKeys = Object.keys(verbs).filter(k=>k!==verbKey);
+      const otherForms = [].concat(...otherVerbKeys.map(k=>Object.values(verbs[k].conjugations)));
+      shuffle(otherForms);
+
+      // Strategy: prefer one distractor from the same verb (to show different endings for same verb),
+      // and at least one from other verbs to mix 'speak' and 'work'. Fill remaining slots from either pool.
+      if(sameVerbForms.length>0) opts.add(sameVerbForms.shift());
+
+      // Add at least one from other verbs if available
+      if(otherForms.length>0) opts.add(otherForms.shift());
+
+      // Fill remaining slots, preferring remaining same-verb then other-verb forms
+      while(opts.size<4 && sameVerbForms.length>0){ opts.add(sameVerbForms.shift()); }
+      while(opts.size<4 && otherForms.length>0){ opts.add(otherForms.shift()); }
+
+      // Final fallback: use any forms across the dataset
+      const allForms = [].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)));
+      while(opts.size<4){ const pick = allForms[Math.floor(Math.random()*allForms.length)]; opts.add(pick); }
+
+      return shuffle(Array.from(opts));
+    }
+
+    // Show a new random question
+    let currentAnswer = null;
+    function showQuestion(focus=true){
+      // Clear previous options and messages
+      optionsEl.innerHTML = '';
+      lastResultEl.textContent = '—';
+
+      const mode = quizType?.value || 'pronouns';
+      if(mode === 'numbers'){
+        // Numbers quiz: choose a number 0-20, show the numeral, options are Cyrillic words
+        const keys = Object.keys(numbers).map(k=>Number(k));
+        const n = keys[Math.floor(Math.random()*keys.length)];
+        const correctForm = numbers[n];
+        currentAnswer = { mode:'numbers', number:n, correctForm };
+        // prompt shows numeral only
+        promptEl.textContent = String(n);
+        promptEl.setAttribute('aria-live','polite');
+
+        // Build options: correct + 3 other number words
+        const opts = new Set([correctForm]);
+        const otherKeys = keys.filter(k=>k!==n);
+        shuffle(otherKeys);
+        for(const k of otherKeys){ opts.add(numbers[k]); if(opts.size>=4) break; }
+        const options = shuffle(Array.from(opts));
+
+        for(const optText of options){
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.type = 'button';
+          btn.textContent = optText;
+          btn.setAttribute('data-form', optText);
+          btn.setAttribute('role','button');
+          btn.setAttribute('aria-pressed','false');
+          btn.addEventListener('click', ()=> handleAnswer(btn));
+          btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
+          optionsEl.appendChild(btn);
+        }
+
+      } else if(mode === 'vocabulary'){
+        // Vocabulary quiz: show Russian, choose the English meaning
+        const item = vocabulary[Math.floor(Math.random()*vocabulary.length)];
+        currentAnswer = { mode:'vocabulary', ru:item.ru, correctForm:item.en };
+        promptEl.textContent = item.ru;
+        promptEl.setAttribute('aria-live','polite');
+
+        const opts = new Set([item.en]);
+        const otherMeanings = shuffle(vocabulary.filter(v=>v.ru !== item.ru).map(v=>v.en));
+        for(const meaning of otherMeanings){
+          opts.add(meaning);
+          if(opts.size >= 4) break;
+        }
+        const options = shuffle(Array.from(opts));
+
+        for(const optText of options){
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.type = 'button';
+          btn.textContent = optText;
+          btn.setAttribute('data-form', optText);
+          btn.setAttribute('role','button');
+          btn.setAttribute('aria-pressed','false');
+          btn.addEventListener('click', ()=> handleAnswer(btn));
+          btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
+          optionsEl.appendChild(btn);
+        }
+
+      } else {
+        // Pronouns / verbs quiz (existing behavior)
+        const selectedVerbs = getSelectedVerbs();
+        // Choose random verb and pronoun
+        const verbKey = selectedVerbs[Math.floor(Math.random()*selectedVerbs.length)];
+        const pronounKeys = Object.keys(pronouns);
+        const pronounKey = pronounKeys[Math.floor(Math.random()*pronounKeys.length)];
+
+        const conjKey = pronounToConjKey(pronounKey);
+        const correctForm = verbs[verbKey].conjugations[conjKey];
+        currentAnswer = { mode:'pronouns', verbKey, pronounKey, correctForm, conjKey };
+
+        // Render prompt exactly
+        promptEl.textContent = buildPrompt(pronounKey, verbKey);
+        promptEl.setAttribute('aria-live','polite');
+
+        // Create options
+        const options = makeOptions(correctForm, verbKey, pronounKey);
+
+        for(const optText of options){
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.type = 'button';
+          btn.textContent = optText;
+          btn.setAttribute('data-form', optText);
+          btn.setAttribute('role','button');
+          btn.setAttribute('aria-pressed','false');
+          btn.addEventListener('click', ()=> handleAnswer(btn));
+          btn.addEventListener('keydown', (e)=>{
+            if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); }
+          });
+          optionsEl.appendChild(btn);
+        }
+      }
+
+      // focus first option for keyboard users if requested
+      const first = optionsEl.querySelector('.option-btn');
+      if(focus && first) first.focus();
+    }
+
+    // Handle an answer click
+    function handleAnswer(button){
+      // Disable further clicks
+      const all = Array.from(optionsEl.querySelectorAll('.option-btn'));
+      for(const b of all){ b.disabled = true; b.setAttribute('aria-pressed','true'); }
+
+      const chosen = button.getAttribute('data-form');
+      const correct = currentAnswer.correctForm;
+
+      if(chosen === correct){
+        button.classList.add('correct');
+        tally.correct += 1;
+        lastResultEl.textContent = 'Correct ✓';
+      } else {
+        button.classList.add('wrong');
+        // mark the correct button green
+        const correctBtn = all.find(b=>b.getAttribute('data-form')===correct);
+        if(correctBtn) correctBtn.classList.add('correct');
+        tally.incorrect += 1;
+        lastResultEl.textContent = 'Incorrect ✗';
+      }
+
+      tally.attempts += 1;
+      renderTally();
+      saveState();
+
+      // Auto-advance after ~800ms
+      setTimeout(()=> showQuestion(true), 800);
+    }
+
+    // Event handlers
+    nextBtn.addEventListener('click', ()=> showQuestion(true));
+    quizType.addEventListener('change', ()=> showQuestion(true));
+    resetBtn.addEventListener('click', ()=>{
+      const ok = confirm('Reset tally? This will clear stored correct/incorrect/attempts.');
+      if(ok){ resetState(); lastResultEl.textContent = '—'; }
+    });
+
+  // Verbs and pronoun style are fixed; no controls to change them
+
+    // Initialize on load
+    (function init(){
+      loadState();
+      renderTally();
+      // Show an initial question after a small timeout to let render settle
+      setTimeout(()=> showQuestion(true), 120);
+    })();
+
+    // Expose some functions for debugging in console (optional)
+    window._russianConj = { verbs, pronouns, showQuestion, resetState };
+  </script>
+</body>
+</html>
