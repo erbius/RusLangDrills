@@ -1,172 +1,165 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Russian Drills</title>
   <style>
-    /* Dark-only theme, accessible focus outlines, subdued scrollbar */
-    :root{
-      --bg:#0b0f12;
-      --card:#0f1619;
-      --muted:#9aa6ad;
-      --text:#e6f0f2;
-      --accent:#60b3ff;
-      --success:#27c26a;
-      --danger:#ff6b6b;
-      --glass: rgba(255,255,255,0.02);
-      --card-border: rgba(255,255,255,0.04);
-      --shadow: 0 6px 18px rgba(2,6,8,0.7);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --correct: #22c55e;
+      --wrong: #ef4444;
+      --btn: #334155;
+      --btn-hover: #475569;
     }
-    /* Use border-box sizing so padding doesn't increase element boxes unexpectedly */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    /* Ensure body always fills viewport but padding does not cause overflow */
-    html,body{min-height:100vh;margin:0;padding:0}
-    body{
-      margin:0; padding:28px; background:linear-gradient(180deg,var(--bg), #071013 120%);
-      color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      font-size:18px; /* larger base for users zooming in */
-      line-height:1.35;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 24px;
     }
-    .wrap{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
-    header{grid-column:1/-1}
-  h1{margin:0 0 10px;font-size:26px}
-    p.lead{margin:0;color:var(--muted)}
-
-    .controls{
-      display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center
+    .app {
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-    select[multiple]{height:86px;padding:8px;border-radius:8px;border:1px solid var(--card-border);background:var(--card);color:var(--text)}
-    select, button{font-size:14px}
-
-    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));border:1px solid var(--card-border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
-    .quiz{padding:18px;display:flex;flex-direction:column;gap:12px}
-  #prompt{font-weight:700;font-size:28px;color:var(--text)}
-    #prompt[aria-live]{min-height:44px}
-
-    /* Force options into two columns (two rows of two). Collapse to one column on small screens. */
-    #options{display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:12px}
-
-    @media (max-width:520px){
-      #options{grid-template-columns:1fr}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    .option-btn{
-      background:var(--glass);border:1px solid rgba(255,255,255,0.04);color:var(--text);padding:14px 12px;border-radius:10px;cursor:pointer;text-align:left;
-      font-size:20px; /* larger choices */
-      transition:transform .06s ease, box-shadow .06s ease, background .12s ease;box-shadow:none;
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
     }
-    .option-btn:hover{transform:translateY(-2px)}
-    .option-btn:active{transform:translateY(0)}
-    .option-btn[disabled]{opacity:0.7;cursor:default;transform:none}
+    .controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    select, button {
+      background: var(--btn);
+      color: var(--text);
+      border: 1px solid #475569;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.05s;
+    }
+    select:hover, button:hover { background: var(--btn-hover); }
+    button:active { transform: translateY(1px); }
+    button[disabled] { opacity: 0.6; cursor: not-allowed; }
+    button.correct { background: var(--correct) !important; color: #052e16; font-weight: 600; }
+    button.wrong { background: var(--wrong) !important; color: #450a0a; font-weight: 600; }
 
-    .option-btn.correct{background:linear-gradient(90deg, rgba(39,194,106,0.14), rgba(39,194,106,0.06));border-color:rgba(39,194,106,0.25);box-shadow:0 6px 18px rgba(39,194,106,0.06)}
-    .option-btn.wrong{background:linear-gradient(90deg, rgba(255,107,107,0.08), rgba(255,107,107,0.02));border-color:rgba(255,107,107,0.18)}
-
-  .tally{display:flex;flex-direction:column;gap:10px}
-    .tally-row{display:flex;justify-content:space-between;align-items:center}
-    .muted{color:var(--muted);font-size:13px}
-
-  /* make small labels a bit larger */
-  .muted{font-size:14px}
-
-    footer{grid-column:1/-1;margin-top:14px;color:var(--muted);font-size:13px}
-
-    /* Focus styles for accessibility */
-    :focus{outline:none}
-    button:focus, select:focus, .option-btn:focus{box-shadow:0 0 0 3px rgba(96,179,255,0.16);border-radius:8px}
-
-  /* Ensure buttons with class "card" (our small control buttons) have readable text and larger touch area */
-  button.card{ color: var(--text) !important; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--card-border); padding:12px 14px }
-  button.card[aria-pressed="true"]{ opacity:0.95 }
-
-    /* Small screens: single column */
-    @media (max-width:880px){.wrap{grid-template-columns:1fr}}
-
-    @media (max-width:700px){
-      body{padding:14px;font-size:16px}
-      .wrap{gap:14px}
-      h1{font-size:22px;margin-bottom:6px}
-      .card,.quiz{padding:12px}
-      .controls{margin-top:10px}
-      main .controls > div{
-        width:100% !important;
-        margin-left:0 !important;
-        flex-direction:column !important;
-        align-items:stretch !important;
-        gap:10px !important;
-      }
-      main .controls > div > div{
-        width:100%;
-        min-width:0 !important;
-      }
-      #quiz-type,
-      #next-btn,
-      #reset-btn{
-        width:100%;
-      }
-      select,
-      button{font-size:16px}
-      button.card{padding:14px 16px}
-      #prompt{font-size:22px;line-height:1.25;min-height:0}
-      #options{gap:10px;margin-top:10px !important}
-      .option-btn{
-        padding:16px 14px;
-        font-size:18px;
-        min-height:56px;
-      }
-      .tally{padding:12px}
-      .tally-row{font-size:15px}
-      footer{font-size:12px}
+    .prompt {
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 20px;
+      background: rgba(56,189,248,0.1);
+      border-radius: 12px;
+      margin: 16px 0;
+      min-height: 64px;
+      display: grid;
+      place-items: center;
     }
 
-    /* Subdued WebKit scrollbar */
-    ::-webkit-scrollbar{height:10px;width:10px}
-    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.04);border-radius:10px}
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .option-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .tally {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .tally div {
+      background: rgba(148,163,184,0.15);
+      padding: 10px 6px;
+      border-radius: 8px;
+    }
+    .tally .label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .tally .value {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .last-result {
+      text-align: center;
+      margin-top: 12px;
+      font-weight: 600;
+      min-height: 24px;
+      color: var(--accent);
+    }
+
+    @media (max-width: 520px) {
+      .options { grid-template-columns: 1fr; }
+      .tally { grid-template-columns: repeat(2, 1fr); }
+      header { flex-direction: column; align-items: stretch; }
+      .controls { justify-content: center; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="app">
     <header>
       <h1>Russian Drills</h1>
-  <p class="lead">Practice various beginner Russian topics</p>
+      <div class="controls">
+        <select id="quiz-type" aria-label="Quiz type">
+          <option value="pronouns">Verb conjugations</option>
+          <option value="numbers">Numbers 0–20</option>
+          <option value="vocabulary">Vocabulary</option>
+        </select>
+        <button id="next-btn" type="button">New Question</button>
+        <button id="reset-btn" type="button">Reset Tally</button>
+      </div>
     </header>
 
-    <main class="card quiz" aria-labelledby="main-heading">
+    <div id="prompt" class="prompt" role="status" aria-live="polite">Loading…</div>
+    <div id="options" class="options" role="group" aria-label="Answer choices"></div>
+    <div id="last-result" class="last-result" aria-live="polite">—</div>
 
-      <div class="controls" style="align-items:center;">
-        <div style="display:flex;gap:12px;align-items:center;margin-left:auto;flex-wrap:wrap;">
-          <div style="display:flex;flex-direction:column;gap:6px;min-width:180px;">
-            <label for="quiz-type" class="muted">Quiz type</label>
-            <select id="quiz-type" aria-label="Choose quiz type">
-              <option value="pronouns" selected>Verb conjugations</option>
-              <option value="numbers">Numbers 0–20</option>
-              <option value="vocabulary">Vocabulary</option>
-            </select>
-          </div>
-          <button id="next-btn" class="card" style="cursor:pointer;padding:10px 12px;border-radius:8px;background:var(--glass);">New Question</button>
-          <button id="reset-btn" class="card" style="cursor:pointer;padding:10px 12px;border-radius:8px;background:transparent;border:1px solid var(--card-border);">Reset Tally</button>
-        </div>
-      </div>
-
-      <section class="card" style="margin-top:6px;">
-        <div id="prompt" aria-live="polite">Loading…</div>
-        <div id="options" role="list" aria-label="Answer options" style="margin-top:12px"></div>
-      </section>
-
-    </main>
-
-    <aside class="card tally" aria-labelledby="tally-heading">
-      <h3 id="tally-heading" style="margin:0 0 6px 0;font-size:16px">Tally</h3>
-      <div class="tally-row"><div class="muted">Correct</div><div id="correct">0</div></div>
-      <div class="tally-row"><div class="muted">Incorrect</div><div id="incorrect">0</div></div>
-      <div class="tally-row"><div class="muted">Attempts</div><div id="attempts">0</div></div>
-      <div style="height:1px;background:var(--card-border);margin:6px 0;border-radius:2px"></div>
-      <div class="muted">Last result</div>
-      <div id="last-result" aria-live="polite" style="font-weight:600">—</div>
-    </aside>
-
+    <div class="tally" aria-label="Progress tally">
+      <div><span class="label">Correct</span><span class="value" id="correct">0</span></div>
+      <div><span class="label">Incorrect</span><span class="value" id="incorrect">0</span></div>
+      <div><span class="label">Attempts</span><span class="value" id="attempts">0</span></div>
+      <div><span class="label">Last result</span><span class="value" id="last-result-tally">—</span></div>
+    </div>
   </div>
 
   <script>
@@ -369,6 +362,39 @@
           vy: "обедаете",
           oni: "обедают"
         }
+      },
+      "танцевать":{
+        infinitive: "танцевать",
+        conjugations: {
+          ya: "танцую",
+          ty: "танцуешь",
+          on: "танцует",
+          my: "танцуем",
+          vy: "танцуете",
+          oni: "танцуют"
+        }
+      },
+      "завтракать":{
+        infinitive: "завтракать",
+        conjugations: {
+          ya: "завтракаю",
+          ty: "завтракаешь",
+          on: "завтракает",
+          my: "завтракаем",
+          vy: "завтракаете",
+          oni: "завтракают"
+        }
+      },
+      "спать":{
+        infinitive: "спать",
+        conjugations: {
+          ya: "сплю",
+          ty: "спишь",
+          on: "спит",
+          my: "спим",
+          vy: "спите",
+          oni: "спят"
+        }
       }
     };
 
@@ -408,57 +434,61 @@
       20: 'двадцать'
     };
 
+    // Updated vocabulary list - exactly as specified
     const vocabulary = [
       { ru: 'Думать', en: 'To think' },
-      { ru: 'Отдыхать', en: 'To relax, to rest' },
-      { ru: 'Гулять', en: 'To go for a walk' },
-      { ru: 'Уметь', en: 'To know how to do something' },
-      { ru: 'Читать', en: 'To read' },
-      { ru: 'Говорить', en: 'To speak' },
-      { ru: 'Ужинать', en: 'To have dinner' },
-      { ru: 'Мечтать', en: 'To dream about' },
-      { ru: 'Работать', en: 'To work' },
-      { ru: 'Ты можешь', en: 'You can' },
-      { ru: 'Знать', en: 'To know' },
-      { ru: 'Жить', en: 'To live' },
       { ru: 'Понимать', en: 'To understand' },
-      { ru: 'Писать', en: 'To write' },
+      { ru: 'Танцевать', en: 'To dance' },
+      { ru: 'Работать', en: 'To work' },
+      { ru: 'Гулять', en: 'To go for a walk' },
+      { ru: 'Завтракать', en: 'To have breakfast' },
+      { ru: 'Спать', en: 'To sleep' },
+      { ru: 'Обедать', en: 'To have lunch' },
+      { ru: 'Говорить', en: 'To speak' },
+      { ru: 'Мечтать', en: 'To dream about' },
       { ru: 'Я могу', en: 'I can' },
-      { ru: 'Играть', en: 'To play' },
       { ru: 'Учиться', en: 'To study' },
+      { ru: 'Уметь', en: 'To know how to do something' },
       { ru: 'Мочь', en: 'Can' },
-      { ru: 'Делать', en: 'To do' },
-      { ru: 'Обедать', en: 'To have lunch' }
+      { ru: 'Писать', en: 'To write' },
+      { ru: 'Знать', en: 'To know' },
+      { ru: 'Отдыхать', en: 'To relax, to rest' },
+      { ru: 'Ты можешь', en: 'You can' },
+      { ru: 'Играть', en: 'To play' },
+      { ru: 'Жить', en: 'To live' }
     ];
 
     const verbGloss = {
       думать: 'To think',
-      отдыхать: 'To relax, to rest',
-      гулять: 'To go for a walk',
-      уметь: 'To know how to do something',
-      читать: 'To read',
-      работать: 'To work',
-      говорить: 'To speak',
-      ужинать: 'To have dinner',
-      мечтать: 'To dream about',
-      знать: 'To know',
-      жить: 'To live',
       понимать: 'To understand',
-      писать: 'To write',
-      играть: 'To play',
+      танцевать: 'To dance',
+      работать: 'To work',
+      гулять: 'To go for a walk',
+      завтракать: 'To have breakfast',
+      спать: 'To sleep',
+      обедать: 'To have lunch',
+      говорить: 'To speak',
+      мечтать: 'To dream about',
       учиться: 'To study',
+      уметь: 'To know how to do something',
       мочь: 'Can',
-      делать: 'To do',
-      обедать: 'To have lunch'
+      писать: 'To write',
+      знать: 'To know',
+      отдыхать: 'To relax, to rest',
+      играть: 'To play',
+      жить: 'To live',
+      ужинать: 'To have dinner',
+      читать: 'To read',
+      делать: 'To do'
     };
 
-  // LocalStorage key
+    // LocalStorage key
     const STORAGE_KEY = 'russian-conj-tally-v1';
 
     // State for tally
     let tally = { correct:0, incorrect:0, attempts:0 };
 
-  // DOM refs
+    // DOM refs
     const quizType = document.getElementById('quiz-type');
     const nextBtn = document.getElementById('next-btn');
     const resetBtn = document.getElementById('reset-btn');
@@ -468,6 +498,7 @@
     const incorrectEl = document.getElementById('incorrect');
     const attemptsEl = document.getElementById('attempts');
     const lastResultEl = document.getElementById('last-result');
+    const lastResultTallyEl = document.getElementById('last-result-tally');
 
     // Utility: shuffle array in-place
     function shuffle(arr){
@@ -502,82 +533,63 @@
       correctEl.textContent = tally.correct;
       incorrectEl.textContent = tally.incorrect;
       attemptsEl.textContent = tally.attempts;
+      lastResultTallyEl.textContent = '—';
     }
 
     function getSelectedVerbs(){
-      // Verbs are fixed for this local drill; always use all verbs in the data model
       return Object.keys(verbs);
     }
 
-    // Build the prompt string per spec:
-    // "[Pronoun display] + [infinitive] ([eng]) — choose the correct form"
     function buildPrompt(pronounKey, verbKey){
-      // Show the pronoun plus the target verb cue so the quiz is clearly about conjugation.
       const pron = pronouns[pronounKey].cyr;
       const verb = verbs[verbKey];
       const gloss = verbGloss[verbKey] ? ` (${verbGloss[verbKey]})` : '';
       return `${pron} — ${verb.infinitive}${gloss}`;
     }
 
-    // Map a chosen pronoun key to the conjugation key used in verbs.conjugations
-    // 'ona' and 'ono' use the same conjugation as 'on'
     function pronounToConjKey(pronKey){
       if(pronKey === 'ona' || pronKey === 'ono') return 'on';
       return pronKey;
     }
 
-    // Make a larger option set: correct + distractors from the same verb and other verbs.
     function makeOptions(correctForm, verbKey, optionCount = 4){
-      // Always include the correct form, then fill from the rest of the verb pool.
       const opts = new Set();
       opts.add(correctForm);
 
-      // Gather other forms from same verb (excluding correct)
       const sameVerbForms = Object.values(verbs[verbKey].conjugations).filter(f=>f!==correctForm);
       shuffle(sameVerbForms);
 
-      // Gather forms from other verbs
       const otherVerbKeys = Object.keys(verbs).filter(k=>k!==verbKey);
       const otherForms = [].concat(...otherVerbKeys.map(k=>Object.values(verbs[k].conjugations)));
       shuffle(otherForms);
 
-      // Strategy: prefer one distractor from the same verb (to show different endings for same verb),
-      // and at least one from other verbs to mix 'speak' and 'work'. Fill remaining slots from either pool.
       if(sameVerbForms.length>0) opts.add(sameVerbForms.shift());
-
-      // Add at least one from other verbs if available
       if(otherForms.length>0) opts.add(otherForms.shift());
 
-      // Fill remaining slots, preferring remaining same-verb then other-verb forms
       while(opts.size<optionCount && sameVerbForms.length>0){ opts.add(sameVerbForms.shift()); }
       while(opts.size<optionCount && otherForms.length>0){ opts.add(otherForms.shift()); }
 
-      // Final fallback: use any forms across the dataset
       const allForms = [].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)));
       while(opts.size<optionCount){ const pick = allForms[Math.floor(Math.random()*allForms.length)]; opts.add(pick); }
 
       return shuffle(Array.from(opts));
     }
 
-    // Show a new random question
     let currentAnswer = null;
     function showQuestion(focus=true){
-      // Clear previous options and messages
       optionsEl.innerHTML = '';
       lastResultEl.textContent = '—';
 
       const mode = quizType?.value || 'pronouns';
+      
       if(mode === 'numbers'){
-        // Numbers quiz: choose a number 0-20, show the numeral, options are Cyrillic words
         const keys = Object.keys(numbers).map(k=>Number(k));
         const n = keys[Math.floor(Math.random()*keys.length)];
         const correctForm = numbers[n];
         currentAnswer = { mode:'numbers', number:n, correctForm };
-        // prompt shows numeral only
         promptEl.textContent = String(n);
         promptEl.setAttribute('aria-live','polite');
 
-        // Build options: correct + 3 other number words
         const opts = new Set([correctForm]);
         const otherKeys = keys.filter(k=>k!==n);
         shuffle(otherKeys);
@@ -598,12 +610,13 @@
         }
 
       } else if(mode === 'vocabulary'){
-        // Vocabulary quiz: show English, choose the Russian word
+        // Vocabulary quiz: show English prompt, choose the exact Russian word/phrase from the list
         const item = vocabulary[Math.floor(Math.random()*vocabulary.length)];
         currentAnswer = { mode:'vocabulary', en:item.en, correctForm:item.ru };
         promptEl.textContent = item.en;
         promptEl.setAttribute('aria-live','polite');
 
+        // Build options: correct answer + 3 other Russian words/phrases from the vocabulary list
         const opts = new Set([item.ru]);
         const otherRussian = shuffle(vocabulary.filter(v=>v.en !== item.en).map(v=>v.ru));
         for(const russianWord of otherRussian){
@@ -626,9 +639,8 @@
         }
 
       } else {
-        // Pronouns / verbs quiz (existing behavior)
+        // Pronouns / verbs quiz (conjugation mode)
         const selectedVerbs = getSelectedVerbs();
-        // Choose random verb and pronoun
         const verbKey = selectedVerbs[Math.floor(Math.random()*selectedVerbs.length)];
         const pronounKeys = Object.keys(pronouns);
         const pronounKey = pronounKeys[Math.floor(Math.random()*pronounKeys.length)];
@@ -637,11 +649,9 @@
         const correctForm = verbs[verbKey].conjugations[conjKey];
         currentAnswer = { mode:'pronouns', verbKey, pronounKey, correctForm, conjKey };
 
-        // Render prompt exactly
         promptEl.textContent = buildPrompt(pronounKey, verbKey);
         promptEl.setAttribute('aria-live','polite');
 
-        // Create options
         const options = makeOptions(correctForm, verbKey, 4);
 
         for(const optText of options){
@@ -660,14 +670,11 @@
         }
       }
 
-      // focus first option for keyboard users if requested
       const first = optionsEl.querySelector('.option-btn');
       if(focus && first) first.focus();
     }
 
-    // Handle an answer click
     function handleAnswer(button){
-      // Disable further clicks
       const all = Array.from(optionsEl.querySelectorAll('.option-btn'));
       for(const b of all){ b.disabled = true; b.setAttribute('aria-pressed','true'); }
 
@@ -680,7 +687,6 @@
         lastResultEl.textContent = 'Correct ✓';
       } else {
         button.classList.add('wrong');
-        // mark the correct button green
         const correctBtn = all.find(b=>b.getAttribute('data-form')===correct);
         if(correctBtn) correctBtn.classList.add('correct');
         tally.incorrect += 1;
@@ -691,11 +697,9 @@
       renderTally();
       saveState();
 
-      // Auto-advance after ~800ms
       setTimeout(()=> showQuestion(true), 800);
     }
 
-    // Event handlers
     nextBtn.addEventListener('click', ()=> showQuestion(true));
     quizType.addEventListener('change', ()=> showQuestion(true));
     resetBtn.addEventListener('click', ()=>{
@@ -703,17 +707,12 @@
       if(ok){ resetState(); lastResultEl.textContent = '—'; }
     });
 
-  // Verbs and pronoun style are fixed; no controls to change them
-
-    // Initialize on load
     (function init(){
       loadState();
       renderTally();
-      // Show an initial question after a small timeout to let render settle
       setTimeout(()=> showQuestion(true), 120);
     })();
 
-    // Expose some functions for debugging in console (optional)
     window._russianConj = { verbs, pronouns, showQuestion, resetState };
   </script>
 </body>
