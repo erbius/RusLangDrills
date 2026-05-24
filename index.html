@@ -243,7 +243,7 @@
     };
 
     const STORAGE_KEY = 'russian-conj-tally-v1';
-    const APP_LAST_UPDATED = '2026-05-24 22:10 UTC';
+    const APP_LAST_UPDATED = '2026-05-24 22:25 UTC';
     let tally = { correct:0, incorrect:0, attempts:0 };
 
     const quizType = document.getElementById('quiz-type');
@@ -311,10 +311,21 @@
       return ruWord.charAt(0).toUpperCase() + ruWord.slice(1);
     }
 
-    const normalizedVocabulary = vocabulary.map((item) => ({
-      ru: toDisplayCase(sanitizeVocabAnswer(item.ru)),
-      en: item.en
-    }));
+    const allowedInfinitives = new Set(Object.values(verbs).map((verb) => verb.infinitive));
+
+    const normalizedVocabulary = vocabulary
+      .map((item) => {
+        const normalizedRu = sanitizeVocabAnswer(item.ru);
+        if (!allowedInfinitives.has(normalizedRu)) return null;
+        return { ru: toDisplayCase(normalizedRu), en: item.en };
+      })
+      .filter(Boolean);
+
+    const fallbackVocabulary = Object.entries(verbGloss)
+      .filter(([infinitive]) => allowedInfinitives.has(infinitive))
+      .map(([infinitive, en]) => ({ ru: toDisplayCase(infinitive), en }));
+
+    const vocabularyPool = normalizedVocabulary.length >= 4 ? normalizedVocabulary : fallbackVocabulary;
 
     let currentAnswer = null;
     function showQuestion(focus=true){
@@ -342,13 +353,13 @@
         }
       } else if(mode === 'vocabulary'){
         // Pick random item, sanitize to guarantee base form only
-        const rawItem = normalizedVocabulary[Math.floor(Math.random()*normalizedVocabulary.length)];
+        const rawItem = vocabularyPool[Math.floor(Math.random()*vocabularyPool.length)];
         currentAnswer = { mode:'vocabulary', en:rawItem.en, correctForm:rawItem.ru };
         promptEl.textContent = rawItem.en;
         promptEl.setAttribute('aria-live','polite');
 
         const opts = new Set([rawItem.ru]);
-        const otherRussian = shuffle(normalizedVocabulary.filter(v=>v.en !== rawItem.en).map(v=>v.ru));
+        const otherRussian = shuffle(vocabularyPool.filter(v=>v.en !== rawItem.en).map(v=>v.ru));
         for(const rw of otherRussian){ opts.add(rw); if(opts.size >= 4) break; }
         const options = shuffle(Array.from(opts));
 
