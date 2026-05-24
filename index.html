@@ -165,276 +165,44 @@
   <script>
     // Russian verbs and pronouns data model
     const verbs = {
-      "думать":{
-        infinitive: "думать",
-        conjugations: {
-          ya: "думаю",
-          ty: "думаешь",
-          on: "думает",
-          my: "думаем",
-          vy: "думаете",
-          oni: "думают"
-        }
-      },
-      "отдыхать":{
-        infinitive: "отдыхать",
-        conjugations: {
-          ya: "отдыхаю",
-          ty: "отдыхаешь",
-          on: "отдыхает",
-          my: "отдыхаем",
-          vy: "отдыхаете",
-          oni: "отдыхают"
-        }
-      },
-      "гулять":{
-        infinitive: "гулять",
-        conjugations: {
-          ya: "гуляю",
-          ty: "гуляешь",
-          on: "гуляет",
-          my: "гуляем",
-          vy: "гуляете",
-          oni: "гуляют"
-        }
-      },
-      "уметь":{
-        infinitive: "уметь",
-        conjugations: {
-          ya: "умею",
-          ty: "умеешь",
-          on: "умеет",
-          my: "умеем",
-          vy: "умеете",
-          oni: "умеют"
-        }
-      },
-      "читать":{
-        infinitive: "читать",
-        conjugations: {
-          ya: "читаю",
-          ty: "читаешь",
-          on: "читает",
-          my: "читаем",
-          vy: "читаете",
-          oni: "читают"
-        }
-      },
-      "работать":{
-        infinitive: "работать",
-        conjugations: {
-          ya: "работаю",
-          ty: "работаешь",
-          on: "работает",
-          my: "работаем",
-          vy: "работаете",
-          oni: "работают"
-        }
-      },
-      "говорить":{
-        infinitive: "говорить",
-        conjugations: {
-          ya: "говорю",
-          ty: "говоришь",
-          on: "говорит",
-          my: "говорим",
-          vy: "говорите",
-          oni: "говорят"
-        }
-      },
-      "ужинать":{
-        infinitive: "ужинать",
-        conjugations: {
-          ya: "ужинаю",
-          ty: "ужинаешь",
-          on: "ужинает",
-          my: "ужинаем",
-          vy: "ужинаете",
-          oni: "ужинают"
-        }
-      },
-      "мечтать":{
-        infinitive: "мечтать",
-        conjugations: {
-          ya: "мечтаю",
-          ty: "мечтаешь",
-          on: "мечтает",
-          my: "мечтаем",
-          vy: "мечтаете",
-          oni: "мечтают"
-        }
-      },
-      "знать":{
-        infinitive: "знать",
-        conjugations: {
-          ya: "знаю",
-          ty: "знаешь",
-          on: "знает",
-          my: "знаем",
-          vy: "знаете",
-          oni: "знают"
-        }
-      },
-      "жить":{
-        infinitive: "жить",
-        conjugations: {
-          ya: "живу",
-          ty: "живёшь",
-          on: "живёт",
-          my: "живём",
-          vy: "живёте",
-          oni: "живут"
-        }
-      },
-      "понимать":{
-        infinitive: "понимать",
-        conjugations: {
-          ya: "понимаю",
-          ty: "понимаешь",
-          on: "понимает",
-          my: "понимаем",
-          vy: "понимаете",
-          oni: "понимают"
-        }
-      },
-      "писать":{
-        infinitive: "писать",
-        conjugations: {
-          ya: "пишу",
-          ty: "пишешь",
-          on: "пишет",
-          my: "пишем",
-          vy: "пишете",
-          oni: "пишут"
-        }
-      },
-      "играть":{
-        infinitive: "играть",
-        conjugations: {
-          ya: "играю",
-          ty: "играешь",
-          on: "играет",
-          my: "играем",
-          vy: "играете",
-          oni: "играют"
-        }
-      },
-      "учиться":{
-        infinitive: "учиться",
-        conjugations: {
-          ya: "учусь",
-          ty: "учишься",
-          on: "учится",
-          my: "учимся",
-          vy: "учитесь",
-          oni: "учатся"
-        }
-      },
-      "мочь":{
-        infinitive: "мочь",
-        conjugations: {
-          ya: "могу",
-          ty: "можешь",
-          on: "может",
-          my: "можем",
-          vy: "можете",
-          oni: "могут"
-        }
-      },
-      "делать":{
-        infinitive: "делать",
-        conjugations: {
-          ya: "делаю",
-          ty: "делаешь",
-          on: "делает",
-          my: "делаем",
-          vy: "делаете",
-          oni: "делают"
-        }
-      },
-      "обедать":{
-        infinitive: "обедать",
-        conjugations: {
-          ya: "обедаю",
-          ty: "обедаешь",
-          on: "обедает",
-          my: "обедаем",
-          vy: "обедаете",
-          oni: "обедают"
-        }
-      },
-      "танцевать":{
-        infinitive: "танцевать",
-        conjugations: {
-          ya: "танцую",
-          ty: "танцуешь",
-          on: "танцует",
-          my: "танцуем",
-          vy: "танцуете",
-          oni: "танцуют"
-        }
-      },
-      "завтракать":{
-        infinitive: "завтракать",
-        conjugations: {
-          ya: "завтракаю",
-          ty: "завтракаешь",
-          on: "завтракает",
-          my: "завтракаем",
-          vy: "завтракаете",
-          oni: "завтракают"
-        }
-      },
-      "спать":{
-        infinitive: "спать",
-        conjugations: {
-          ya: "сплю",
-          ty: "спишь",
-          on: "спит",
-          my: "спим",
-          vy: "спите",
-          oni: "спят"
-        }
-      }
+      "думать":{ infinitive: "думать", conjugations: { ya: "думаю", ty: "думаешь", on: "думает", my: "думаем", vy: "думаете", oni: "думают" }},
+      "отдыхать":{ infinitive: "отдыхать", conjugations: { ya: "отдыхаю", ty: "отдыхаешь", on: "отдыхает", my: "отдыхаем", vy: "отдыхаете", oni: "отдыхают" }},
+      "гулять":{ infinitive: "гулять", conjugations: { ya: "гуляю", ty: "гуляешь", on: "гуляет", my: "гуляем", vy: "гуляете", oni: "гуляют" }},
+      "уметь":{ infinitive: "уметь", conjugations: { ya: "умею", ty: "умеешь", on: "умеет", my: "умеем", vy: "умеете", oni: "умеют" }},
+      "читать":{ infinitive: "читать", conjugations: { ya: "читаю", ty: "читаешь", on: "читает", my: "читаем", vy: "читаете", oni: "читают" }},
+      "работать":{ infinitive: "работать", conjugations: { ya: "работаю", ty: "работаешь", on: "работает", my: "работаем", vy: "работаете", oni: "работают" }},
+      "говорить":{ infinitive: "говорить", conjugations: { ya: "говорю", ty: "говоришь", on: "говорит", my: "говорим", vy: "говорите", oni: "говорят" }},
+      "ужинать":{ infinitive: "ужинать", conjugations: { ya: "ужинаю", ty: "ужинаешь", on: "ужинает", my: "ужинаем", vy: "ужинаете", oni: "ужинают" }},
+      "мечтать":{ infinitive: "мечтать", conjugations: { ya: "мечтаю", ty: "мечтаешь", on: "мечтает", my: "мечтаем", vy: "мечтаете", oni: "мечтают" }},
+      "знать":{ infinitive: "знать", conjugations: { ya: "знаю", ty: "знаешь", on: "знает", my: "знаем", vy: "знаете", oni: "знают" }},
+      "жить":{ infinitive: "жить", conjugations: { ya: "живу", ty: "живёшь", on: "живёт", my: "живём", vy: "живёте", oni: "живут" }},
+      "понимать":{ infinitive: "понимать", conjugations: { ya: "понимаю", ty: "понимаешь", on: "понимает", my: "понимаем", vy: "понимаете", oni: "понимают" }},
+      "писать":{ infinitive: "писать", conjugations: { ya: "пишу", ty: "пишешь", on: "пишет", my: "пишем", vy: "пишете", oni: "пишут" }},
+      "играть":{ infinitive: "играть", conjugations: { ya: "играю", ty: "играешь", on: "играет", my: "играем", vy: "играете", oni: "играют" }},
+      "учиться":{ infinitive: "учиться", conjugations: { ya: "учусь", ty: "учишься", on: "учится", my: "учимся", vy: "учитесь", oni: "учатся" }},
+      "мочь":{ infinitive: "мочь", conjugations: { ya: "могу", ty: "можешь", on: "может", my: "можем", vy: "можете", oni: "могут" }},
+      "делать":{ infinitive: "делать", conjugations: { ya: "делаю", ty: "делаешь", on: "делает", my: "делаем", vy: "делаете", oni: "делают" }},
+      "обедать":{ infinitive: "обедать", conjugations: { ya: "обедаю", ty: "обедаешь", on: "обедает", my: "обедаем", vy: "обедаете", oni: "обедают" }},
+      "танцевать":{ infinitive: "танцевать", conjugations: { ya: "танцую", ty: "танцуешь", on: "танцует", my: "танцуем", vy: "танцуете", oni: "танцуют" }},
+      "завтракать":{ infinitive: "завтракать", conjugations: { ya: "завтракаю", ty: "завтракаешь", on: "завтракает", my: "завтракаем", vy: "завтракаете", oni: "завтракают" }},
+      "спать":{ infinitive: "спать", conjugations: { ya: "сплю", ty: "спишь", on: "спит", my: "спим", vy: "спите", oni: "спят" }}
     };
 
     const pronouns = {
-      ya: { translit: "Ya", cyr: "Я" },
-      ty: { translit: "Ty", cyr: "Ты" },
-      on: { translit: "On", cyr: "Он" },
-      ona: { translit: "Ona", cyr: "Она" },
-      ono: { translit: "Ono", cyr: "Оно" },
-      my: { translit: "My", cyr: "Мы" },
-      vy: { translit: "Vy", cyr: "Вы" },
-      oni:{ translit: "Oni", cyr: "Они" }
+      ya: { translit: "Ya", cyr: "Я" }, ty: { translit: "Ty", cyr: "Ты" }, on: { translit: "On", cyr: "Он" },
+      ona: { translit: "Ona", cyr: "Она" }, ono: { translit: "Ono", cyr: "Оно" }, my: { translit: "My", cyr: "Мы" },
+      vy: { translit: "Vy", cyr: "Вы" }, oni:{ translit: "Oni", cyr: "Они" }
     };
 
-    // Numbers 0-20 (Cyrillic words)
     const numbers = {
-      0: 'ноль',
-      1: 'один',
-      2: 'два',
-      3: 'три',
-      4: 'четыре',
-      5: 'пять',
-      6: 'шесть',
-      7: 'семь',
-      8: 'восемь',
-      9: 'девять',
-      10: 'десять',
-      11: 'одиннадцать',
-      12: 'двенадцать',
-      13: 'тринадцать',
-      14: 'четырнадцать',
-      15: 'пятнадцать',
-      16: 'шестнадцать',
-      17: 'семнадцать',
-      18: 'восемнадцать',
-      19: 'девятнадцать',
-      20: 'двадцать'
+      0: 'ноль', 1: 'один', 2: 'два', 3: 'три', 4: 'четыре', 5: 'пять', 6: 'шесть', 7: 'семь',
+      8: 'восемь', 9: 'девять', 10: 'десять', 11: 'одиннадцать', 12: 'двенадцать', 13: 'тринадцать',
+      14: 'четырнадцать', 15: 'пятнадцать', 16: 'шестнадцать', 17: 'семнадцать', 18: 'восемнадцать',
+      19: 'девятнадцать', 20: 'двадцать'
     };
 
-    // Updated vocabulary list - exactly as specified
+    // Vocabulary list updated to use ONLY base/infinitive forms. 
+    // Pronoun-prefixed phrases replaced with their dictionary forms to guarantee no conjugations appear.
     const vocabulary = [
       { ru: 'Думать', en: 'To think' },
       { ru: 'Понимать', en: 'To understand' },
@@ -446,49 +214,29 @@
       { ru: 'Обедать', en: 'To have lunch' },
       { ru: 'Говорить', en: 'To speak' },
       { ru: 'Мечтать', en: 'To dream about' },
-      { ru: 'Я могу', en: 'I can' },
+      { ru: 'Мочь', en: 'I can' },
       { ru: 'Учиться', en: 'To study' },
       { ru: 'Уметь', en: 'To know how to do something' },
       { ru: 'Мочь', en: 'Can' },
       { ru: 'Писать', en: 'To write' },
       { ru: 'Знать', en: 'To know' },
       { ru: 'Отдыхать', en: 'To relax, to rest' },
-      { ru: 'Ты можешь', en: 'You can' },
+      { ru: 'Мочь', en: 'You can' },
       { ru: 'Играть', en: 'To play' },
       { ru: 'Жить', en: 'To live' }
     ];
 
     const verbGloss = {
-      думать: 'To think',
-      понимать: 'To understand',
-      танцевать: 'To dance',
-      работать: 'To work',
-      гулять: 'To go for a walk',
-      завтракать: 'To have breakfast',
-      спать: 'To sleep',
-      обедать: 'To have lunch',
-      говорить: 'To speak',
-      мечтать: 'To dream about',
-      учиться: 'To study',
-      уметь: 'To know how to do something',
-      мочь: 'Can',
-      писать: 'To write',
-      знать: 'To know',
-      отдыхать: 'To relax, to rest',
-      играть: 'To play',
-      жить: 'To live',
-      ужинать: 'To have dinner',
-      читать: 'To read',
-      делать: 'To do'
+      думать: 'To think', отдыхать: 'To relax, to rest', гулять: 'To go for a walk', уметь: 'To know how to do something',
+      читать: 'To read', работать: 'To work', говорить: 'To speak', ужинать: 'To have dinner', мечтать: 'To dream about',
+      знать: 'To know', жить: 'To live', понимать: 'To understand', писать: 'To write', играть: 'To play',
+      учиться: 'To study', мочь: 'Can', делать: 'To do', обедать: 'To have lunch', танцевать: 'To dance',
+      завтракать: 'To have breakfast', спать: 'To sleep'
     };
 
-    // LocalStorage key
     const STORAGE_KEY = 'russian-conj-tally-v1';
-
-    // State for tally
     let tally = { correct:0, incorrect:0, attempts:0 };
 
-    // DOM refs
     const quizType = document.getElementById('quiz-type');
     const nextBtn = document.getElementById('next-btn');
     const resetBtn = document.getElementById('reset-btn');
@@ -500,88 +248,46 @@
     const lastResultEl = document.getElementById('last-result');
     const lastResultTallyEl = document.getElementById('last-result-tally');
 
-    // Utility: shuffle array in-place
-    function shuffle(arr){
-      for(let i=arr.length-1;i>0;i--){
-        const j = Math.floor(Math.random()*(i+1));
-        [arr[i],arr[j]]=[arr[j],arr[i]];
-      }
-      return arr;
-    }
+    function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
 
-    // Load and save tally
-    function loadState(){
-      try{
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if(raw){
-          const parsed = JSON.parse(raw);
-          tally = Object.assign(tally, parsed);
-        }
-      }catch(e){ console.warn('Failed to load state', e); }
-    }
-    function saveState(){
-      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }
-      catch(e){ console.warn('Failed to save state', e); }
-    }
-    function resetState(){
-      tally = { correct:0, incorrect:0, attempts:0 };
-      saveState();
-      renderTally();
-    }
+    function loadState(){ try{ const raw = localStorage.getItem(STORAGE_KEY); if(raw){ const parsed = JSON.parse(raw); tally = Object.assign(tally, parsed); } }catch(e){ console.warn('Failed to load state', e); } }
+    function saveState(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }catch(e){ console.warn('Failed to save state', e); } }
+    function resetState(){ tally = { correct:0, incorrect:0, attempts:0 }; saveState(); renderTally(); }
+    function renderTally(){ correctEl.textContent = tally.correct; incorrectEl.textContent = tally.incorrect; attemptsEl.textContent = tally.attempts; lastResultTallyEl.textContent = '—'; }
 
-    function renderTally(){
-      correctEl.textContent = tally.correct;
-      incorrectEl.textContent = tally.incorrect;
-      attemptsEl.textContent = tally.attempts;
-      lastResultTallyEl.textContent = '—';
-    }
-
-    function getSelectedVerbs(){
-      return Object.keys(verbs);
-    }
-
+    function getSelectedVerbs(){ return Object.keys(verbs); }
     function buildPrompt(pronounKey, verbKey){
       const pron = pronouns[pronounKey].cyr;
-      const verb = verbs[verbKey];
       const gloss = verbGloss[verbKey] ? ` (${verbGloss[verbKey]})` : '';
-      return `${pron} — ${verb.infinitive}${gloss}`;
+      return `${pron} — ${verbKey}${gloss}`;
     }
-
-    function pronounToConjKey(pronKey){
-      if(pronKey === 'ona' || pronKey === 'ono') return 'on';
-      return pronKey;
-    }
+    function pronounToConjKey(pronKey){ if(pronKey === 'ona' || pronKey === 'ono') return 'on'; return pronKey; }
 
     function makeOptions(correctForm, verbKey, optionCount = 4){
-      const opts = new Set();
-      opts.add(correctForm);
-
-      const sameVerbForms = Object.values(verbs[verbKey].conjugations).filter(f=>f!==correctForm);
-      shuffle(sameVerbForms);
-
+      const opts = new Set(); opts.add(correctForm);
+      const sameVerbForms = Object.values(verbs[verbKey].conjugations).filter(f=>f!==correctForm); shuffle(sameVerbForms);
       const otherVerbKeys = Object.keys(verbs).filter(k=>k!==verbKey);
-      const otherForms = [].concat(...otherVerbKeys.map(k=>Object.values(verbs[k].conjugations)));
-      shuffle(otherForms);
-
+      const otherForms = [].concat(...otherVerbKeys.map(k=>Object.values(verbs[k].conjugations))); shuffle(otherForms);
       if(sameVerbForms.length>0) opts.add(sameVerbForms.shift());
       if(otherForms.length>0) opts.add(otherForms.shift());
-
-      while(opts.size<optionCount && sameVerbForms.length>0){ opts.add(sameVerbForms.shift()); }
-      while(opts.size<optionCount && otherForms.length>0){ opts.add(otherForms.shift()); }
-
+      while(opts.size<optionCount && sameVerbForms.length>0) opts.add(sameVerbForms.shift());
+      while(opts.size<optionCount && otherForms.length>0) opts.add(otherForms.shift());
       const allForms = [].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)));
       while(opts.size<optionCount){ const pick = allForms[Math.floor(Math.random()*allForms.length)]; opts.add(pick); }
-
       return shuffle(Array.from(opts));
+    }
+
+    // Safeguard: strips pronoun prefixes from any vocabulary answer before display
+    function sanitizeVocabAnswer(ruWord) {
+      return ruWord.trim().replace(/^(Я|Ты|Он|Она|Оно|Мы|Вы|Они)\s+/i, '').trim();
     }
 
     let currentAnswer = null;
     function showQuestion(focus=true){
       optionsEl.innerHTML = '';
       lastResultEl.textContent = '—';
-
       const mode = quizType?.value || 'pronouns';
-      
+
       if(mode === 'numbers'){
         const keys = Object.keys(numbers).map(k=>Number(k));
         const n = keys[Math.floor(Math.random()*keys.length)];
@@ -589,83 +295,53 @@
         currentAnswer = { mode:'numbers', number:n, correctForm };
         promptEl.textContent = String(n);
         promptEl.setAttribute('aria-live','polite');
-
         const opts = new Set([correctForm]);
-        const otherKeys = keys.filter(k=>k!==n);
-        shuffle(otherKeys);
+        const otherKeys = keys.filter(k=>k!==n); shuffle(otherKeys);
         for(const k of otherKeys){ opts.add(numbers[k]); if(opts.size>=4) break; }
         const options = shuffle(Array.from(opts));
-
         for(const optText of options){
-          const btn = document.createElement('button');
-          btn.className = 'option-btn';
-          btn.type = 'button';
-          btn.textContent = optText;
-          btn.setAttribute('data-form', optText);
-          btn.setAttribute('role','button');
-          btn.setAttribute('aria-pressed','false');
+          const btn = document.createElement('button'); btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = optText;
+          btn.setAttribute('data-form', optText); btn.setAttribute('role','button'); btn.setAttribute('aria-pressed','false');
           btn.addEventListener('click', ()=> handleAnswer(btn));
           btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
           optionsEl.appendChild(btn);
         }
-
       } else if(mode === 'vocabulary'){
-        // Vocabulary quiz: show English prompt, choose the exact Russian word/phrase from the list
-        const item = vocabulary[Math.floor(Math.random()*vocabulary.length)];
-        currentAnswer = { mode:'vocabulary', en:item.en, correctForm:item.ru };
-        promptEl.textContent = item.en;
+        // Pick random item, sanitize to guarantee base form only
+        const rawItem = vocabulary[Math.floor(Math.random()*vocabulary.length)];
+        const cleanRu = sanitizeVocabAnswer(rawItem.ru);
+        currentAnswer = { mode:'vocabulary', en:rawItem.en, correctForm:cleanRu };
+        promptEl.textContent = rawItem.en;
         promptEl.setAttribute('aria-live','polite');
 
-        // Build options: correct answer + 3 other Russian words/phrases from the vocabulary list
-        const opts = new Set([item.ru]);
-        const otherRussian = shuffle(vocabulary.filter(v=>v.en !== item.en).map(v=>v.ru));
-        for(const russianWord of otherRussian){
-          opts.add(russianWord);
-          if(opts.size >= 4) break;
-        }
+        const opts = new Set([cleanRu]);
+        const otherRussian = shuffle(vocabulary.filter(v=>v.en !== rawItem.en).map(v=>sanitizeVocabAnswer(v.ru)));
+        for(const rw of otherRussian){ opts.add(rw); if(opts.size >= 4) break; }
         const options = shuffle(Array.from(opts));
 
         for(const optText of options){
-          const btn = document.createElement('button');
-          btn.className = 'option-btn';
-          btn.type = 'button';
-          btn.textContent = optText;
-          btn.setAttribute('data-form', optText);
-          btn.setAttribute('role','button');
-          btn.setAttribute('aria-pressed','false');
+          const btn = document.createElement('button'); btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = optText;
+          btn.setAttribute('data-form', optText); btn.setAttribute('role','button'); btn.setAttribute('aria-pressed','false');
           btn.addEventListener('click', ()=> handleAnswer(btn));
           btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
           optionsEl.appendChild(btn);
         }
-
       } else {
-        // Pronouns / verbs quiz (conjugation mode)
         const selectedVerbs = getSelectedVerbs();
         const verbKey = selectedVerbs[Math.floor(Math.random()*selectedVerbs.length)];
         const pronounKeys = Object.keys(pronouns);
         const pronounKey = pronounKeys[Math.floor(Math.random()*pronounKeys.length)];
-
         const conjKey = pronounToConjKey(pronounKey);
         const correctForm = verbs[verbKey].conjugations[conjKey];
         currentAnswer = { mode:'pronouns', verbKey, pronounKey, correctForm, conjKey };
-
         promptEl.textContent = buildPrompt(pronounKey, verbKey);
         promptEl.setAttribute('aria-live','polite');
-
         const options = makeOptions(correctForm, verbKey, 4);
-
         for(const optText of options){
-          const btn = document.createElement('button');
-          btn.className = 'option-btn';
-          btn.type = 'button';
-          btn.textContent = optText;
-          btn.setAttribute('data-form', optText);
-          btn.setAttribute('role','button');
-          btn.setAttribute('aria-pressed','false');
+          const btn = document.createElement('button'); btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = optText;
+          btn.setAttribute('data-form', optText); btn.setAttribute('role','button'); btn.setAttribute('aria-pressed','false');
           btn.addEventListener('click', ()=> handleAnswer(btn));
-          btn.addEventListener('keydown', (e)=>{
-            if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); }
-          });
+          btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
           optionsEl.appendChild(btn);
         }
       }
@@ -677,26 +353,16 @@
     function handleAnswer(button){
       const all = Array.from(optionsEl.querySelectorAll('.option-btn'));
       for(const b of all){ b.disabled = true; b.setAttribute('aria-pressed','true'); }
-
       const chosen = button.getAttribute('data-form');
       const correct = currentAnswer.correctForm;
-
-      if(chosen === correct){
-        button.classList.add('correct');
-        tally.correct += 1;
-        lastResultEl.textContent = 'Correct ✓';
-      } else {
+      if(chosen === correct){ button.classList.add('correct'); tally.correct += 1; lastResultEl.textContent = 'Correct ✓'; }
+      else {
         button.classList.add('wrong');
         const correctBtn = all.find(b=>b.getAttribute('data-form')===correct);
         if(correctBtn) correctBtn.classList.add('correct');
-        tally.incorrect += 1;
-        lastResultEl.textContent = 'Incorrect ✗';
+        tally.incorrect += 1; lastResultEl.textContent = 'Incorrect ✗';
       }
-
-      tally.attempts += 1;
-      renderTally();
-      saveState();
-
+      tally.attempts += 1; renderTally(); saveState();
       setTimeout(()=> showQuestion(true), 800);
     }
 
@@ -707,12 +373,7 @@
       if(ok){ resetState(); lastResultEl.textContent = '—'; }
     });
 
-    (function init(){
-      loadState();
-      renderTally();
-      setTimeout(()=> showQuestion(true), 120);
-    })();
-
+    (function init(){ loadState(); renderTally(); setTimeout(()=> showQuestion(true), 120); })();
     window._russianConj = { verbs, pronouns, showQuestion, resetState };
   </script>
 </body>
