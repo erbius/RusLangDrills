@@ -127,6 +127,14 @@
       color: var(--accent);
     }
 
+    .build-stamp {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      opacity: 0.9;
+    }
+
     @media (max-width: 520px) {
       .options { grid-template-columns: 1fr; }
       .tally { grid-template-columns: repeat(2, 1fr); }
@@ -160,6 +168,8 @@
       <div><span class="label">Attempts</span><span class="value" id="attempts">0</span></div>
       <div><span class="label">Last result</span><span class="value" id="last-result-tally">—</span></div>
     </div>
+
+    <div id="build-stamp" class="build-stamp" aria-live="polite">Last updated: loading...</div>
   </div>
 
   <script>
@@ -233,6 +243,7 @@
     };
 
     const STORAGE_KEY = 'russian-conj-tally-v1';
+    const APP_LAST_UPDATED = '2026-05-24 22:10 UTC';
     let tally = { correct:0, incorrect:0, attempts:0 };
 
     const quizType = document.getElementById('quiz-type');
@@ -245,6 +256,7 @@
     const attemptsEl = document.getElementById('attempts');
     const lastResultEl = document.getElementById('last-result');
     const lastResultTallyEl = document.getElementById('last-result-tally');
+    const buildStampEl = document.getElementById('build-stamp');
 
     function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
 
@@ -394,7 +406,12 @@
       if(ok){ resetState(); lastResultEl.textContent = '—'; }
     });
 
-    (function init(){ loadState(); renderTally(); setTimeout(()=> showQuestion(true), 120); })();
+    (function init(){
+      loadState();
+      renderTally();
+      if(buildStampEl) buildStampEl.textContent = `Last updated: ${APP_LAST_UPDATED}`;
+      setTimeout(()=> showQuestion(true), 120);
+    })();
     window._russianConj = { verbs, pronouns, showQuestion, resetState };
   </script>
 </body>
