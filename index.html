@@ -231,7 +231,49 @@
       { ru: 'Знать', en: 'To know' },
       { ru: 'Отдыхать', en: 'To relax, to rest' },
       { ru: 'Играть', en: 'To play' },
-      { ru: 'Жить', en: 'To live' }
+      { ru: 'Жить', en: 'To live' },
+
+      // Common nouns
+      { ru: 'Дом', en: 'House' },
+      { ru: 'Книга', en: 'Book' },
+      { ru: 'Стол', en: 'Table' },
+      { ru: 'Машина', en: 'Car' },
+      { ru: 'Друг', en: 'Friend' },
+      { ru: 'Школа', en: 'School' },
+      { ru: 'Город', en: 'City' },
+      { ru: 'Вода', en: 'Water' },
+      { ru: 'Хлеб', en: 'Bread' },
+      { ru: 'Яблоко', en: 'Apple' },
+
+      // Directions / position
+      { ru: 'Налево', en: 'Left' },
+      { ru: 'Направо', en: 'Right' },
+      { ru: 'Вперёд', en: 'Forward' },
+      { ru: 'Назад', en: 'Back' },
+      { ru: 'Здесь', en: 'Here' },
+      { ru: 'Там', en: 'There' },
+
+      // Times of day
+      { ru: 'Утро', en: 'Morning' },
+      { ru: 'День', en: 'Day / Afternoon' },
+      { ru: 'Вечер', en: 'Evening' },
+      { ru: 'Ночь', en: 'Night' },
+
+      // Question words
+      { ru: 'Кто', en: 'Who' },
+      { ru: 'Что', en: 'What' },
+      { ru: 'Где', en: 'Where' },
+      { ru: 'Когда', en: 'When' },
+      { ru: 'Почему', en: 'Why' },
+      { ru: 'Как', en: 'How' },
+
+      // Common adjectives
+      { ru: 'Большой', en: 'Big' },
+      { ru: 'Маленький', en: 'Small' },
+      { ru: 'Хороший', en: 'Good' },
+      { ru: 'Плохой', en: 'Bad' },
+      { ru: 'Новый', en: 'New' },
+      { ru: 'Старый', en: 'Old' }
     ];
 
     const verbGloss = {
@@ -243,8 +285,11 @@
     };
 
     const STORAGE_KEY = 'russian-conj-tally-v1';
+    const QUESTION_STATS_KEY = 'russian-conj-question-stats-v1';
     const APP_LAST_UPDATED = '2026-05-24 04:01 BST';
     let tally = { correct:0, incorrect:0, attempts:0 };
+    let questionStats = {};
+    let lastQuestionKey = null;
 
     const quizType = document.getElementById('quiz-type');
     const nextBtn = document.getElementById('next-btn');
@@ -260,10 +305,64 @@
 
     function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
 
-    function loadState(){ try{ const raw = localStorage.getItem(STORAGE_KEY); if(raw){ const parsed = JSON.parse(raw); tally = Object.assign(tally, parsed); } }catch(e){ console.warn('Failed to load state', e); } }
-    function saveState(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }catch(e){ console.warn('Failed to save state', e); } }
-    function resetState(){ tally = { correct:0, incorrect:0, attempts:0 }; saveState(); renderTally(); }
+    function loadState(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(raw){
+          const parsed = JSON.parse(raw);
+          tally = Object.assign(tally, parsed);
+        }
+      }catch(e){ console.warn('Failed to load state', e); }
+
+      try{
+        const rawQuestionStats = localStorage.getItem(QUESTION_STATS_KEY);
+        if(rawQuestionStats){
+          const parsedQuestionStats = JSON.parse(rawQuestionStats);
+          if(parsedQuestionStats && typeof parsedQuestionStats === 'object') questionStats = parsedQuestionStats;
+        }
+      }catch(e){ console.warn('Failed to load question stats', e); }
+    }
+    function saveState(){
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }catch(e){ console.warn('Failed to save state', e); }
+      try{ localStorage.setItem(QUESTION_STATS_KEY, JSON.stringify(questionStats)); }catch(e){ console.warn('Failed to save question stats', e); }
+    }
+    function resetState(){ tally = { correct:0, incorrect:0, attempts:0 }; questionStats = {}; lastQuestionKey = null; saveState(); renderTally(); }
     function renderTally(){ correctEl.textContent = tally.correct; incorrectEl.textContent = tally.incorrect; attemptsEl.textContent = tally.attempts; lastResultTallyEl.textContent = '—'; }
+
+    function getQuestionStat(key){
+      const stat = questionStats[key];
+      if(!stat) return { correct:0, incorrect:0 };
+      return { correct: Number(stat.correct) || 0, incorrect: Number(stat.incorrect) || 0 };
+    }
+
+    function updateQuestionStat(key, isCorrect){
+      const stat = getQuestionStat(key);
+      if(isCorrect) stat.correct += 1;
+      else stat.incorrect += 1;
+      questionStats[key] = stat;
+    }
+
+    function getQuestionWeight(questionKey){
+      const stat = getQuestionStat(questionKey);
+      const weight = 1 + (stat.incorrect * 3) - (stat.correct * 0.5);
+      return Math.max(0.25, weight);
+    }
+
+    function pickWeightedQuestion(items, excludedKey){
+      if(!Array.isArray(items) || items.length === 0) return null;
+      const pool = items.filter(item => item.key !== excludedKey);
+      const candidates = pool.length > 0 ? pool : items;
+      let totalWeight = 0;
+      for(const item of candidates){ totalWeight += getQuestionWeight(item.key); }
+      if(totalWeight <= 0) return candidates[Math.floor(Math.random() * candidates.length)];
+
+      let target = Math.random() * totalWeight;
+      for(const item of candidates){
+        target -= getQuestionWeight(item.key);
+        if(target <= 0) return item;
+      }
+      return candidates[candidates.length - 1];
+    }
 
     function getSelectedVerbs(){ return Object.keys(verbs); }
     function buildPrompt(pronounKey, verbKey){
@@ -311,18 +410,15 @@
       return ruWord.charAt(0).toUpperCase() + ruWord.slice(1);
     }
 
-    const allowedInfinitives = new Set(Object.values(verbs).map((verb) => verb.infinitive));
-
     const normalizedVocabulary = vocabulary
       .map((item) => {
         const normalizedRu = sanitizeVocabAnswer(item.ru);
-        if (!allowedInfinitives.has(normalizedRu)) return null;
+        if (!normalizedRu) return null;
         return { ru: toDisplayCase(normalizedRu), en: item.en };
       })
       .filter(Boolean);
 
     const fallbackVocabulary = Object.entries(verbGloss)
-      .filter(([infinitive]) => allowedInfinitives.has(infinitive))
       .map(([infinitive, en]) => ({ ru: toDisplayCase(infinitive), en }));
 
     const vocabularyPool = normalizedVocabulary.length >= 4 ? normalizedVocabulary : fallbackVocabulary;
@@ -335,9 +431,12 @@
 
       if(mode === 'numbers'){
         const keys = Object.keys(numbers).map(k=>Number(k));
-        const n = keys[Math.floor(Math.random()*keys.length)];
+        const numberItems = keys.map(n => ({ key: `numbers:${n}`, number: n, value: numbers[n] }));
+        const chosenItem = pickWeightedQuestion(numberItems, lastQuestionKey);
+        const n = chosenItem.number;
         const correctForm = numbers[n];
-        currentAnswer = { mode:'numbers', number:n, correctForm };
+        currentAnswer = { mode:'numbers', number:n, correctForm, questionKey: chosenItem.key };
+        lastQuestionKey = chosenItem.key;
         promptEl.textContent = String(n);
         promptEl.setAttribute('aria-live','polite');
         const opts = new Set([correctForm]);
@@ -352,9 +451,12 @@
           optionsEl.appendChild(btn);
         }
       } else if(mode === 'vocabulary'){
-        // Pick random item, sanitize to guarantee base form only
-        const rawItem = vocabularyPool[Math.floor(Math.random()*vocabularyPool.length)];
-        currentAnswer = { mode:'vocabulary', en:rawItem.en, correctForm:rawItem.ru };
+        // Pick weighted item by question performance and avoid immediate repeats.
+        const vocabItems = vocabularyPool.map(v => ({ key: `vocabulary:${v.ru.toLowerCase()}`, item: v }));
+        const chosenItem = pickWeightedQuestion(vocabItems, lastQuestionKey);
+        const rawItem = chosenItem.item;
+        currentAnswer = { mode:'vocabulary', en:rawItem.en, correctForm:rawItem.ru, questionKey: chosenItem.key };
+        lastQuestionKey = chosenItem.key;
         promptEl.textContent = rawItem.en;
         promptEl.setAttribute('aria-live','polite');
 
@@ -372,12 +474,20 @@
         }
       } else {
         const selectedVerbs = getSelectedVerbs();
-        const verbKey = selectedVerbs[Math.floor(Math.random()*selectedVerbs.length)];
         const pronounKeys = Object.keys(pronouns);
-        const pronounKey = pronounKeys[Math.floor(Math.random()*pronounKeys.length)];
+        const pronounVerbItems = [];
+        for(const verbKey of selectedVerbs){
+          for(const pronounKey of pronounKeys){
+            pronounVerbItems.push({ key: `pronouns:${verbKey}:${pronounKey}`, verbKey, pronounKey });
+          }
+        }
+        const chosenItem = pickWeightedQuestion(pronounVerbItems, lastQuestionKey);
+        const verbKey = chosenItem.verbKey;
+        const pronounKey = chosenItem.pronounKey;
         const conjKey = pronounToConjKey(pronounKey);
         const correctForm = verbs[verbKey].conjugations[conjKey];
-        currentAnswer = { mode:'pronouns', verbKey, pronounKey, correctForm, conjKey };
+        currentAnswer = { mode:'pronouns', verbKey, pronounKey, correctForm, conjKey, questionKey: chosenItem.key };
+        lastQuestionKey = chosenItem.key;
         promptEl.textContent = buildPrompt(pronounKey, verbKey);
         promptEl.setAttribute('aria-live','polite');
         const options = makeOptions(correctForm, verbKey, 4);
@@ -399,13 +509,15 @@
       for(const b of all){ b.disabled = true; b.setAttribute('aria-pressed','true'); }
       const chosen = button.getAttribute('data-form');
       const correct = currentAnswer.correctForm;
-      if(chosen === correct){ button.classList.add('correct'); tally.correct += 1; lastResultEl.textContent = 'Correct ✓'; }
+      const isCorrect = chosen === correct;
+      if(isCorrect){ button.classList.add('correct'); tally.correct += 1; lastResultEl.textContent = 'Correct ✓'; }
       else {
         button.classList.add('wrong');
         const correctBtn = all.find(b=>b.getAttribute('data-form')===correct);
         if(correctBtn) correctBtn.classList.add('correct');
         tally.incorrect += 1; lastResultEl.textContent = 'Incorrect ✗';
       }
+      if(currentAnswer && currentAnswer.questionKey) updateQuestionStat(currentAnswer.questionKey, isCorrect);
       tally.attempts += 1; renderTally(); saveState();
       setTimeout(()=> showQuestion(true), 800);
     }
