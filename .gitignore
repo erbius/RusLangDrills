@@ -1,5 +1,9 @@
 # Local virtual environment
 .venv/
 
+# Local-only audio generation inputs and tooling
+audio/words.json
+scripts/generate_audio.py
+
 # Keep the TTS generation workflow local-only
 .github/workflows/generate-audio.yml

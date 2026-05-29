@@ -1,132 +1,132 @@
 {
-  "generatedAt": "2026-05-29T05:05:50.007015+00:00",
+  "generatedAt": "2026-05-29T06:37:37.471135+00:00",
   "sampleRate": 48000,
   "items": [
     {
       "id": "dumat",
       "text": "думать",
       "path": "audio/clips/dumat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "otdyhat",
       "text": "отдыхать",
       "path": "audio/clips/otdyhat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "gulyat",
       "text": "гулять",
       "path": "audio/clips/gulyat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "umet",
       "text": "уметь",
       "path": "audio/clips/umet.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "chitat",
       "text": "читать",
       "path": "audio/clips/chitat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "rabotat",
       "text": "работать",
       "path": "audio/clips/rabotat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "govorit",
       "text": "говорить",
       "path": "audio/clips/govorit.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "uzhinat",
       "text": "ужинать",
       "path": "audio/clips/uzhinat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "mechtat",
       "text": "мечтать",
       "path": "audio/clips/mechtat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "znat",
       "text": "знать",
       "path": "audio/clips/znat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "zhit",
       "text": "жить",
       "path": "audio/clips/zhit.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "ponimat",
       "text": "понимать",
       "path": "audio/clips/ponimat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "pisat",
       "text": "писать",
       "path": "audio/clips/pisat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "igrat",
       "text": "играть",
       "path": "audio/clips/igrat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "uchitsya",
       "text": "учиться",
       "path": "audio/clips/uchitsya.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "moch",
       "text": "мочь",
       "path": "audio/clips/moch.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "delat",
       "text": "делать",
       "path": "audio/clips/delat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "obedat",
       "text": "обедать",
       "path": "audio/clips/obedat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "tantsevat",
       "text": "танцевать",
       "path": "audio/clips/tantsevat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "zavtrakat",
       "text": "завтракать",
       "path": "audio/clips/zavtrakat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "spat",
       "text": "спать",
       "path": "audio/clips/spat.wav",
-      "rate": "medium"
+      "rate": "slow"
     },
     {
       "id": "nol",

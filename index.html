@@ -380,11 +380,14 @@
       { ru: 'Завтракать', en: 'To have breakfast' },
       { ru: 'Спать', en: 'To sleep' },
       { ru: 'Обедать', en: 'To have lunch' },
+      { ru: 'Читать', en: 'To read' },
       { ru: 'Говорить', en: 'To speak' },
+      { ru: 'Ужинать', en: 'To have dinner' },
       { ru: 'Мечтать', en: 'To dream about' },
       { ru: 'Мочь', en: 'To be able to / can' },
       { ru: 'Учиться', en: 'To study' },
       { ru: 'Уметь', en: 'To know how to do something' },
+      { ru: 'Делать', en: 'To do' },
       { ru: 'Писать', en: 'To write' },
       { ru: 'Знать', en: 'To know' },
       { ru: 'Отдыхать', en: 'To relax, to rest' },
@@ -453,7 +456,7 @@
     let lastQuestionKey = null;
     let audioByText = {};
     let audioMuted = true;
-    let audioSlow = false;
+    let audioSlow = true;
     let currentAudio = null;
     let currentPromptAudioText = '';
 
@@ -834,7 +837,7 @@
       const storedMute = localStorage.getItem(AUDIO_MUTE_KEY);
       setMuteState(storedMute === null ? true : storedMute === 'true', false);
       const storedSlow = localStorage.getItem(AUDIO_SLOW_KEY);
-      setSlowState(storedSlow === 'true', false);
+      setSlowState(storedSlow === null ? true : storedSlow === 'true', false);
       renderTally();
       if(buildStampEl) buildStampEl.textContent = `Last updated: ${APP_LAST_UPDATED}`;
       setTimeout(()=> showQuestion(true), 120);
