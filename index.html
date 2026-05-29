@@ -53,6 +53,10 @@
       gap: 8px;
       flex-wrap: wrap;
     }
+    #mute-btn[aria-pressed="true"] {
+      background: #0f3d2e;
+      border-color: #1f6f52;
+    }
     select, button {
       background: var(--btn);
       color: var(--text);
@@ -80,6 +84,25 @@
       min-height: 64px;
       display: grid;
       place-items: center;
+    }
+    .prompt-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 10px;
+      align-items: center;
+      margin: 16px 0;
+    }
+    .prompt-wrap .prompt {
+      margin: 0;
+    }
+    .play-btn {
+      min-width: 96px;
+      min-height: 56px;
+      font-weight: 600;
+    }
+    .speed-btn[aria-pressed="true"] {
+      background: #312e81;
+      border-color: #6366f1;
     }
 
     .options {
@@ -140,6 +163,9 @@
       .tally { grid-template-columns: repeat(2, 1fr); }
       header { flex-direction: column; align-items: stretch; }
       .controls { justify-content: center; }
+      .prompt-wrap { grid-template-columns: 1fr; }
+      .play-btn { width: 100%; }
+      .speed-btn { width: 100%; }
     }
   </style>
 </head>
@@ -153,12 +179,18 @@
           <option value="numbers">Numbers 0–20</option>
           <option value="vocabulary">Vocabulary</option>
         </select>
+        <button id="mute-btn" type="button" aria-pressed="false">Audio: Muted</button>
         <button id="next-btn" type="button">New Question</button>
         <button id="reset-btn" type="button">Reset Tally</button>
       </div>
     </header>
 
-    <div id="prompt" class="prompt" role="status" aria-live="polite">Loading…</div>
+    <div class="prompt-wrap">
+      <div id="prompt" class="prompt" role="status" aria-live="polite">Loading…</div>
+      <button id="play-audio-btn" class="play-btn" type="button" aria-label="Play pronunciation">Play</button>
+      <button id="replay-audio-btn" class="play-btn" type="button" aria-label="Replay pronunciation">Replay</button>
+      <button id="speed-btn" class="play-btn speed-btn" type="button" aria-pressed="false" aria-label="Toggle slower audio">Slow: Off</button>
+    </div>
     <div id="options" class="options" role="group" aria-label="Answer choices"></div>
     <div id="last-result" class="last-result" aria-live="polite">—</div>
 
@@ -286,14 +318,26 @@
 
     const STORAGE_KEY = 'russian-conj-tally-v1';
     const QUESTION_STATS_KEY = 'russian-conj-question-stats-v1';
+    const AUDIO_MUTE_KEY = 'russian-drills-audio-muted-v1';
+    const AUDIO_SLOW_KEY = 'russian-drills-audio-slow-v1';
+    const AUDIO_MANIFEST_URL = 'audio/manifest.json';
     const APP_LAST_UPDATED = '2026-05-28 2013 BST';
     let tally = { correct:0, incorrect:0, attempts:0 };
     let questionStats = {};
     let lastQuestionKey = null;
+    let audioByText = {};
+    let audioMuted = true;
+    let audioSlow = false;
+    let currentAudio = null;
+    let currentPromptAudioText = '';
 
     const quizType = document.getElementById('quiz-type');
+    const muteBtn = document.getElementById('mute-btn');
     const nextBtn = document.getElementById('next-btn');
     const resetBtn = document.getElementById('reset-btn');
+    const playAudioBtn = document.getElementById('play-audio-btn');
+    const replayAudioBtn = document.getElementById('replay-audio-btn');
+    const speedBtn = document.getElementById('speed-btn');
     const promptEl = document.getElementById('prompt');
     const optionsEl = document.getElementById('options');
     const correctEl = document.getElementById('correct');
@@ -410,6 +454,81 @@
       return ruWord.charAt(0).toUpperCase() + ruWord.slice(1);
     }
 
+    function normalizeAudioKey(text){
+      return (text || '')
+        .toString()
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+    }
+
+    async function loadAudioManifest(){
+      try{
+        const response = await fetch(AUDIO_MANIFEST_URL, { cache: 'no-store' });
+        if(!response.ok) return;
+        const manifest = await response.json();
+        audioByText = manifest.byText && typeof manifest.byText === 'object' ? manifest.byText : {};
+      }catch(e){
+        console.warn('Audio manifest unavailable', e);
+      }
+    }
+
+    function getAudioPathForText(text){
+      const key = normalizeAudioKey(text);
+      return audioByText[key] || null;
+    }
+
+    function setMuteState(isMuted, persist = true){
+      audioMuted = Boolean(isMuted);
+      if(muteBtn){
+        muteBtn.textContent = audioMuted ? 'Audio: Muted' : 'Audio: On';
+        muteBtn.setAttribute('aria-pressed', String(!audioMuted));
+      }
+      if(audioMuted && currentAudio){
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      if(persist){
+        try{ localStorage.setItem(AUDIO_MUTE_KEY, String(audioMuted)); }
+        catch(e){ console.warn('Failed to save mute state', e); }
+      }
+    }
+
+    function getPlaybackRate(){
+      return audioSlow ? 0.8 : 1;
+    }
+
+    function setSlowState(isSlow, persist = true){
+      audioSlow = Boolean(isSlow);
+      if(speedBtn){
+        speedBtn.textContent = audioSlow ? 'Slow: On' : 'Slow: Off';
+        speedBtn.setAttribute('aria-pressed', String(audioSlow));
+      }
+      if(currentAudio){
+        currentAudio.playbackRate = getPlaybackRate();
+      }
+      if(persist){
+        try{ localStorage.setItem(AUDIO_SLOW_KEY, String(audioSlow)); }
+        catch(e){ console.warn('Failed to save slow state', e); }
+      }
+    }
+
+    function playAudioForText(text, { restart = true } = {}){
+      if(audioMuted) return;
+      const src = getAudioPathForText(text);
+      if(!src) return;
+      if(currentAudio && restart){
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      if(currentAudio && !restart && !currentAudio.paused){
+        return;
+      }
+      currentAudio = new Audio(src);
+      currentAudio.playbackRate = getPlaybackRate();
+      currentAudio.play().catch(() => {});
+    }
+
     const normalizedVocabulary = vocabulary
       .map((item) => {
         const normalizedRu = sanitizeVocabAnswer(item.ru);
@@ -437,6 +556,7 @@
         const correctForm = numbers[n];
         currentAnswer = { mode:'numbers', number:n, correctForm, questionKey: chosenItem.key };
         lastQuestionKey = chosenItem.key;
+        currentPromptAudioText = correctForm;
         promptEl.textContent = String(n);
         promptEl.setAttribute('aria-live','polite');
         const opts = new Set([correctForm]);
@@ -457,6 +577,7 @@
         const rawItem = chosenItem.item;
         currentAnswer = { mode:'vocabulary', en:rawItem.en, correctForm:rawItem.ru, questionKey: chosenItem.key };
         lastQuestionKey = chosenItem.key;
+        currentPromptAudioText = rawItem.ru;
         promptEl.textContent = rawItem.en;
         promptEl.setAttribute('aria-live','polite');
 
@@ -488,6 +609,7 @@
         const correctForm = verbs[verbKey].conjugations[conjKey];
         currentAnswer = { mode:'pronouns', verbKey, pronounKey, correctForm, conjKey, questionKey: chosenItem.key };
         lastQuestionKey = chosenItem.key;
+        currentPromptAudioText = verbKey;
         promptEl.textContent = buildPrompt(pronounKey, verbKey);
         promptEl.setAttribute('aria-live','polite');
         const options = makeOptions(correctForm, verbKey, 4);
@@ -510,6 +632,8 @@
       const chosen = button.getAttribute('data-form');
       const correct = currentAnswer.correctForm;
       const isCorrect = chosen === correct;
+      const fallbackPronounAudio = currentAnswer.mode === 'pronouns' ? currentAnswer.verbKey : null;
+      const playbackText = getAudioPathForText(correct) ? correct : (fallbackPronounAudio || correct);
       if(isCorrect){ button.classList.add('correct'); tally.correct += 1; lastResultEl.textContent = 'Correct ✓'; }
       else {
         button.classList.add('wrong');
@@ -517,11 +641,28 @@
         if(correctBtn) correctBtn.classList.add('correct');
         tally.incorrect += 1; lastResultEl.textContent = 'Incorrect ✗';
       }
+      playAudioForText(playbackText);
       if(currentAnswer && currentAnswer.questionKey) updateQuestionStat(currentAnswer.questionKey, isCorrect);
       tally.attempts += 1; renderTally(); saveState();
       setTimeout(()=> showQuestion(true), 800);
     }
 
+    muteBtn.addEventListener('click', ()=> setMuteState(!audioMuted));
+    playAudioBtn.addEventListener('click', ()=>{
+      const promptText = currentPromptAudioText || (currentAnswer ? currentAnswer.correctForm : '');
+      playAudioForText(promptText, { restart: false });
+    });
+    replayAudioBtn.addEventListener('click', ()=>{
+      const promptText = currentPromptAudioText || (currentAnswer ? currentAnswer.correctForm : '');
+      playAudioForText(promptText, { restart: true });
+    });
+    speedBtn.addEventListener('click', ()=>{
+      setSlowState(!audioSlow);
+      const promptText = currentPromptAudioText || (currentAnswer ? currentAnswer.correctForm : '');
+      if(currentAudio && !currentAudio.paused){
+        playAudioForText(promptText, { restart: true });
+      }
+    });
     nextBtn.addEventListener('click', ()=> showQuestion(true));
     quizType.addEventListener('change', ()=> showQuestion(true));
     resetBtn.addEventListener('click', ()=>{
@@ -531,6 +672,11 @@
 
     (function init(){
       loadState();
+      loadAudioManifest();
+      const storedMute = localStorage.getItem(AUDIO_MUTE_KEY);
+      setMuteState(storedMute === null ? true : storedMute === 'true', false);
+      const storedSlow = localStorage.getItem(AUDIO_SLOW_KEY);
+      setSlowState(storedSlow === 'true', false);
       renderTally();
       if(buildStampEl) buildStampEl.textContent = `Last updated: ${APP_LAST_UPDATED}`;
       setTimeout(()=> showQuestion(true), 120);

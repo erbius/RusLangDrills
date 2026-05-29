@@ -1,0 +1,5 @@
+# Local virtual environment
+.venv/
+
+# Keep the TTS generation workflow local-only
+.github/workflows/generate-audio.yml
