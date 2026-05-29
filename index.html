@@ -87,22 +87,50 @@
     }
     .prompt-wrap {
       display: grid;
-      grid-template-columns: 1fr auto auto auto;
-      gap: 10px;
-      align-items: center;
+      gap: 8px;
       margin: 16px 0;
     }
     .prompt-wrap .prompt {
       margin: 0;
     }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .audio-controls {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      justify-content: center;
+    }
     .play-btn {
-      min-width: 96px;
-      min-height: 56px;
-      font-weight: 600;
+      min-width: 26px;
+      min-height: 26px;
+      padding: 0;
+      font-size: 0.7rem;
+      font-weight: 500;
+      border-radius: 999px;
+      opacity: 0.74;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn:hover { opacity: 1; }
+    .play-btn .icon {
+      line-height: 1;
+      display: inline-block;
     }
     .speed-btn[aria-pressed="true"] {
       background: #312e81;
       border-color: #6366f1;
+      opacity: 1;
     }
 
     .options {
@@ -143,11 +171,11 @@
     }
 
     .last-result {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-top: 12px;
-      font-weight: 600;
       min-height: 24px;
-      color: var(--accent);
     }
 
     .build-stamp {
@@ -163,9 +191,10 @@
       .tally { grid-template-columns: repeat(2, 1fr); }
       header { flex-direction: column; align-items: stretch; }
       .controls { justify-content: center; }
-      .prompt-wrap { grid-template-columns: 1fr; }
-      .play-btn { width: 100%; }
-      .speed-btn { width: 100%; }
+      .play-btn {
+        min-width: 30px;
+        min-height: 30px;
+      }
     }
   </style>
 </head>
@@ -179,7 +208,6 @@
           <option value="numbers">Numbers 0–20</option>
           <option value="vocabulary">Vocabulary</option>
         </select>
-        <button id="mute-btn" type="button" aria-pressed="false">Audio: Muted</button>
         <button id="next-btn" type="button">New Question</button>
         <button id="reset-btn" type="button">Reset Tally</button>
       </div>
@@ -187,12 +215,17 @@
 
     <div class="prompt-wrap">
       <div id="prompt" class="prompt" role="status" aria-live="polite">Loading…</div>
-      <button id="play-audio-btn" class="play-btn" type="button" aria-label="Play pronunciation">Play</button>
-      <button id="replay-audio-btn" class="play-btn" type="button" aria-label="Replay pronunciation">Replay</button>
-      <button id="speed-btn" class="play-btn speed-btn" type="button" aria-pressed="false" aria-label="Toggle slower audio">Slow: Off</button>
     </div>
     <div id="options" class="options" role="group" aria-label="Answer choices"></div>
-    <div id="last-result" class="last-result" aria-live="polite">—</div>
+    <div class="last-result">
+      <div class="audio-controls" aria-label="Audio controls">
+        <button id="mute-btn" class="play-btn" type="button" aria-pressed="false" aria-label="Toggle audio mute" title="Toggle audio mute"><span class="icon">🔇</span></button>
+        <button id="play-audio-btn" class="play-btn" type="button" aria-label="Play pronunciation" title="Play pronunciation"><span class="icon">▶</span></button>
+        <button id="replay-audio-btn" class="play-btn" type="button" aria-label="Replay pronunciation" title="Replay pronunciation"><span class="icon">↺</span></button>
+        <button id="speed-btn" class="play-btn speed-btn" type="button" aria-pressed="false" aria-label="Toggle slower audio" title="Toggle slower audio"><span class="icon">0.8×</span></button>
+      </div>
+      <div id="last-result" class="sr-only" aria-live="polite">—</div>
+    </div>
 
     <div class="tally" aria-label="Progress tally">
       <div><span class="label">Correct</span><span class="value" id="correct">0</span></div>
@@ -321,7 +354,7 @@
     const AUDIO_MUTE_KEY = 'russian-drills-audio-muted-v1';
     const AUDIO_SLOW_KEY = 'russian-drills-audio-slow-v1';
     const AUDIO_MANIFEST_URL = 'audio/manifest.json';
-    const APP_LAST_UPDATED = '2026-05-28 2013 BST';
+    const APP_LAST_UPDATED = '2026-05-29 0710hrs BST';
     let tally = { correct:0, incorrect:0, attempts:0 };
     let questionStats = {};
     let lastQuestionKey = null;
@@ -481,8 +514,9 @@
     function setMuteState(isMuted, persist = true){
       audioMuted = Boolean(isMuted);
       if(muteBtn){
-        muteBtn.textContent = audioMuted ? 'Audio: Muted' : 'Audio: On';
+        muteBtn.innerHTML = `<span class="icon">${audioMuted ? '🔇' : '🔊'}</span>`;
         muteBtn.setAttribute('aria-pressed', String(!audioMuted));
+        muteBtn.setAttribute('title', audioMuted ? 'Unmute audio' : 'Mute audio');
       }
       if(audioMuted && currentAudio){
         currentAudio.pause();
@@ -501,8 +535,9 @@
     function setSlowState(isSlow, persist = true){
       audioSlow = Boolean(isSlow);
       if(speedBtn){
-        speedBtn.textContent = audioSlow ? 'Slow: On' : 'Slow: Off';
+        speedBtn.innerHTML = `<span class="icon">${audioSlow ? '½×' : '1×'}</span>`;
         speedBtn.setAttribute('aria-pressed', String(audioSlow));
+        speedBtn.setAttribute('title', audioSlow ? 'Slow playback enabled' : 'Normal playback');
       }
       if(currentAudio){
         currentAudio.playbackRate = getPlaybackRate();
