@@ -66,6 +66,7 @@
       font-size: 1rem;
       cursor: pointer;
       transition: background 0.2s, transform 0.05s;
+      touch-action: manipulation;
     }
     select:hover, button:hover { background: var(--btn-hover); }
     button:active { transform: translateY(1px); }
@@ -148,7 +149,7 @@
 
     .tally {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin-top: 20px;
       text-align: center;
@@ -186,11 +187,93 @@
       opacity: 0.9;
     }
 
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(2, 6, 23, 0.78);
+      z-index: 20;
+    }
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+    .modal {
+      width: min(100%, 360px);
+      background: #162033;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.42);
+    }
+    .modal h2 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+    .modal p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .modal-actions .danger-btn {
+      background: #7f1d1d;
+      border-color: #b91c1c;
+    }
+    .modal-actions .danger-btn:hover {
+      background: #991b1b;
+    }
+
     @media (max-width: 520px) {
+      body {
+        padding: 12px;
+        place-items: stretch;
+      }
+      .app {
+        border-radius: 14px;
+        padding: 16px;
+      }
+      header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 1.35rem;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .controls select {
+        grid-column: 1 / -1;
+        text-align: center;
+        text-align-last: center;
+      }
+      .controls select,
+      .controls button {
+        width: 100%;
+        min-height: 44px;
+      }
+      .prompt {
+        min-height: 56px;
+        padding: 16px;
+        font-size: 1.2rem;
+      }
       .options { grid-template-columns: 1fr; }
-      .tally { grid-template-columns: repeat(2, 1fr); }
-      header { flex-direction: column; align-items: stretch; }
-      .controls { justify-content: center; }
+      .option-btn {
+        min-height: 52px;
+        font-size: 1rem;
+      }
+      .tally { grid-template-columns: 1fr; }
       .play-btn {
         min-width: 30px;
         min-height: 30px;
@@ -231,10 +314,20 @@
       <div><span class="label">Correct</span><span class="value" id="correct">0</span></div>
       <div><span class="label">Incorrect</span><span class="value" id="incorrect">0</span></div>
       <div><span class="label">Attempts</span><span class="value" id="attempts">0</span></div>
-      <div><span class="label">Last result</span><span class="value" id="last-result-tally">—</span></div>
     </div>
 
     <div id="build-stamp" class="build-stamp" aria-live="polite">Last updated: loading...</div>
+  </div>
+
+  <div id="reset-modal" class="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="reset-modal-title" aria-describedby="reset-modal-text">
+      <h2 id="reset-modal-title">Reset tally?</h2>
+      <p id="reset-modal-text">This clears the stored correct, incorrect, and attempts counts.</p>
+      <div class="modal-actions">
+        <button id="reset-cancel-btn" type="button">Cancel</button>
+        <button id="reset-confirm-btn" class="danger-btn" type="button">Reset</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -377,8 +470,11 @@
     const incorrectEl = document.getElementById('incorrect');
     const attemptsEl = document.getElementById('attempts');
     const lastResultEl = document.getElementById('last-result');
-    const lastResultTallyEl = document.getElementById('last-result-tally');
     const buildStampEl = document.getElementById('build-stamp');
+    const resetModalEl = document.getElementById('reset-modal');
+    const resetCancelBtn = document.getElementById('reset-cancel-btn');
+    const resetConfirmBtn = document.getElementById('reset-confirm-btn');
+    let resetModalReturnFocus = null;
 
     function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
 
@@ -404,7 +500,26 @@
       try{ localStorage.setItem(QUESTION_STATS_KEY, JSON.stringify(questionStats)); }catch(e){ console.warn('Failed to save question stats', e); }
     }
     function resetState(){ tally = { correct:0, incorrect:0, attempts:0 }; questionStats = {}; lastQuestionKey = null; saveState(); renderTally(); }
-    function renderTally(){ correctEl.textContent = tally.correct; incorrectEl.textContent = tally.incorrect; attemptsEl.textContent = tally.attempts; lastResultTallyEl.textContent = '—'; }
+    function renderTally(){ correctEl.textContent = tally.correct; incorrectEl.textContent = tally.incorrect; attemptsEl.textContent = tally.attempts; }
+
+    function openResetModal(){
+      resetModalReturnFocus = document.activeElement;
+      resetModalEl.hidden = false;
+      resetConfirmBtn.focus();
+    }
+
+    function closeResetModal(){
+      resetModalEl.hidden = true;
+      if(resetModalReturnFocus && typeof resetModalReturnFocus.focus === 'function'){
+        resetModalReturnFocus.focus();
+      }
+    }
+
+    function confirmReset(){
+      resetState();
+      lastResultEl.textContent = '—';
+      closeResetModal();
+    }
 
     function getQuestionStat(key){
       const stat = questionStats[key];
@@ -444,8 +559,7 @@
     function getSelectedVerbs(){ return Object.keys(verbs); }
     function buildPrompt(pronounKey, verbKey){
       const pron = pronouns[pronounKey].cyr;
-      const gloss = verbGloss[verbKey] ? ` (${verbGloss[verbKey]})` : '';
-      return `${pron} — ${verbKey}${gloss}`;
+      return `${pron} — ${verbKey}`;
     }
     function pronounToConjKey(pronKey){ if(pronKey === 'ona' || pronKey === 'ono') return 'on'; return pronKey; }
 
@@ -516,6 +630,7 @@
       if(muteBtn){
         muteBtn.innerHTML = `<span class="icon">${audioMuted ? '🔇' : '🔊'}</span>`;
         muteBtn.setAttribute('aria-pressed', String(!audioMuted));
+        muteBtn.setAttribute('aria-label', audioMuted ? 'Unmute audio' : 'Mute audio');
         muteBtn.setAttribute('title', audioMuted ? 'Unmute audio' : 'Mute audio');
       }
       if(audioMuted && currentAudio){
@@ -537,6 +652,7 @@
       if(speedBtn){
         speedBtn.innerHTML = `<span class="icon">${audioSlow ? '½×' : '1×'}</span>`;
         speedBtn.setAttribute('aria-pressed', String(audioSlow));
+        speedBtn.setAttribute('aria-label', audioSlow ? 'Use normal playback speed' : 'Use slower playback speed');
         speedBtn.setAttribute('title', audioSlow ? 'Slow playback enabled' : 'Normal playback');
       }
       if(currentAudio){
@@ -700,9 +816,16 @@
     });
     nextBtn.addEventListener('click', ()=> showQuestion(true));
     quizType.addEventListener('change', ()=> showQuestion(true));
-    resetBtn.addEventListener('click', ()=>{
-      const ok = confirm('Reset tally? This will clear stored correct/incorrect/attempts.');
-      if(ok){ resetState(); lastResultEl.textContent = '—'; }
+    resetBtn.addEventListener('click', openResetModal);
+    resetCancelBtn.addEventListener('click', closeResetModal);
+    resetConfirmBtn.addEventListener('click', confirmReset);
+    resetModalEl.addEventListener('click', (event)=>{
+      if(event.target === resetModalEl) closeResetModal();
+    });
+    document.addEventListener('keydown', (event)=>{
+      if(event.key === 'Escape' && !resetModalEl.hidden){
+        closeResetModal();
+      }
     });
 
     (function init(){
