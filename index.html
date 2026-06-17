@@ -15,7 +15,6 @@
       --wrong: #ef4444;
       --btn: #334155;
       --btn-hover: #475569;
-      --warning: #f59e0b;
     }
     * { box-sizing: border-box; }
     body {
@@ -111,7 +110,6 @@
       gap: 4px;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
     .play-btn {
       min-width: 26px;
@@ -133,25 +131,6 @@
     .speed-btn[aria-pressed="true"] {
       background: #312e81;
       border-color: #6366f1;
-      opacity: 1;
-    }
-    .audio-error-indicator {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--warning);
-      color: #451a03;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    .audio-error-indicator.show {
       opacity: 1;
     }
 
@@ -308,9 +287,9 @@
       <h1>Russian Drills</h1>
       <div class="controls">
         <select id="quiz-type" aria-label="Quiz type">
+          <option value="vocabulary">Vocabulary</option>		
           <option value="pronouns">Verb conjugations</option>
           <option value="numbers">Numbers 0–20</option>
-          <option value="vocabulary">Vocabulary</option>
         </select>
         <button id="next-btn" type="button">New Question</button>
         <button id="reset-btn" type="button">Reset Tally</button>
@@ -327,7 +306,6 @@
         <button id="play-audio-btn" class="play-btn" type="button" aria-label="Play pronunciation" title="Play pronunciation"><span class="icon">▶</span></button>
         <button id="replay-audio-btn" class="play-btn" type="button" aria-label="Replay pronunciation" title="Replay pronunciation"><span class="icon">↺</span></button>
         <button id="speed-btn" class="play-btn speed-btn" type="button" aria-pressed="false" aria-label="Toggle slower audio" title="Toggle slower audio"><span class="icon">0.8×</span></button>
-        <div id="audio-error-indicator" class="audio-error-indicator" role="alert" aria-live="assertive">Audio unavailable</div>
       </div>
       <div id="last-result" class="sr-only" aria-live="polite">—</div>
     </div>
@@ -375,9 +353,7 @@
       "обедать":{ infinitive: "обедать", conjugations: { ya: "обедаю", ty: "обедаешь", on: "обедает", my: "обедаем", vy: "обедаете", oni: "обедают" }},
       "танцевать":{ infinitive: "танцевать", conjugations: { ya: "танцую", ty: "танцуешь", on: "танцует", my: "танцуем", vy: "танцуете", oni: "танцуют" }},
       "завтракать":{ infinitive: "завтракать", conjugations: { ya: "завтракаю", ty: "завтракаешь", on: "завтракает", my: "завтракаем", vy: "завтракаете", oni: "завтракают" }},
-      "спать":{ infinitive: "спать", conjugations: { ya: "сплю", ty: "спишь", on: "спит", my: "спим", vy: "спите", oni: "спят" }},
-      "плавать":{ infinitive: "плавать", conjugations: { ya: "плаваю", ty: "плаваешь", on: "плавает", my: "плаваем", vy: "плаваете", oni: "плавают" }},
-      "кататься на лыжах":{ infinitive: "кататься на лыжах", conjugations: { ya: "катаюсь на лыжах", ty: "катаешься на лыжах", on: "катается на лыжах", my: "катаемся на лыжах", vy: "катаетесь на лыжах", oni: "катаются на лыжах" }}
+      "спать":{ infinitive: "спать", conjugations: { ya: "сплю", ty: "спишь", on: "спит", my: "спим", vy: "спите", oni: "спят" }}
     };
 
     const pronouns = {
@@ -393,6 +369,8 @@
       19: 'девятнадцать', 20: 'двадцать'
     };
 
+    // Vocabulary list updated to use ONLY base/infinitive forms. 
+    // Pronoun-prefixed phrases replaced with their dictionary forms to guarantee no conjugations appear.
     const vocabulary = [
       { ru: 'Думать', en: 'To think' },
       { ru: 'Понимать', en: 'To understand' },
@@ -415,6 +393,8 @@
       { ru: 'Отдыхать', en: 'To relax, to rest' },
       { ru: 'Играть', en: 'To play' },
       { ru: 'Жить', en: 'To live' },
+
+      // Common nouns
       { ru: 'Дом', en: 'House' },
       { ru: 'Книга', en: 'Book' },
       { ru: 'Стол', en: 'Table' },
@@ -425,45 +405,36 @@
       { ru: 'Вода', en: 'Water' },
       { ru: 'Хлеб', en: 'Bread' },
       { ru: 'Яблоко', en: 'Apple' },
+
+      // Directions / position
       { ru: 'Налево', en: 'Left' },
       { ru: 'Направо', en: 'Right' },
       { ru: 'Вперёд', en: 'Forward' },
       { ru: 'Назад', en: 'Back' },
       { ru: 'Здесь', en: 'Here' },
       { ru: 'Там', en: 'There' },
+
+      // Times of day
       { ru: 'Утро', en: 'Morning' },
       { ru: 'День', en: 'Day / Afternoon' },
       { ru: 'Вечер', en: 'Evening' },
       { ru: 'Ночь', en: 'Night' },
+
+      // Question words
       { ru: 'Кто', en: 'Who' },
       { ru: 'Что', en: 'What' },
       { ru: 'Где', en: 'Where' },
       { ru: 'Когда', en: 'When' },
       { ru: 'Почему', en: 'Why' },
       { ru: 'Как', en: 'How' },
+
+      // Common adjectives
       { ru: 'Большой', en: 'Big' },
       { ru: 'Маленький', en: 'Small' },
       { ru: 'Хороший', en: 'Good' },
       { ru: 'Плохой', en: 'Bad' },
       { ru: 'Новый', en: 'New' },
-      { ru: 'Старый', en: 'Old' },
-      { ru: 'Зима', en: 'Winter' },
-      { ru: 'Лето', en: 'Summer' },
-      { ru: 'Весна', en: 'Spring' },
-      { ru: 'Осень', en: 'Autumn' },
-      { ru: 'Зимой', en: 'In winter' },
-      { ru: 'Летом', en: 'In summer' },
-      { ru: 'Весной', en: 'In spring' },
-      { ru: 'Осенью', en: 'In autumn' },
-      { ru: 'Море', en: 'Sea' },
-      { ru: 'Пляж', en: 'Beach' },
-      { ru: 'Бассейн', en: 'Swimming pool' },
-      { ru: 'Грибы', en: 'Mushrooms' },
-      { ru: 'Ягоды', en: 'Berries' },
-      { ru: 'Велосипед', en: 'Bicycle' },
-      { ru: 'Лодка', en: 'Boat' },
-      { ru: 'Плавать', en: 'To swim' },
-      { ru: 'Кататься на лыжах', en: 'To ski' }
+      { ru: 'Старый', en: 'Old' }
     ];
 
     const verbGloss = {
@@ -471,8 +442,7 @@
       читать: 'To read', работать: 'To work', говорить: 'To speak', ужинать: 'To have dinner', мечтать: 'To dream about',
       знать: 'To know', жить: 'To live', понимать: 'To understand', писать: 'To write', играть: 'To play',
       учиться: 'To study', мочь: 'To be able to / can', делать: 'To do', обедать: 'To have lunch', танцевать: 'To dance',
-      завтракать: 'To have breakfast', спать: 'To sleep',
-      плавать: 'To swim', 'кататься на лыжах': 'To ski'
+      завтракать: 'To have breakfast', спать: 'To sleep'
     };
 
     const STORAGE_KEY = 'russian-conj-tally-v1';
@@ -480,10 +450,7 @@
     const AUDIO_MUTE_KEY = 'russian-drills-audio-muted-v1';
     const AUDIO_SLOW_KEY = 'russian-drills-audio-slow-v1';
     const AUDIO_MANIFEST_URL = 'audio/manifest.json';
-    const APP_LAST_UPDATED = '2026-05-29 0710hrs BST';
-    const MAX_QUESTION_STATS = 500;
-    const PRUNE_THRESHOLD = 10;
-    
+    const APP_LAST_UPDATED = '2026-06-17';
     let tally = { correct:0, incorrect:0, attempts:0 };
     let questionStats = {};
     let lastQuestionKey = null;
@@ -492,7 +459,6 @@
     let audioSlow = true;
     let currentAudio = null;
     let currentPromptAudioText = '';
-    let audioErrorTimeout = null;
 
     const quizType = document.getElementById('quiz-type');
     const muteBtn = document.getElementById('mute-btn');
@@ -511,60 +477,7 @@
     const resetModalEl = document.getElementById('reset-modal');
     const resetCancelBtn = document.getElementById('reset-cancel-btn');
     const resetConfirmBtn = document.getElementById('reset-confirm-btn');
-    const audioErrorIndicator = document.getElementById('audio-error-indicator');
     let resetModalReturnFocus = null;
-
-    // Data validation functions
-    function validateVerbs() {
-      const errors = [];
-      const requiredPronouns = ['ya', 'ty', 'on', 'my', 'vy', 'oni'];
-      
-      for (const [verbKey, verbData] of Object.entries(verbs)) {
-        if (!verbData.infinitive) {
-          errors.push(`Verb "${verbKey}" missing infinitive`);
-        }
-        if (!verbData.conjugations || typeof verbData.conjugations !== 'object') {
-          errors.push(`Verb "${verbKey}" missing conjugations object`);
-          continue;
-        }
-        for (const pronoun of requiredPronouns) {
-          if (!verbData.conjugations[pronoun]) {
-            errors.push(`Verb "${verbKey}" missing conjugation for pronoun "${pronoun}"`);
-          }
-        }
-      }
-      
-      if (errors.length > 0) {
-        console.error('Verb data validation errors:', errors);
-        return false;
-      }
-      return true;
-    }
-
-    function validateVocabulary() {
-      const errors = [];
-      
-      vocabulary.forEach((item, index) => {
-        if (!item.ru || typeof item.ru !== 'string') {
-          errors.push(`Vocabulary item ${index} missing or invalid "ru" property`);
-        }
-        if (!item.en || typeof item.en !== 'string') {
-          errors.push(`Vocabulary item ${index} missing or invalid "en" property`);
-        }
-      });
-      
-      if (errors.length > 0) {
-        console.error('Vocabulary data validation errors:', errors);
-        return false;
-      }
-      return true;
-    }
-
-    function validateData() {
-      const verbsValid = validateVerbs();
-      const vocabValid = validateVocabulary();
-      return verbsValid && vocabValid;
-    }
 
     function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
 
@@ -585,68 +498,10 @@
         }
       }catch(e){ console.warn('Failed to load question stats', e); }
     }
-
-    function pruneQuestionStats() {
-      const keys = Object.keys(questionStats);
-      if (keys.length <= MAX_QUESTION_STATS) return;
-
-      const sortedKeys = keys.sort((a, b) => {
-        const statA = questionStats[a];
-        const statB = questionStats[b];
-        const totalA = (statA.correct || 0) + (statA.incorrect || 0);
-        const totalB = (statB.correct || 0) + (statB.incorrect || 0);
-        return totalB - totalA;
-      });
-
-      const keysToKeep = sortedKeys.slice(0, MAX_QUESTION_STATS);
-      const newStats = {};
-      for (const key of keysToKeep) {
-        newStats[key] = questionStats[key];
-      }
-      questionStats = newStats;
-      console.log(`Pruned question stats from ${keys.length} to ${keysToKeep.length}`);
-    }
-
-    function normalizeQuestionStats() {
-      let pruned = false;
-      for (const [key, stat] of Object.entries(questionStats)) {
-        if (!stat || typeof stat !== 'object') {
-          delete questionStats[key];
-          pruned = true;
-          continue;
-        }
-        
-        const correct = Number(stat.correct) || 0;
-        const incorrect = Number(stat.incorrect) || 0;
-        
-        if (correct > PRUNE_THRESHOLD) {
-          stat.correct = Math.floor(correct * 0.8);
-          pruned = true;
-        }
-        if (incorrect > PRUNE_THRESHOLD) {
-          stat.incorrect = Math.floor(incorrect * 0.8);
-          pruned = true;
-        }
-        
-        questionStats[key] = stat;
-      }
-      
-      if (pruned) {
-        console.log('Normalized question stats to prevent unbounded growth');
-      }
-    }
-
     function saveState(){
-      try{ 
-        normalizeQuestionStats();
-        pruneQuestionStats();
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); 
-      }catch(e){ console.warn('Failed to save state', e); }
-      try{ 
-        localStorage.setItem(QUESTION_STATS_KEY, JSON.stringify(questionStats)); 
-      }catch(e){ console.warn('Failed to save question stats', e); }
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }catch(e){ console.warn('Failed to save state', e); }
+      try{ localStorage.setItem(QUESTION_STATS_KEY, JSON.stringify(questionStats)); }catch(e){ console.warn('Failed to save question stats', e); }
     }
-
     function resetState(){ tally = { correct:0, incorrect:0, attempts:0 }; questionStats = {}; lastQuestionKey = null; saveState(); renderTally(); }
     function renderTally(){ correctEl.textContent = tally.correct; incorrectEl.textContent = tally.incorrect; attemptsEl.textContent = tally.attempts; }
 
@@ -732,6 +587,7 @@
       return acc;
     }, {});
 
+    // Safeguard: strips pronouns and coerces conjugated forms back to infinitives.
     function sanitizeVocabAnswer(ruWord) {
       const cleaned = ruWord
         .trim()
@@ -770,21 +626,6 @@
     function getAudioPathForText(text){
       const key = normalizeAudioKey(text);
       return audioByText[key] || null;
-    }
-
-    function showAudioError(message = 'Audio unavailable') {
-      if (!audioErrorIndicator) return;
-      
-      audioErrorIndicator.textContent = message;
-      audioErrorIndicator.classList.add('show');
-      
-      if (audioErrorTimeout) {
-        clearTimeout(audioErrorTimeout);
-      }
-      
-      audioErrorTimeout = setTimeout(() => {
-        audioErrorIndicator.classList.remove('show');
-      }, 2000);
     }
 
     function setMuteState(isMuted, persist = true){
@@ -829,10 +670,7 @@
     function playAudioForText(text, { restart = true } = {}){
       if(audioMuted) return;
       const src = getAudioPathForText(text);
-      if(!src) {
-        showAudioError('Audio not found');
-        return;
-      }
+      if(!src) return;
       if(currentAudio && restart){
         currentAudio.pause();
         currentAudio.currentTime = 0;
@@ -842,16 +680,7 @@
       }
       currentAudio = new Audio(src);
       currentAudio.playbackRate = getPlaybackRate();
-      
-      currentAudio.addEventListener('error', (e) => {
-        console.warn('Audio playback error:', e);
-        showAudioError('Audio failed to load');
-      });
-      
-      currentAudio.play().catch((error) => {
-        console.warn('Audio play() failed:', error);
-        showAudioError('Audio playback failed');
-      });
+      currentAudio.play().catch(() => {});
     }
 
     const normalizedVocabulary = vocabulary
@@ -896,6 +725,7 @@
           optionsEl.appendChild(btn);
         }
       } else if(mode === 'vocabulary'){
+        // Pick weighted item by question performance and avoid immediate repeats.
         const vocabItems = vocabularyPool.map(v => ({ key: `vocabulary:${v.ru.toLowerCase()}`, item: v }));
         const chosenItem = pickWeightedQuestion(vocabItems, lastQuestionKey);
         const rawItem = chosenItem.item;
@@ -1002,10 +832,6 @@
     });
 
     (function init(){
-      if (!validateData()) {
-        console.error('Data validation failed. Application may not work correctly.');
-      }
-      
       loadState();
       loadAudioManifest();
       const storedMute = localStorage.getItem(AUDIO_MUTE_KEY);
