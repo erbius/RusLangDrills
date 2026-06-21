@@ -369,72 +369,22 @@
       19: 'девятнадцать', 20: 'двадцать'
     };
 
-    // Vocabulary list updated to use ONLY base/infinitive forms. 
-    // Pronoun-prefixed phrases replaced with their dictionary forms to guarantee no conjugations appear.
     const vocabulary = [
-      { ru: 'Думать', en: 'To think' },
-      { ru: 'Понимать', en: 'To understand' },
-      { ru: 'Танцевать', en: 'To dance' },
-      { ru: 'Работать', en: 'To work' },
-      { ru: 'Гулять', en: 'To go for a walk' },
-      { ru: 'Завтракать', en: 'To have breakfast' },
-      { ru: 'Спать', en: 'To sleep' },
-      { ru: 'Обедать', en: 'To have lunch' },
-      { ru: 'Читать', en: 'To read' },
-      { ru: 'Говорить', en: 'To speak' },
-      { ru: 'Ужинать', en: 'To have dinner' },
-      { ru: 'Мечтать', en: 'To dream about' },
-      { ru: 'Мочь', en: 'To be able to / can' },
-      { ru: 'Учиться', en: 'To study' },
-      { ru: 'Уметь', en: 'To know how to do something' },
-      { ru: 'Делать', en: 'To do' },
-      { ru: 'Писать', en: 'To write' },
-      { ru: 'Знать', en: 'To know' },
-      { ru: 'Отдыхать', en: 'To relax, to rest' },
-      { ru: 'Играть', en: 'To play' },
-      { ru: 'Жить', en: 'To live' },
-
-      // Common nouns
-      { ru: 'Дом', en: 'House' },
-      { ru: 'Книга', en: 'Book' },
-      { ru: 'Стол', en: 'Table' },
-      { ru: 'Машина', en: 'Car' },
-      { ru: 'Друг', en: 'Friend' },
-      { ru: 'Школа', en: 'School' },
-      { ru: 'Город', en: 'City' },
-      { ru: 'Вода', en: 'Water' },
-      { ru: 'Хлеб', en: 'Bread' },
-      { ru: 'Яблоко', en: 'Apple' },
-
-      // Directions / position
-      { ru: 'Налево', en: 'Left' },
-      { ru: 'Направо', en: 'Right' },
-      { ru: 'Вперёд', en: 'Forward' },
-      { ru: 'Назад', en: 'Back' },
-      { ru: 'Здесь', en: 'Here' },
-      { ru: 'Там', en: 'There' },
-
-      // Times of day
-      { ru: 'Утро', en: 'Morning' },
-      { ru: 'День', en: 'Day / Afternoon' },
-      { ru: 'Вечер', en: 'Evening' },
-      { ru: 'Ночь', en: 'Night' },
-
-      // Question words
-      { ru: 'Кто', en: 'Who' },
-      { ru: 'Что', en: 'What' },
-      { ru: 'Где', en: 'Where' },
-      { ru: 'Когда', en: 'When' },
-      { ru: 'Почему', en: 'Why' },
-      { ru: 'Как', en: 'How' },
-
-      // Common adjectives
-      { ru: 'Большой', en: 'Big' },
-      { ru: 'Маленький', en: 'Small' },
-      { ru: 'Хороший', en: 'Good' },
-      { ru: 'Плохой', en: 'Bad' },
-      { ru: 'Новый', en: 'New' },
-      { ru: 'Старый', en: 'Old' }
+      { ru: 'Думать', en: 'To think' }, { ru: 'Понимать', en: 'To understand' }, { ru: 'Танцевать', en: 'To dance' },
+      { ru: 'Работать', en: 'To work' }, { ru: 'Гулять', en: 'To go for a walk' }, { ru: 'Завтракать', en: 'To have breakfast' },
+      { ru: 'Спать', en: 'To sleep' }, { ru: 'Обедать', en: 'To have lunch' }, { ru: 'Читать', en: 'To read' },
+      { ru: 'Говорить', en: 'To speak' }, { ru: 'Ужинать', en: 'To have dinner' }, { ru: 'Мечтать', en: 'To dream about' },
+      { ru: 'Мочь', en: 'To be able to / can' }, { ru: 'Учиться', en: 'To study' }, { ru: 'Уметь', en: 'To know how to do something' },
+      { ru: 'Делать', en: 'To do' }, { ru: 'Писать', en: 'To write' }, { ru: 'Знать', en: 'To know' },
+      { ru: 'Отдыхать', en: 'To relax, to rest' }, { ru: 'Играть', en: 'To play' }, { ru: 'Жить', en: 'To live' },
+      { ru: 'Дом', en: 'House' }, { ru: 'Книга', en: 'Book' }, { ru: 'Стол', en: 'Table' }, { ru: 'Машина', en: 'Car' },
+      { ru: 'Друг', en: 'Friend' }, { ru: 'Школа', en: 'School' }, { ru: 'Город', en: 'City' }, { ru: 'Вода', en: 'Water' },
+      { ru: 'Хлеб', en: 'Bread' }, { ru: 'Яблоко', en: 'Apple' }, { ru: 'Налево', en: 'Left' }, { ru: 'Направо', en: 'Right' },
+      { ru: 'Вперёд', en: 'Forward' }, { ru: 'Назад', en: 'Back' }, { ru: 'Здесь', en: 'Here' }, { ru: 'Там', en: 'There' },
+      { ru: 'Утро', en: 'Morning' }, { ru: 'День', en: 'Day / Afternoon' }, { ru: 'Вечер', en: 'Evening' }, { ru: 'Ночь', en: 'Night' },
+      { ru: 'Кто', en: 'Who' }, { ru: 'Что', en: 'What' }, { ru: 'Где', en: 'Where' }, { ru: 'Когда', en: 'When' },
+      { ru: 'Почему', en: 'Why' }, { ru: 'Как', en: 'How' }, { ru: 'Большой', en: 'Big' }, { ru: 'Маленький', en: 'Small' },
+      { ru: 'Хороший', en: 'Good' }, { ru: 'Плохой', en: 'Bad' }, { ru: 'Новый', en: 'New' }, { ru: 'Старый', en: 'Old' }
     ];
 
     const verbGloss = {
@@ -451,6 +401,7 @@
     const AUDIO_SLOW_KEY = 'russian-drills-audio-slow-v1';
     const AUDIO_MANIFEST_URL = 'audio/manifest.json';
     const APP_LAST_UPDATED = '2026-06-17';
+    
     let tally = { correct:0, incorrect:0, attempts:0 };
     let questionStats = {};
     let lastQuestionKey = null;
@@ -498,10 +449,20 @@
         }
       }catch(e){ console.warn('Failed to load question stats', e); }
     }
+
     function saveState(){
       try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }catch(e){ console.warn('Failed to save state', e); }
-      try{ localStorage.setItem(QUESTION_STATS_KEY, JSON.stringify(questionStats)); }catch(e){ console.warn('Failed to save question stats', e); }
+      
+      // Prune question stats if it gets too large to prevent localStorage bloat
+      const keys = Object.keys(questionStats);
+      if (keys.length > 500) {
+        keys.slice(0, 250).forEach(k => delete questionStats[k]); 
+      }
+      
+      try{ localStorage.setItem(QUESTION_STATS_KEY, JSON.stringify(questionStats)); }
+      catch(e){ console.warn('Failed to save question stats', e); }
     }
+
     function resetState(){ tally = { correct:0, incorrect:0, attempts:0 }; questionStats = {}; lastQuestionKey = null; saveState(); renderTally(); }
     function renderTally(){ correctEl.textContent = tally.correct; incorrectEl.textContent = tally.incorrect; attemptsEl.textContent = tally.attempts; }
 
@@ -539,8 +500,11 @@
 
     function getQuestionWeight(questionKey){
       const stat = getQuestionStat(questionKey);
-      const weight = 1 + (stat.incorrect * 3) - (stat.correct * 0.5);
-      return Math.max(0.25, weight);
+      // Capped weights ensure one hard word doesn't dominate the queue and hide other vocab
+      const incorrectBonus = Math.min(stat.incorrect * 2, 4); 
+      const correctPenalty = Math.min(stat.correct * 0.2, 0.8);
+      const weight = 1 + incorrectBonus - correctPenalty;
+      return Math.max(0.2, weight);
     }
 
     function pickWeightedQuestion(items, excludedKey){
@@ -566,17 +530,28 @@
     }
     function pronounToConjKey(pronKey){ if(pronKey === 'ona' || pronKey === 'ono') return 'on'; return pronKey; }
 
+    // Pre-compute unique verb forms to prevent infinite loops in option generation
+    const allUniqueVerbForms = Array.from(new Set([].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)))));
+
     function makeOptions(correctForm, verbKey, optionCount = 4){
       const opts = new Set(); opts.add(correctForm);
       const sameVerbForms = Object.values(verbs[verbKey].conjugations).filter(f=>f!==correctForm); shuffle(sameVerbForms);
       const otherVerbKeys = Object.keys(verbs).filter(k=>k!==verbKey);
       const otherForms = [].concat(...otherVerbKeys.map(k=>Object.values(verbs[k].conjugations))); shuffle(otherForms);
+      
       if(sameVerbForms.length>0) opts.add(sameVerbForms.shift());
       if(otherForms.length>0) opts.add(otherForms.shift());
       while(opts.size<optionCount && sameVerbForms.length>0) opts.add(sameVerbForms.shift());
       while(opts.size<optionCount && otherForms.length>0) opts.add(otherForms.shift());
-      const allForms = [].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)));
-      while(opts.size<optionCount){ const pick = allForms[Math.floor(Math.random()*allForms.length)]; opts.add(pick); }
+      
+      // Safe fallback loop using pre-shuffled unique forms
+      const fallbackForms = [...allUniqueVerbForms];
+      shuffle(fallbackForms);
+      let idx = 0;
+      while(opts.size < optionCount && idx < fallbackForms.length) {
+        opts.add(fallbackForms[idx]);
+        idx++;
+      }
       return shuffle(Array.from(opts));
     }
 
@@ -587,7 +562,6 @@
       return acc;
     }, {});
 
-    // Safeguard: strips pronouns and coerces conjugated forms back to infinitives.
     function sanitizeVocabAnswer(ruWord) {
       const cleaned = ruWord
         .trim()
@@ -671,14 +645,25 @@
       if(audioMuted) return;
       const src = getAudioPathForText(text);
       if(!src) return;
-      if(currentAudio && restart){
+
+      // Reuse existing audio element if it's the exact same text
+      if (currentAudio && currentAudio.dataset.text === text) {
+        if (restart) {
+          currentAudio.currentTime = 0; // Rewind
+        }
+        currentAudio.playbackRate = getPlaybackRate();
+        currentAudio.play().catch(() => {});
+        return;
+      }
+
+      // It's a new audio file, so clean up the old one
+      if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
       }
-      if(currentAudio && !restart && !currentAudio.paused){
-        return;
-      }
+
       currentAudio = new Audio(src);
+      currentAudio.dataset.text = text; // Tag it so we can reuse it next time
       currentAudio.playbackRate = getPlaybackRate();
       currentAudio.play().catch(() => {});
     }
@@ -698,6 +683,12 @@
 
     let currentAnswer = null;
     function showQuestion(focus=true){
+      // Stop any currently playing audio to prevent overlap
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
       optionsEl.innerHTML = '';
       lastResultEl.textContent = '—';
       const mode = quizType?.value || 'pronouns';
@@ -721,11 +712,9 @@
           const btn = document.createElement('button'); btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = optText;
           btn.setAttribute('data-form', optText); btn.setAttribute('role','button'); btn.setAttribute('aria-pressed','false');
           btn.addEventListener('click', ()=> handleAnswer(btn));
-          btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
           optionsEl.appendChild(btn);
         }
       } else if(mode === 'vocabulary'){
-        // Pick weighted item by question performance and avoid immediate repeats.
         const vocabItems = vocabularyPool.map(v => ({ key: `vocabulary:${v.ru.toLowerCase()}`, item: v }));
         const chosenItem = pickWeightedQuestion(vocabItems, lastQuestionKey);
         const rawItem = chosenItem.item;
@@ -744,7 +733,6 @@
           const btn = document.createElement('button'); btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = optText;
           btn.setAttribute('data-form', optText); btn.setAttribute('role','button'); btn.setAttribute('aria-pressed','false');
           btn.addEventListener('click', ()=> handleAnswer(btn));
-          btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
           optionsEl.appendChild(btn);
         }
       } else {
@@ -771,7 +759,6 @@
           const btn = document.createElement('button'); btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = optText;
           btn.setAttribute('data-form', optText); btn.setAttribute('role','button'); btn.setAttribute('aria-pressed','false');
           btn.addEventListener('click', ()=> handleAnswer(btn));
-          btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
           optionsEl.appendChild(btn);
         }
       }
