@@ -332,6 +332,7 @@
 
   <script>
     // Russian verbs and pronouns data model
+        // Russian verbs and pronouns data model
     const verbs = {
       "думать":{ infinitive: "думать", conjugations: { ya: "думаю", ty: "думаешь", on: "думает", my: "думаем", vy: "думаете", oni: "думают" }},
       "отдыхать":{ infinitive: "отдыхать", conjugations: { ya: "отдыхаю", ty: "отдыхаешь", on: "отдыхает", my: "отдыхаем", vy: "отдыхаете", oni: "отдыхают" }},
@@ -353,7 +354,9 @@
       "обедать":{ infinitive: "обедать", conjugations: { ya: "обедаю", ty: "обедаешь", on: "обедает", my: "обедаем", vy: "обедаете", oni: "обедают" }},
       "танцевать":{ infinitive: "танцевать", conjugations: { ya: "танцую", ty: "танцуешь", on: "танцует", my: "танцуем", vy: "танцуете", oni: "танцуют" }},
       "завтракать":{ infinitive: "завтракать", conjugations: { ya: "завтракаю", ty: "завтракаешь", on: "завтракает", my: "завтракаем", vy: "завтракаете", oni: "завтракают" }},
-      "спать":{ infinitive: "спать", conjugations: { ya: "сплю", ty: "спишь", on: "спит", my: "спим", vy: "спите", oni: "спят" }}
+      "спать":{ infinitive: "спать", conjugations: { ya: "сплю", ty: "спишь", on: "спит", my: "спим", vy: "спите", oni: "спят" }},
+      "плавать":{ infinitive: "плавать", conjugations: { ya: "плаваю", ty: "плаваешь", on: "плавает", my: "плаваем", vy: "плаваете", oni: "плавают" }},
+      "кататься на лыжах":{ infinitive: "кататься на лыжах", conjugations: { ya: "катаюсь на лыжах", ty: "катаешься на лыжах", on: "катается на лыжах", my: "катаемся на лыжах", vy: "катаетесь на лыжах", oni: "катаются на лыжах" }}
     };
 
     const pronouns = {
@@ -384,7 +387,12 @@
       { ru: 'Утро', en: 'Morning' }, { ru: 'День', en: 'Day / Afternoon' }, { ru: 'Вечер', en: 'Evening' }, { ru: 'Ночь', en: 'Night' },
       { ru: 'Кто', en: 'Who' }, { ru: 'Что', en: 'What' }, { ru: 'Где', en: 'Where' }, { ru: 'Когда', en: 'When' },
       { ru: 'Почему', en: 'Why' }, { ru: 'Как', en: 'How' }, { ru: 'Большой', en: 'Big' }, { ru: 'Маленький', en: 'Small' },
-      { ru: 'Хороший', en: 'Good' }, { ru: 'Плохой', en: 'Bad' }, { ru: 'Новый', en: 'New' }, { ru: 'Старый', en: 'Old' }
+      { ru: 'Хороший', en: 'Good' }, { ru: 'Плохой', en: 'Bad' }, { ru: 'Новый', en: 'New' }, { ru: 'Старый', en: 'Old' },
+      { ru: 'Зима', en: 'Winter' }, { ru: 'Лето', en: 'Summer' }, { ru: 'Весна', en: 'Spring' }, { ru: 'Осень', en: 'Autumn' },
+      { ru: 'Зимой', en: 'In winter' }, { ru: 'Летом', en: 'In summer' }, { ru: 'Весной', en: 'In spring' }, { ru: 'Осенью', en: 'In autumn' },
+      { ru: 'Плавать', en: 'To swim' }, { ru: 'Море', en: 'Sea' }, { ru: 'Пляж', en: 'Beach' }, { ru: 'Бассейн', en: 'Swimming pool' },
+      { ru: 'Грибы', en: 'Mushrooms' }, { ru: 'Ягоды', en: 'Berries' }, { ru: 'Велосипед', en: 'Bicycle' }, { ru: 'Лодка', en: 'Boat' },
+      { ru: 'Кататься на лыжах', en: 'To ski' }
     ];
 
     const verbGloss = {
@@ -392,7 +400,7 @@
       читать: 'To read', работать: 'To work', говорить: 'To speak', ужинать: 'To have dinner', мечтать: 'To dream about',
       знать: 'To know', жить: 'To live', понимать: 'To understand', писать: 'To write', играть: 'To play',
       учиться: 'To study', мочь: 'To be able to / can', делать: 'To do', обедать: 'To have lunch', танцевать: 'To dance',
-      завтракать: 'To have breakfast', спать: 'To sleep'
+      завтракать: 'To have breakfast', спать: 'To sleep', плавать: 'To swim', 'кататься на лыжах': 'To ski'
     };
 
     const STORAGE_KEY = 'russian-conj-tally-v1';
