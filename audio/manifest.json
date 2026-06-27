@@ -1,795 +1,795 @@
 {
-  "generatedAt": "2026-06-27T18:48:21.319146+00:00",
+  "generatedAt": "2026-06-27T19:08:39.414525+00:00",
   "sampleRate": 8000,
   "totalWords": 112,
-  "newlyGenerated": 59,
-  "skipped": 53,
+  "newlyGenerated": 0,
+  "skipped": 112,
   "items": [
     {
       "id": "dumat",
       "text": "думать",
-      "path": "..\\audio\\clips\\dumat.wav",
+      "path": "audio/clips/dumat.wav",
       "rate": "medium"
     },
     {
       "id": "ponimat",
       "text": "понимать",
-      "path": "..\\audio\\clips\\ponimat.wav",
+      "path": "audio/clips/ponimat.wav",
       "rate": "medium"
     },
     {
       "id": "tantsevat",
       "text": "танцевать",
-      "path": "..\\audio\\clips\\tantsevat.wav",
+      "path": "audio/clips/tantsevat.wav",
       "rate": "medium"
     },
     {
       "id": "rabotat",
       "text": "работать",
-      "path": "..\\audio\\clips\\rabotat.wav",
+      "path": "audio/clips/rabotat.wav",
       "rate": "medium"
     },
     {
       "id": "gulyat",
       "text": "гулять",
-      "path": "..\\audio\\clips\\gulyat.wav",
+      "path": "audio/clips/gulyat.wav",
       "rate": "medium"
     },
     {
       "id": "zavtrakat",
       "text": "завтракать",
-      "path": "..\\audio\\clips\\zavtrakat.wav",
+      "path": "audio/clips/zavtrakat.wav",
       "rate": "medium"
     },
     {
       "id": "spat",
       "text": "спать",
-      "path": "..\\audio\\clips\\spat.wav",
+      "path": "audio/clips/spat.wav",
       "rate": "medium"
     },
     {
       "id": "obedat",
       "text": "обедать",
-      "path": "..\\audio\\clips\\obedat.wav",
+      "path": "audio/clips/obedat.wav",
       "rate": "medium"
     },
     {
       "id": "chitat",
       "text": "читать",
-      "path": "..\\audio\\clips\\chitat.wav",
+      "path": "audio/clips/chitat.wav",
       "rate": "medium"
     },
     {
       "id": "govorit",
       "text": "говорить",
-      "path": "..\\audio\\clips\\govorit.wav",
+      "path": "audio/clips/govorit.wav",
       "rate": "medium"
     },
     {
       "id": "uzhinat",
       "text": "ужинать",
-      "path": "..\\audio\\clips\\uzhinat.wav",
+      "path": "audio/clips/uzhinat.wav",
       "rate": "medium"
     },
     {
       "id": "mechtat",
       "text": "мечтать",
-      "path": "..\\audio\\clips\\mechtat.wav",
+      "path": "audio/clips/mechtat.wav",
       "rate": "medium"
     },
     {
       "id": "moch",
       "text": "мочь",
-      "path": "..\\audio\\clips\\moch.wav",
+      "path": "audio/clips/moch.wav",
       "rate": "slow"
     },
     {
       "id": "uchitsya",
       "text": "учиться",
-      "path": "..\\audio\\clips\\uchitsya.wav",
+      "path": "audio/clips/uchitsya.wav",
       "rate": "medium"
     },
     {
       "id": "umet",
       "text": "уметь",
-      "path": "..\\audio\\clips\\umet.wav",
+      "path": "audio/clips/umet.wav",
       "rate": "medium"
     },
     {
       "id": "delat",
       "text": "делать",
-      "path": "..\\audio\\clips\\delat.wav",
+      "path": "audio/clips/delat.wav",
       "rate": "medium"
     },
     {
       "id": "pisat",
       "text": "писать",
-      "path": "..\\audio\\clips\\pisat.wav",
+      "path": "audio/clips/pisat.wav",
       "rate": "medium"
     },
     {
       "id": "znat",
       "text": "знать",
-      "path": "..\\audio\\clips\\znat.wav",
+      "path": "audio/clips/znat.wav",
       "rate": "medium"
     },
     {
       "id": "otdyhat",
       "text": "отдыхать",
-      "path": "..\\audio\\clips\\otdyhat.wav",
+      "path": "audio/clips/otdyhat.wav",
       "rate": "medium"
     },
     {
       "id": "igrat",
       "text": "играть",
-      "path": "..\\audio\\clips\\igrat.wav",
+      "path": "audio/clips/igrat.wav",
       "rate": "medium"
     },
     {
       "id": "zhit",
       "text": "жить",
-      "path": "..\\audio\\clips\\zhit.wav",
+      "path": "audio/clips/zhit.wav",
       "rate": "slow"
     },
     {
       "id": "risovat",
       "text": "рисовать",
-      "path": "..\\audio\\clips\\risovat.wav",
+      "path": "audio/clips/risovat.wav",
       "rate": "medium"
     },
     {
       "id": "pet",
       "text": "петь",
-      "path": "..\\audio\\clips\\pet.wav",
+      "path": "audio/clips/pet.wav",
       "rate": "slow"
     },
     {
       "id": "gotovit",
       "text": "готовить",
-      "path": "..\\audio\\clips\\gotovit.wav",
+      "path": "audio/clips/gotovit.wav",
       "rate": "medium"
     },
     {
       "id": "slushat",
       "text": "слушать",
-      "path": "..\\audio\\clips\\slushat.wav",
+      "path": "audio/clips/slushat.wav",
       "rate": "medium"
     },
     {
       "id": "smotret",
       "text": "смотреть",
-      "path": "..\\audio\\clips\\smotret.wav",
+      "path": "audio/clips/smotret.wav",
       "rate": "medium"
     },
     {
       "id": "begat",
       "text": "бегать",
-      "path": "..\\audio\\clips\\begat.wav",
+      "path": "audio/clips/begat.wav",
       "rate": "medium"
     },
     {
       "id": "plavat",
       "text": "плавать",
-      "path": "..\\audio\\clips\\plavat.wav",
+      "path": "audio/clips/plavat.wav",
       "rate": "medium"
     },
     {
       "id": "puteshestvovat",
       "text": "путешествовать",
-      "path": "..\\audio\\clips\\puteshestvovat.wav",
+      "path": "audio/clips/puteshestvovat.wav",
       "rate": "slow"
     },
     {
       "id": "lyubit",
       "text": "любить",
-      "path": "..\\audio\\clips\\lyubit.wav",
+      "path": "audio/clips/lyubit.wav",
       "rate": "medium"
     },
     {
       "id": "hotet",
       "text": "хотеть",
-      "path": "..\\audio\\clips\\hotet.wav",
+      "path": "audio/clips/hotet.wav",
       "rate": "medium"
     },
     {
       "id": "videt",
       "text": "видеть",
-      "path": "..\\audio\\clips\\videt.wav",
+      "path": "audio/clips/videt.wav",
       "rate": "medium"
     },
     {
       "id": "slyshat",
       "text": "слышать",
-      "path": "..\\audio\\clips\\slyshat.wav",
+      "path": "audio/clips/slyshat.wav",
       "rate": "medium"
     },
     {
       "id": "zhdat",
       "text": "ждать",
-      "path": "..\\audio\\clips\\zhdat.wav",
+      "path": "audio/clips/zhdat.wav",
       "rate": "medium"
     },
     {
       "id": "davat",
       "text": "давать",
-      "path": "..\\audio\\clips\\davat.wav",
+      "path": "audio/clips/davat.wav",
       "rate": "medium"
     },
     {
       "id": "brat",
       "text": "брать",
-      "path": "..\\audio\\clips\\brat.wav",
+      "path": "audio/clips/brat.wav",
       "rate": "medium"
     },
     {
       "id": "pokupat",
       "text": "покупать",
-      "path": "..\\audio\\clips\\pokupat.wav",
+      "path": "audio/clips/pokupat.wav",
       "rate": "medium"
     },
     {
       "id": "prodavat",
       "text": "продавать",
-      "path": "..\\audio\\clips\\prodavat.wav",
+      "path": "audio/clips/prodavat.wav",
       "rate": "medium"
     },
     {
       "id": "vstavat",
       "text": "вставать",
-      "path": "..\\audio\\clips\\vstavat.wav",
+      "path": "audio/clips/vstavat.wav",
       "rate": "medium"
     },
     {
       "id": "idti",
       "text": "идти",
-      "path": "..\\audio\\clips\\idti.wav",
+      "path": "audio/clips/idti.wav",
       "rate": "slow"
     },
     {
       "id": "ehat",
       "text": "ехать",
-      "path": "..\\audio\\clips\\ehat.wav",
+      "path": "audio/clips/ehat.wav",
       "rate": "medium"
     },
     {
       "id": "dom",
       "text": "дом",
-      "path": "..\\audio\\clips\\dom.wav",
+      "path": "audio/clips/dom.wav",
       "rate": "slow"
     },
     {
       "id": "kniga",
       "text": "книга",
-      "path": "..\\audio\\clips\\kniga.wav",
+      "path": "audio/clips/kniga.wav",
       "rate": "medium"
     },
     {
       "id": "stol",
       "text": "стол",
-      "path": "..\\audio\\clips\\stol.wav",
+      "path": "audio/clips/stol.wav",
       "rate": "slow"
     },
     {
       "id": "mashina",
       "text": "машина",
-      "path": "..\\audio\\clips\\mashina.wav",
+      "path": "audio/clips/mashina.wav",
       "rate": "medium"
     },
     {
       "id": "drug",
       "text": "друг",
-      "path": "..\\audio\\clips\\drug.wav",
+      "path": "audio/clips/drug.wav",
       "rate": "slow"
     },
     {
       "id": "shkola",
       "text": "школа",
-      "path": "..\\audio\\clips\\shkola.wav",
+      "path": "audio/clips/shkola.wav",
       "rate": "medium"
     },
     {
       "id": "gorod",
       "text": "город",
-      "path": "..\\audio\\clips\\gorod.wav",
+      "path": "audio/clips/gorod.wav",
       "rate": "medium"
     },
     {
       "id": "voda",
       "text": "вода",
-      "path": "..\\audio\\clips\\voda.wav",
+      "path": "audio/clips/voda.wav",
       "rate": "slow"
     },
     {
       "id": "hleb",
       "text": "хлеб",
-      "path": "..\\audio\\clips\\hleb.wav",
+      "path": "audio/clips/hleb.wav",
       "rate": "slow"
     },
     {
       "id": "yabloko",
       "text": "яблоко",
-      "path": "..\\audio\\clips\\yabloko.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "nalevo",
-      "text": "налево",
-      "path": "..\\audio\\clips\\nalevo.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "napravo",
-      "text": "направо",
-      "path": "..\\audio\\clips\\napravo.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "vperyod",
-      "text": "вперёд",
-      "path": "..\\audio\\clips\\vperyod.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "nazad",
-      "text": "назад",
-      "path": "..\\audio\\clips\\nazad.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "zdes",
-      "text": "здесь",
-      "path": "..\\audio\\clips\\zdes.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "tam",
-      "text": "там",
-      "path": "..\\audio\\clips\\tam.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "utro",
-      "text": "утро",
-      "path": "..\\audio\\clips\\utro.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "den",
-      "text": "день",
-      "path": "..\\audio\\clips\\den.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "vecher",
-      "text": "вечер",
-      "path": "..\\audio\\clips\\vecher.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "noch",
-      "text": "ночь",
-      "path": "..\\audio\\clips\\noch.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "kto",
-      "text": "кто",
-      "path": "..\\audio\\clips\\kto.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "chto",
-      "text": "что",
-      "path": "..\\audio\\clips\\chto.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "gde",
-      "text": "где",
-      "path": "..\\audio\\clips\\gde.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "kogda",
-      "text": "когда",
-      "path": "..\\audio\\clips\\kogda.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "pochemu",
-      "text": "почему",
-      "path": "..\\audio\\clips\\pochemu.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "kak",
-      "text": "как",
-      "path": "..\\audio\\clips\\kak.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "bolshoy",
-      "text": "большой",
-      "path": "..\\audio\\clips\\bolshoy.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "malenkiy",
-      "text": "маленький",
-      "path": "..\\audio\\clips\\malenkiy.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "horoshiy",
-      "text": "хороший",
-      "path": "..\\audio\\clips\\horoshiy.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "plohoy",
-      "text": "плохой",
-      "path": "..\\audio\\clips\\plohoy.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "novyy",
-      "text": "новый",
-      "path": "..\\audio\\clips\\novyy.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "staryy",
-      "text": "старый",
-      "path": "..\\audio\\clips\\staryy.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "ponedelnik",
-      "text": "понедельник",
-      "path": "..\\audio\\clips\\ponedelnik.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "vtornik",
-      "text": "вторник",
-      "path": "..\\audio\\clips\\vtornik.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "sreda",
-      "text": "среда",
-      "path": "..\\audio\\clips\\sreda.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "chetverg",
-      "text": "четверг",
-      "path": "..\\audio\\clips\\chetverg.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "pyatnitsa",
-      "text": "пятница",
-      "path": "..\\audio\\clips\\pyatnitsa.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "subbota",
-      "text": "суббота",
-      "path": "..\\audio\\clips\\subbota.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "voskresene",
-      "text": "воскресенье",
-      "path": "..\\audio\\clips\\voskresene.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "yanvar",
-      "text": "январь",
-      "path": "..\\audio\\clips\\yanvar.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "fevral",
-      "text": "февраль",
-      "path": "..\\audio\\clips\\fevral.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "mart",
-      "text": "март",
-      "path": "..\\audio\\clips\\mart.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "aprel",
-      "text": "апрель",
-      "path": "..\\audio\\clips\\aprel.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "may",
-      "text": "май",
-      "path": "..\\audio\\clips\\may.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "iyun",
-      "text": "июнь",
-      "path": "..\\audio\\clips\\iyun.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "iyul",
-      "text": "июль",
-      "path": "..\\audio\\clips\\iyul.wav",
-      "rate": "slow"
-    },
-    {
-      "id": "avgust",
-      "text": "август",
-      "path": "..\\audio\\clips\\avgust.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "sentyabr",
-      "text": "сентябрь",
-      "path": "..\\audio\\clips\\sentyabr.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "oktyabr",
-      "text": "октябрь",
-      "path": "..\\audio\\clips\\oktyabr.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "noyabr",
-      "text": "ноябрь",
-      "path": "..\\audio\\clips\\noyabr.wav",
-      "rate": "medium"
-    },
-    {
-      "id": "dekabr",
-      "text": "декабрь",
-      "path": "..\\audio\\clips\\dekabr.wav",
+      "path": "audio/clips/yabloko.wav",
       "rate": "medium"
     },
     {
       "id": "transport",
       "text": "транспорт",
-      "path": "..\\audio\\clips\\transport.wav",
+      "path": "audio/clips/transport.wav",
       "rate": "medium"
     },
     {
       "id": "avtobus",
       "text": "автобус",
-      "path": "..\\audio\\clips\\avtobus.wav",
+      "path": "audio/clips/avtobus.wav",
       "rate": "medium"
     },
     {
       "id": "poezd",
       "text": "поезд",
-      "path": "..\\audio\\clips\\poezd.wav",
+      "path": "audio/clips/poezd.wav",
       "rate": "medium"
     },
     {
       "id": "samolyot",
       "text": "самолёт",
-      "path": "..\\audio\\clips\\samolyot.wav",
+      "path": "audio/clips/samolyot.wav",
       "rate": "medium"
     },
     {
       "id": "metro",
       "text": "метро",
-      "path": "..\\audio\\clips\\metro.wav",
+      "path": "audio/clips/metro.wav",
       "rate": "medium"
     },
     {
       "id": "taksi",
       "text": "такси",
-      "path": "..\\audio\\clips\\taksi.wav",
+      "path": "audio/clips/taksi.wav",
       "rate": "medium"
     },
     {
       "id": "velosiped",
       "text": "велосипед",
-      "path": "..\\audio\\clips\\velosiped.wav",
+      "path": "audio/clips/velosiped.wav",
       "rate": "medium"
     },
     {
       "id": "tramvay",
       "text": "трамвай",
-      "path": "..\\audio\\clips\\tramvay.wav",
+      "path": "audio/clips/tramvay.wav",
       "rate": "medium"
     },
     {
       "id": "trolleybus",
       "text": "троллейбус",
-      "path": "..\\audio\\clips\\trolleybus.wav",
+      "path": "audio/clips/trolleybus.wav",
       "rate": "medium"
     },
     {
       "id": "chay",
       "text": "чай",
-      "path": "..\\audio\\clips\\chay.wav",
+      "path": "audio/clips/chay.wav",
       "rate": "slow"
     },
     {
       "id": "kofe",
       "text": "кофе",
-      "path": "..\\audio\\clips\\kofe.wav",
+      "path": "audio/clips/kofe.wav",
       "rate": "slow"
     },
     {
       "id": "moloko",
       "text": "молоко",
-      "path": "..\\audio\\clips\\moloko.wav",
+      "path": "audio/clips/moloko.wav",
       "rate": "medium"
     },
     {
       "id": "myaso",
       "text": "мясо",
-      "path": "..\\audio\\clips\\myaso.wav",
+      "path": "audio/clips/myaso.wav",
       "rate": "slow"
     },
     {
       "id": "ryba",
       "text": "рыба",
-      "path": "..\\audio\\clips\\ryba.wav",
+      "path": "audio/clips/ryba.wav",
       "rate": "slow"
     },
     {
       "id": "sup",
       "text": "суп",
-      "path": "..\\audio\\clips\\sup.wav",
+      "path": "audio/clips/sup.wav",
       "rate": "slow"
     },
     {
       "id": "semya",
       "text": "семья",
-      "path": "..\\audio\\clips\\semya.wav",
+      "path": "audio/clips/semya.wav",
       "rate": "medium"
     },
     {
       "id": "mama",
       "text": "мама",
-      "path": "..\\audio\\clips\\mama.wav",
+      "path": "audio/clips/mama.wav",
       "rate": "slow"
     },
     {
       "id": "papa",
       "text": "папа",
-      "path": "..\\audio\\clips\\papa.wav",
+      "path": "audio/clips/papa.wav",
       "rate": "slow"
     },
     {
       "id": "brat",
       "text": "брат",
-      "path": "..\\audio\\clips\\brat.wav",
+      "path": "audio/clips/brat.wav",
       "rate": "slow"
     },
     {
       "id": "sestra",
       "text": "сестра",
-      "path": "..\\audio\\clips\\sestra.wav",
+      "path": "audio/clips/sestra.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "nalevo",
+      "text": "налево",
+      "path": "audio/clips/nalevo.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "napravo",
+      "text": "направо",
+      "path": "audio/clips/napravo.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "vperyod",
+      "text": "вперёд",
+      "path": "audio/clips/vperyod.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "nazad",
+      "text": "назад",
+      "path": "audio/clips/nazad.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "zdes",
+      "text": "здесь",
+      "path": "audio/clips/zdes.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "tam",
+      "text": "там",
+      "path": "audio/clips/tam.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "utro",
+      "text": "утро",
+      "path": "audio/clips/utro.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "den",
+      "text": "день",
+      "path": "audio/clips/den.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "vecher",
+      "text": "вечер",
+      "path": "audio/clips/vecher.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "noch",
+      "text": "ночь",
+      "path": "audio/clips/noch.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "ponedelnik",
+      "text": "понедельник",
+      "path": "audio/clips/ponedelnik.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "vtornik",
+      "text": "вторник",
+      "path": "audio/clips/vtornik.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "sreda",
+      "text": "среда",
+      "path": "audio/clips/sreda.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "chetverg",
+      "text": "четверг",
+      "path": "audio/clips/chetverg.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "pyatnitsa",
+      "text": "пятница",
+      "path": "audio/clips/pyatnitsa.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "subbota",
+      "text": "суббота",
+      "path": "audio/clips/subbota.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "voskresene",
+      "text": "воскресенье",
+      "path": "audio/clips/voskresene.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "yanvar",
+      "text": "январь",
+      "path": "audio/clips/yanvar.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "fevral",
+      "text": "февраль",
+      "path": "audio/clips/fevral.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "mart",
+      "text": "март",
+      "path": "audio/clips/mart.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "aprel",
+      "text": "апрель",
+      "path": "audio/clips/aprel.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "may",
+      "text": "май",
+      "path": "audio/clips/may.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "iyun",
+      "text": "июнь",
+      "path": "audio/clips/iyun.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "iyul",
+      "text": "июль",
+      "path": "audio/clips/iyul.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "avgust",
+      "text": "август",
+      "path": "audio/clips/avgust.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "sentyabr",
+      "text": "сентябрь",
+      "path": "audio/clips/sentyabr.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "oktyabr",
+      "text": "октябрь",
+      "path": "audio/clips/oktyabr.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "noyabr",
+      "text": "ноябрь",
+      "path": "audio/clips/noyabr.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "dekabr",
+      "text": "декабрь",
+      "path": "audio/clips/dekabr.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "kto",
+      "text": "кто",
+      "path": "audio/clips/kto.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "chto",
+      "text": "что",
+      "path": "audio/clips/chto.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "gde",
+      "text": "где",
+      "path": "audio/clips/gde.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "kogda",
+      "text": "когда",
+      "path": "audio/clips/kogda.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "pochemu",
+      "text": "почему",
+      "path": "audio/clips/pochemu.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "kak",
+      "text": "как",
+      "path": "audio/clips/kak.wav",
+      "rate": "slow"
+    },
+    {
+      "id": "bolshoy",
+      "text": "большой",
+      "path": "audio/clips/bolshoy.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "malenkiy",
+      "text": "маленький",
+      "path": "audio/clips/malenkiy.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "horoshiy",
+      "text": "хороший",
+      "path": "audio/clips/horoshiy.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "plohoy",
+      "text": "плохой",
+      "path": "audio/clips/plohoy.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "novyy",
+      "text": "новый",
+      "path": "audio/clips/novyy.wav",
+      "rate": "medium"
+    },
+    {
+      "id": "staryy",
+      "text": "старый",
+      "path": "audio/clips/staryy.wav",
       "rate": "medium"
     }
   ],
   "byText": {
-    "думать": "..\\audio\\clips\\dumat.wav",
-    "понимать": "..\\audio\\clips\\ponimat.wav",
-    "танцевать": "..\\audio\\clips\\tantsevat.wav",
-    "работать": "..\\audio\\clips\\rabotat.wav",
-    "гулять": "..\\audio\\clips\\gulyat.wav",
-    "завтракать": "..\\audio\\clips\\zavtrakat.wav",
-    "спать": "..\\audio\\clips\\spat.wav",
-    "обедать": "..\\audio\\clips\\obedat.wav",
-    "читать": "..\\audio\\clips\\chitat.wav",
-    "говорить": "..\\audio\\clips\\govorit.wav",
-    "ужинать": "..\\audio\\clips\\uzhinat.wav",
-    "мечтать": "..\\audio\\clips\\mechtat.wav",
-    "мочь": "..\\audio\\clips\\moch.wav",
-    "учиться": "..\\audio\\clips\\uchitsya.wav",
-    "уметь": "..\\audio\\clips\\umet.wav",
-    "делать": "..\\audio\\clips\\delat.wav",
-    "писать": "..\\audio\\clips\\pisat.wav",
-    "знать": "..\\audio\\clips\\znat.wav",
-    "отдыхать": "..\\audio\\clips\\otdyhat.wav",
-    "играть": "..\\audio\\clips\\igrat.wav",
-    "жить": "..\\audio\\clips\\zhit.wav",
-    "рисовать": "..\\audio\\clips\\risovat.wav",
-    "петь": "..\\audio\\clips\\pet.wav",
-    "готовить": "..\\audio\\clips\\gotovit.wav",
-    "слушать": "..\\audio\\clips\\slushat.wav",
-    "смотреть": "..\\audio\\clips\\smotret.wav",
-    "бегать": "..\\audio\\clips\\begat.wav",
-    "плавать": "..\\audio\\clips\\plavat.wav",
-    "путешествовать": "..\\audio\\clips\\puteshestvovat.wav",
-    "любить": "..\\audio\\clips\\lyubit.wav",
-    "хотеть": "..\\audio\\clips\\hotet.wav",
-    "видеть": "..\\audio\\clips\\videt.wav",
-    "слышать": "..\\audio\\clips\\slyshat.wav",
-    "ждать": "..\\audio\\clips\\zhdat.wav",
-    "давать": "..\\audio\\clips\\davat.wav",
-    "брать": "..\\audio\\clips\\brat.wav",
-    "покупать": "..\\audio\\clips\\pokupat.wav",
-    "продавать": "..\\audio\\clips\\prodavat.wav",
-    "вставать": "..\\audio\\clips\\vstavat.wav",
-    "идти": "..\\audio\\clips\\idti.wav",
-    "ехать": "..\\audio\\clips\\ehat.wav",
-    "дом": "..\\audio\\clips\\dom.wav",
-    "книга": "..\\audio\\clips\\kniga.wav",
-    "стол": "..\\audio\\clips\\stol.wav",
-    "машина": "..\\audio\\clips\\mashina.wav",
-    "друг": "..\\audio\\clips\\drug.wav",
-    "школа": "..\\audio\\clips\\shkola.wav",
-    "город": "..\\audio\\clips\\gorod.wav",
-    "вода": "..\\audio\\clips\\voda.wav",
-    "хлеб": "..\\audio\\clips\\hleb.wav",
-    "яблоко": "..\\audio\\clips\\yabloko.wav",
-    "налево": "..\\audio\\clips\\nalevo.wav",
-    "направо": "..\\audio\\clips\\napravo.wav",
-    "вперёд": "..\\audio\\clips\\vperyod.wav",
-    "назад": "..\\audio\\clips\\nazad.wav",
-    "здесь": "..\\audio\\clips\\zdes.wav",
-    "там": "..\\audio\\clips\\tam.wav",
-    "утро": "..\\audio\\clips\\utro.wav",
-    "день": "..\\audio\\clips\\den.wav",
-    "вечер": "..\\audio\\clips\\vecher.wav",
-    "ночь": "..\\audio\\clips\\noch.wav",
-    "кто": "..\\audio\\clips\\kto.wav",
-    "что": "..\\audio\\clips\\chto.wav",
-    "где": "..\\audio\\clips\\gde.wav",
-    "когда": "..\\audio\\clips\\kogda.wav",
-    "почему": "..\\audio\\clips\\pochemu.wav",
-    "как": "..\\audio\\clips\\kak.wav",
-    "большой": "..\\audio\\clips\\bolshoy.wav",
-    "маленький": "..\\audio\\clips\\malenkiy.wav",
-    "хороший": "..\\audio\\clips\\horoshiy.wav",
-    "плохой": "..\\audio\\clips\\plohoy.wav",
-    "новый": "..\\audio\\clips\\novyy.wav",
-    "старый": "..\\audio\\clips\\staryy.wav",
-    "понедельник": "..\\audio\\clips\\ponedelnik.wav",
-    "вторник": "..\\audio\\clips\\vtornik.wav",
-    "среда": "..\\audio\\clips\\sreda.wav",
-    "четверг": "..\\audio\\clips\\chetverg.wav",
-    "пятница": "..\\audio\\clips\\pyatnitsa.wav",
-    "суббота": "..\\audio\\clips\\subbota.wav",
-    "воскресенье": "..\\audio\\clips\\voskresene.wav",
-    "январь": "..\\audio\\clips\\yanvar.wav",
-    "февраль": "..\\audio\\clips\\fevral.wav",
-    "март": "..\\audio\\clips\\mart.wav",
-    "апрель": "..\\audio\\clips\\aprel.wav",
-    "май": "..\\audio\\clips\\may.wav",
-    "июнь": "..\\audio\\clips\\iyun.wav",
-    "июль": "..\\audio\\clips\\iyul.wav",
-    "август": "..\\audio\\clips\\avgust.wav",
-    "сентябрь": "..\\audio\\clips\\sentyabr.wav",
-    "октябрь": "..\\audio\\clips\\oktyabr.wav",
-    "ноябрь": "..\\audio\\clips\\noyabr.wav",
-    "декабрь": "..\\audio\\clips\\dekabr.wav",
-    "транспорт": "..\\audio\\clips\\transport.wav",
-    "автобус": "..\\audio\\clips\\avtobus.wav",
-    "поезд": "..\\audio\\clips\\poezd.wav",
-    "самолёт": "..\\audio\\clips\\samolyot.wav",
-    "метро": "..\\audio\\clips\\metro.wav",
-    "такси": "..\\audio\\clips\\taksi.wav",
-    "велосипед": "..\\audio\\clips\\velosiped.wav",
-    "трамвай": "..\\audio\\clips\\tramvay.wav",
-    "троллейбус": "..\\audio\\clips\\trolleybus.wav",
-    "чай": "..\\audio\\clips\\chay.wav",
-    "кофе": "..\\audio\\clips\\kofe.wav",
-    "молоко": "..\\audio\\clips\\moloko.wav",
-    "мясо": "..\\audio\\clips\\myaso.wav",
-    "рыба": "..\\audio\\clips\\ryba.wav",
-    "суп": "..\\audio\\clips\\sup.wav",
-    "семья": "..\\audio\\clips\\semya.wav",
-    "мама": "..\\audio\\clips\\mama.wav",
-    "папа": "..\\audio\\clips\\papa.wav",
-    "брат": "..\\audio\\clips\\brat.wav",
-    "сестра": "..\\audio\\clips\\sestra.wav"
+    "думать": "audio/clips/dumat.wav",
+    "понимать": "audio/clips/ponimat.wav",
+    "танцевать": "audio/clips/tantsevat.wav",
+    "работать": "audio/clips/rabotat.wav",
+    "гулять": "audio/clips/gulyat.wav",
+    "завтракать": "audio/clips/zavtrakat.wav",
+    "спать": "audio/clips/spat.wav",
+    "обедать": "audio/clips/obedat.wav",
+    "читать": "audio/clips/chitat.wav",
+    "говорить": "audio/clips/govorit.wav",
+    "ужинать": "audio/clips/uzhinat.wav",
+    "мечтать": "audio/clips/mechtat.wav",
+    "мочь": "audio/clips/moch.wav",
+    "учиться": "audio/clips/uchitsya.wav",
+    "уметь": "audio/clips/umet.wav",
+    "делать": "audio/clips/delat.wav",
+    "писать": "audio/clips/pisat.wav",
+    "знать": "audio/clips/znat.wav",
+    "отдыхать": "audio/clips/otdyhat.wav",
+    "играть": "audio/clips/igrat.wav",
+    "жить": "audio/clips/zhit.wav",
+    "рисовать": "audio/clips/risovat.wav",
+    "петь": "audio/clips/pet.wav",
+    "готовить": "audio/clips/gotovit.wav",
+    "слушать": "audio/clips/slushat.wav",
+    "смотреть": "audio/clips/smotret.wav",
+    "бегать": "audio/clips/begat.wav",
+    "плавать": "audio/clips/plavat.wav",
+    "путешествовать": "audio/clips/puteshestvovat.wav",
+    "любить": "audio/clips/lyubit.wav",
+    "хотеть": "audio/clips/hotet.wav",
+    "видеть": "audio/clips/videt.wav",
+    "слышать": "audio/clips/slyshat.wav",
+    "ждать": "audio/clips/zhdat.wav",
+    "давать": "audio/clips/davat.wav",
+    "брать": "audio/clips/brat.wav",
+    "покупать": "audio/clips/pokupat.wav",
+    "продавать": "audio/clips/prodavat.wav",
+    "вставать": "audio/clips/vstavat.wav",
+    "идти": "audio/clips/idti.wav",
+    "ехать": "audio/clips/ehat.wav",
+    "дом": "audio/clips/dom.wav",
+    "книга": "audio/clips/kniga.wav",
+    "стол": "audio/clips/stol.wav",
+    "машина": "audio/clips/mashina.wav",
+    "друг": "audio/clips/drug.wav",
+    "школа": "audio/clips/shkola.wav",
+    "город": "audio/clips/gorod.wav",
+    "вода": "audio/clips/voda.wav",
+    "хлеб": "audio/clips/hleb.wav",
+    "яблоко": "audio/clips/yabloko.wav",
+    "транспорт": "audio/clips/transport.wav",
+    "автобус": "audio/clips/avtobus.wav",
+    "поезд": "audio/clips/poezd.wav",
+    "самолёт": "audio/clips/samolyot.wav",
+    "метро": "audio/clips/metro.wav",
+    "такси": "audio/clips/taksi.wav",
+    "велосипед": "audio/clips/velosiped.wav",
+    "трамвай": "audio/clips/tramvay.wav",
+    "троллейбус": "audio/clips/trolleybus.wav",
+    "чай": "audio/clips/chay.wav",
+    "кофе": "audio/clips/kofe.wav",
+    "молоко": "audio/clips/moloko.wav",
+    "мясо": "audio/clips/myaso.wav",
+    "рыба": "audio/clips/ryba.wav",
+    "суп": "audio/clips/sup.wav",
+    "семья": "audio/clips/semya.wav",
+    "мама": "audio/clips/mama.wav",
+    "папа": "audio/clips/papa.wav",
+    "брат": "audio/clips/brat.wav",
+    "сестра": "audio/clips/sestra.wav",
+    "налево": "audio/clips/nalevo.wav",
+    "направо": "audio/clips/napravo.wav",
+    "вперёд": "audio/clips/vperyod.wav",
+    "назад": "audio/clips/nazad.wav",
+    "здесь": "audio/clips/zdes.wav",
+    "там": "audio/clips/tam.wav",
+    "утро": "audio/clips/utro.wav",
+    "день": "audio/clips/den.wav",
+    "вечер": "audio/clips/vecher.wav",
+    "ночь": "audio/clips/noch.wav",
+    "понедельник": "audio/clips/ponedelnik.wav",
+    "вторник": "audio/clips/vtornik.wav",
+    "среда": "audio/clips/sreda.wav",
+    "четверг": "audio/clips/chetverg.wav",
+    "пятница": "audio/clips/pyatnitsa.wav",
+    "суббота": "audio/clips/subbota.wav",
+    "воскресенье": "audio/clips/voskresene.wav",
+    "январь": "audio/clips/yanvar.wav",
+    "февраль": "audio/clips/fevral.wav",
+    "март": "audio/clips/mart.wav",
+    "апрель": "audio/clips/aprel.wav",
+    "май": "audio/clips/may.wav",
+    "июнь": "audio/clips/iyun.wav",
+    "июль": "audio/clips/iyul.wav",
+    "август": "audio/clips/avgust.wav",
+    "сентябрь": "audio/clips/sentyabr.wav",
+    "октябрь": "audio/clips/oktyabr.wav",
+    "ноябрь": "audio/clips/noyabr.wav",
+    "декабрь": "audio/clips/dekabr.wav",
+    "кто": "audio/clips/kto.wav",
+    "что": "audio/clips/chto.wav",
+    "где": "audio/clips/gde.wav",
+    "когда": "audio/clips/kogda.wav",
+    "почему": "audio/clips/pochemu.wav",
+    "как": "audio/clips/kak.wav",
+    "большой": "audio/clips/bolshoy.wav",
+    "маленький": "audio/clips/malenkiy.wav",
+    "хороший": "audio/clips/horoshiy.wav",
+    "плохой": "audio/clips/plohoy.wav",
+    "новый": "audio/clips/novyy.wav",
+    "старый": "audio/clips/staryy.wav"
   }
 }
