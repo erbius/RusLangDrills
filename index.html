@@ -284,183 +284,76 @@
 <body>
   <div class="app">
     <header>
-      <h1>Russian Drills</h1>
+      <h1></h1>
       <div class="controls">
-        <select id="quiz-type" aria-label="Quiz type">
-          <option value="vocabulary">Vocabulary</option>		
-          <option value="pronouns">Verb conjugations</option>
-          <option value="numbers">Numbers 0–20</option>
-        </select>
-        <button id="next-btn" type="button">New Question</button>
-        <button id="reset-btn" type="button">Reset Tally</button>
+        <select id="quiz-type"></select>
+        <button id="next-btn" type="button"></button>
+        <button id="reset-btn" type="button"></button>
       </div>
     </header>
 
     <div class="prompt-wrap">
-      <div id="prompt" class="prompt" role="status" aria-live="polite">Loading…</div>
+      <div id="prompt" class="prompt" role="status" aria-live="polite"></div>
     </div>
-    <div id="options" class="options" role="group" aria-label="Answer choices"></div>
+    <div id="options" class="options" role="group"></div>
     <div class="last-result">
-      <div class="audio-controls" aria-label="Audio controls">
-        <button id="mute-btn" class="play-btn" type="button" aria-pressed="false" aria-label="Toggle audio mute" title="Toggle audio mute"><span class="icon">🔇</span></button>
-        <button id="play-audio-btn" class="play-btn" type="button" aria-label="Play pronunciation" title="Play pronunciation"><span class="icon">▶</span></button>
-        <button id="replay-audio-btn" class="play-btn" type="button" aria-label="Replay pronunciation" title="Replay pronunciation"><span class="icon">↺</span></button>
-        <button id="speed-btn" class="play-btn speed-btn" type="button" aria-pressed="false" aria-label="Toggle slower audio" title="Toggle slower audio"><span class="icon">0.8×</span></button>
+      <div class="audio-controls">
+        <button id="mute-btn" class="play-btn" type="button" aria-pressed="false"><span class="icon">🔇</span></button>
+        <button id="play-audio-btn" class="play-btn" type="button"><span class="icon">▶</span></button>
+        <button id="replay-audio-btn" class="play-btn" type="button"><span class="icon">↺</span></button>
+        <button id="speed-btn" class="play-btn speed-btn" type="button" aria-pressed="false"><span class="icon">0.8×</span></button>
       </div>
-      <div id="last-result" class="sr-only" aria-live="polite">—</div>
+      <div id="last-result" class="sr-only" aria-live="polite"></div>
     </div>
 
-    <div class="tally" aria-label="Progress tally">
-      <div><span class="label">Correct</span><span class="value" id="correct">0</span></div>
-      <div><span class="label">Incorrect</span><span class="value" id="incorrect">0</span></div>
-      <div><span class="label">Attempts</span><span class="value" id="attempts">0</span></div>
+    <div class="tally">
+      <div><span class="label"></span><span class="value" id="correct">0</span></div>
+      <div><span class="label"></span><span class="value" id="incorrect">0</span></div>
+      <div><span class="label"></span><span class="value" id="attempts">0</span></div>
     </div>
 
-    <div id="build-stamp" class="build-stamp" aria-live="polite">Last updated: loading...</div>
+    <div id="build-stamp" class="build-stamp" aria-live="polite"></div>
   </div>
 
   <div id="reset-modal" class="modal-backdrop" hidden>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="reset-modal-title" aria-describedby="reset-modal-text">
-      <h2 id="reset-modal-title">Reset tally?</h2>
-      <p id="reset-modal-text">This clears the stored correct, incorrect, and attempts counts.</p>
+      <h2 id="reset-modal-title"></h2>
+      <p id="reset-modal-text"></p>
       <div class="modal-actions">
-        <button id="reset-cancel-btn" type="button">Cancel</button>
-        <button id="reset-confirm-btn" class="danger-btn" type="button">Reset</button>
+        <button id="reset-cancel-btn" type="button"></button>
+        <button id="reset-confirm-btn" class="danger-btn" type="button"></button>
       </div>
     </div>
   </div>
 
 <script>
-    // Russian verbs and pronouns data model
-    const verbs = {
-      "думать":{ infinitive: "думать", conjugations: { ya: "думаю", ty: "думаешь", on: "думает", my: "думаем", vy: "думаете", oni: "думают" }},
-      "отдыхать":{ infinitive: "отдыхать", conjugations: { ya: "отдыхаю", ty: "отдыхаешь", on: "отдыхает", my: "отдыхаем", vy: "отдыхаете", oni: "отдыхают" }},
-      "гулять":{ infinitive: "гулять", conjugations: { ya: "гуляю", ty: "гуляешь", on: "гуляет", my: "гуляем", vy: "гуляете", oni: "гуляют" }},
-      "уметь":{ infinitive: "уметь", conjugations: { ya: "умею", ty: "умеешь", on: "умеет", my: "умеем", vy: "умеете", oni: "умеют" }},
-      "читать":{ infinitive: "читать", conjugations: { ya: "читаю", ty: "читаешь", on: "читает", my: "читаем", vy: "читаете", oni: "читают" }},
-      "работать":{ infinitive: "работать", conjugations: { ya: "работаю", ty: "работаешь", on: "работает", my: "работаем", vy: "работаете", oni: "работают" }},
-      "говорить":{ infinitive: "говорить", conjugations: { ya: "говорю", ty: "говоришь", on: "говорит", my: "говорим", vy: "говорите", oni: "говорят" }},
-      "ужинать":{ infinitive: "ужинать", conjugations: { ya: "ужинаю", ty: "ужинаешь", on: "ужинает", my: "ужинаем", vy: "ужинаете", oni: "ужинают" }},
-      "мечтать":{ infinitive: "мечтать", conjugations: { ya: "мечтаю", ty: "мечтаешь", on: "мечтает", my: "мечтаем", vy: "мечтаете", oni: "мечтают" }},
-      "знать":{ infinitive: "знать", conjugations: { ya: "знаю", ty: "знаешь", on: "знает", my: "знаем", vy: "знаете", oni: "знают" }},
-      "жить":{ infinitive: "жить", conjugations: { ya: "живу", ty: "живёшь", on: "живёт", my: "живём", vy: "живёте", oni: "живут" }},
-      "понимать":{ infinitive: "понимать", conjugations: { ya: "понимаю", ty: "понимаешь", on: "понимает", my: "понимаем", vy: "понимаете", oni: "понимают" }},
-      "писать":{ infinitive: "писать", conjugations: { ya: "пишу", ty: "пишешь", on: "пишет", my: "пишем", vy: "пишете", oni: "пишут" }},
-      "играть":{ infinitive: "играть", conjugations: { ya: "играю", ty: "играешь", on: "играет", my: "играем", vy: "играете", oni: "играют" }},
-      "учиться":{ infinitive: "учиться", conjugations: { ya: "учусь", ty: "учишься", on: "учится", my: "учимся", vy: "учитесь", oni: "учатся" }},
-      "мочь":{ infinitive: "мочь", conjugations: { ya: "могу", ty: "можешь", on: "может", my: "можем", vy: "можете", oni: "могут" }},
-      "делать":{ infinitive: "делать", conjugations: { ya: "делаю", ty: "делаешь", on: "делает", my: "делаем", vy: "делаете", oni: "делают" }},
-      "обедать":{ infinitive: "обедать", conjugations: { ya: "обедаю", ty: "обедаешь", on: "обедает", my: "обедаем", vy: "обедаете", oni: "обедают" }},
-      "танцевать":{ infinitive: "танцевать", conjugations: { ya: "танцую", ty: "танцуешь", on: "танцует", my: "танцуем", vy: "танцуете", oni: "танцуют" }},
-      "завтракать":{ infinitive: "завтракать", conjugations: { ya: "завтракаю", ty: "завтракаешь", on: "завтракает", my: "завтракаем", vy: "завтракаете", oni: "завтракают" }},
-      "спать":{ infinitive: "спать", conjugations: { ya: "сплю", ty: "спишь", on: "спит", my: "спим", vy: "спите", oni: "спят" }},
-      // New Verbs
-      "рисовать":{ infinitive: "рисовать", conjugations: { ya: "рисую", ty: "рисуешь", on: "рисует", my: "рисуем", vy: "рисуете", oni: "рисуют" }},
-      "петь":{ infinitive: "петь", conjugations: { ya: "пою", ty: "поёшь", on: "поёт", my: "поём", vy: "поёте", oni: "поют" }},
-      "готовить":{ infinitive: "готовить", conjugations: { ya: "готовлю", ty: "готовишь", on: "готовит", my: "готовим", vy: "готовите", oni: "готовят" }},
-      "слушать":{ infinitive: "слушать", conjugations: { ya: "слушаю", ty: "слушаешь", on: "слушает", my: "слушаем", vy: "слушаете", oni: "слушают" }},
-      "смотреть":{ infinitive: "смотреть", conjugations: { ya: "смотрю", ty: "смотришь", on: "смотрит", my: "смотрим", vy: "смотрите", oni: "смотрят" }},
-      "бегать":{ infinitive: "бегать", conjugations: { ya: "бегаю", ty: "бегаешь", on: "бегает", my: "бегаем", vy: "бегаете", oni: "бегают" }},
-      "плавать":{ infinitive: "плавать", conjugations: { ya: "плаваю", ty: "плаваешь", on: "плавает", my: "плаваем", vy: "плаваете", oni: "плавают" }},
-      "путешествовать":{ infinitive: "путешествовать", conjugations: { ya: "путешествую", ty: "путешествуешь", on: "путешествует", my: "путешествуем", vy: "путешествуете", oni: "путешествуют" }},
-      "любить":{ infinitive: "любить", conjugations: { ya: "люблю", ty: "любишь", on: "любит", my: "любим", vy: "любите", oni: "любят" }},
-      "хотеть":{ infinitive: "хотеть", conjugations: { ya: "хочу", ty: "хочешь", on: "хочет", my: "хотим", vy: "хотите", oni: "хотят" }},
-      "видеть":{ infinitive: "видеть", conjugations: { ya: "вижу", ty: "видишь", on: "видит", my: "видим", vy: "видите", oni: "видят" }},
-      "слышать":{ infinitive: "слышать", conjugations: { ya: "слышу", ty: "слышишь", on: "слышит", my: "слышим", vy: "слышите", oni: "слышат" }},
-      "ждать":{ infinitive: "ждать", conjugations: { ya: "жду", ty: "ждёшь", on: "ждёт", my: "ждём", vy: "ждёте", oni: "ждут" }},
-      "давать":{ infinitive: "давать", conjugations: { ya: "даю", ty: "даёшь", on: "даёт", my: "даём", vy: "даёте", oni: "дают" }},
-      "брать":{ infinitive: "брать", conjugations: { ya: "беру", ty: "берёшь", on: "берёт", my: "берём", vy: "берёте", oni: "берут" }},
-      "покупать":{ infinitive: "покупать", conjugations: { ya: "покупаю", ty: "покупаешь", on: "покупает", my: "покупаем", vy: "покупаете", oni: "покупают" }},
-      "продавать":{ infinitive: "продавать", conjugations: { ya: "продаю", ty: "продаёшь", on: "продаёт", my: "продаём", vy: "продаёте", oni: "продают" }},
-      "вставать":{ infinitive: "вставать", conjugations: { ya: "встаю", ty: "встаёшь", on: "встаёт", my: "встаём", vy: "встаёте", oni: "встают" }},
-      "идти":{ infinitive: "идти", conjugations: { ya: "иду", ty: "идёшь", on: "идёт", my: "идём", vy: "идёте", oni: "идут" }},
-      "ехать":{ infinitive: "ехать", conjugations: { ya: "еду", ty: "едешь", on: "едет", my: "едем", vy: "едете", oni: "едут" }}
-    };
+    let verbs = {};
+    let pronouns = {};
+    let numbers = {};
+    let vocabulary = [];
+    let verbGloss = {};
+    let config = {};
+    let ui = {};
 
-    const pronouns = {
-      ya: { translit: "Ya", cyr: "Я" }, ty: { translit: "Ty", cyr: "Ты" }, on: { translit: "On", cyr: "Он" },
-      ona: { translit: "Ona", cyr: "Она" }, ono: { translit: "Ono", cyr: "Оно" }, my: { translit: "My", cyr: "Мы" },
-      vy: { translit: "Vy", cyr: "Вы" }, oni:{ translit: "Oni", cyr: "Они" }
-    };
+    async function loadDataFromJSON(){
+      try{
+        const response = await fetch('data.json', { cache: 'no-store' });
+        if(!response.ok) throw new Error(`Failed to load data: ${response.status}`);
+        const data = await response.json();
+        verbs = data.verbs || {};
+        pronouns = data.pronouns || {};
+        numbers = data.numbers || {};
+        vocabulary = data.vocabulary || [];
+        verbGloss = data.verbGloss || {};
+        config = data.config || {};
+        ui = data.ui || {};
+      }catch(e){
+        console.error('Failed to load data.json:', e);
+        throw e;
+      }
+    }
 
-    const numbers = {
-      0: 'ноль', 1: 'один', 2: 'два', 3: 'три', 4: 'четыре', 5: 'пять', 6: 'шесть', 7: 'семь',
-      8: 'восемь', 9: 'девять', 10: 'десять', 11: 'одиннадцать', 12: 'двенадцать', 13: 'тринадцать',
-      14: 'четырнадцать', 15: 'пятнадцать', 16: 'шестнадцать', 17: 'семнадцать', 18: 'восемнадцать',
-      19: 'девятнадцать', 20: 'двадцать'
-    };
-
-    const vocabulary = [
-      // Original Verbs
-      { ru: 'Думать', en: 'To think' }, { ru: 'Понимать', en: 'To understand' }, { ru: 'Танцевать', en: 'To dance' },
-      { ru: 'Работать', en: 'To work' }, { ru: 'Гулять', en: 'To go for a walk' }, { ru: 'Завтракать', en: 'To have breakfast' },
-      { ru: 'Спать', en: 'To sleep' }, { ru: 'Обедать', en: 'To have lunch' }, { ru: 'Читать', en: 'To read' },
-      { ru: 'Говорить', en: 'To speak' }, { ru: 'Ужинать', en: 'To have dinner' }, { ru: 'Мечтать', en: 'To dream about' },
-      { ru: 'Мочь', en: 'To be able to / can' }, { ru: 'Учиться', en: 'To study' }, { ru: 'Уметь', en: 'To know how to do something' },
-      { ru: 'Делать', en: 'To do' }, { ru: 'Писать', en: 'To write' }, { ru: 'Знать', en: 'To know' },
-      { ru: 'Отдыхать', en: 'To relax, to rest' }, { ru: 'Играть', en: 'To play' }, { ru: 'Жить', en: 'To live' },
-      // New Verbs (Activities & Essentials)
-      { ru: 'Рисовать', en: 'To draw' }, { ru: 'Петь', en: 'To sing' }, { ru: 'Готовить', en: 'To cook' },
-      { ru: 'Слушать', en: 'To listen' }, { ru: 'Смотреть', en: 'To watch / to look' }, { ru: 'Бегать', en: 'To run' },
-      { ru: 'Плавать', en: 'To swim' }, { ru: 'Путешествовать', en: 'To travel' }, { ru: 'Любить', en: 'To love / to like' },
-      { ru: 'Хотеть', en: 'To want' }, { ru: 'Видеть', en: 'To see' }, { ru: 'Слышать', en: 'To hear' },
-      { ru: 'Ждать', en: 'To wait' }, { ru: 'Давать', en: 'To give' }, { ru: 'Брать', en: 'To take' },
-      { ru: 'Покупать', en: 'To buy' }, { ru: 'Продавать', en: 'To sell' }, { ru: 'Вставать', en: 'To get up' },
-      { ru: 'Идти', en: 'To go (on foot)' }, { ru: 'Ехать', en: 'To go (by transport)' },
-      
-      // Common nouns
-      { ru: 'Дом', en: 'House' }, { ru: 'Книга', en: 'Book' }, { ru: 'Стол', en: 'Table' }, { ru: 'Машина', en: 'Car' },
-      { ru: 'Друг', en: 'Friend' }, { ru: 'Школа', en: 'School' }, { ru: 'Город', en: 'City' }, { ru: 'Вода', en: 'Water' },
-      { ru: 'Хлеб', en: 'Bread' }, { ru: 'Яблоко', en: 'Apple' },
-      // New Nouns (Transport, Food, Family)
-      { ru: 'Транспорт', en: 'Transport' }, { ru: 'Автобус', en: 'Bus' }, { ru: 'Поезд', en: 'Train' },
-      { ru: 'Самолёт', en: 'Airplane' }, { ru: 'Метро', en: 'Metro / Subway' }, { ru: 'Такси', en: 'Taxi' },
-      { ru: 'Велосипед', en: 'Bicycle' }, { ru: 'Трамвай', en: 'Tram' }, { ru: 'Троллейбус', en: 'Trolleybus' },
-      { ru: 'Чай', en: 'Tea' }, { ru: 'Кофе', en: 'Coffee' }, { ru: 'Молоко', en: 'Milk' }, { ru: 'Мясо', en: 'Meat' },
-      { ru: 'Рыба', en: 'Fish' }, { ru: 'Суп', en: 'Soup' }, { ru: 'Семья', en: 'Family' }, { ru: 'Мама', en: 'Mom' },
-      { ru: 'Папа', en: 'Dad' }, { ru: 'Брат', en: 'Brother' }, { ru: 'Сестра', en: 'Sister' },
-
-      // Directions / position
-      { ru: 'Налево', en: 'Left' }, { ru: 'Направо', en: 'Right' }, { ru: 'Вперёд', en: 'Forward' },
-      { ru: 'Назад', en: 'Back' }, { ru: 'Здесь', en: 'Here' }, { ru: 'Там', en: 'There' },
-
-      // Times of day
-      { ru: 'Утро', en: 'Morning' }, { ru: 'День', en: 'Day / Afternoon' }, { ru: 'Вечер', en: 'Evening' }, { ru: 'Ночь', en: 'Night' },
-      // New Time (Days & Months)
-      { ru: 'Понедельник', en: 'Monday' }, { ru: 'Вторник', en: 'Tuesday' }, { ru: 'Среда', en: 'Wednesday' },
-      { ru: 'Четверг', en: 'Thursday' }, { ru: 'Пятница', en: 'Friday' }, { ru: 'Суббота', en: 'Saturday' },
-      { ru: 'Воскресенье', en: 'Sunday' }, { ru: 'Январь', en: 'January' }, { ru: 'Февраль', en: 'February' },
-      { ru: 'Март', en: 'March' }, { ru: 'Апрель', en: 'April' }, { ru: 'Май', en: 'May' }, { ru: 'Июнь', en: 'June' },
-      { ru: 'Июль', en: 'July' }, { ru: 'Август', en: 'August' }, { ru: 'Сентябрь', en: 'September' },
-      { ru: 'Октябрь', en: 'October' }, { ru: 'Ноябрь', en: 'November' }, { ru: 'Декабрь', en: 'December' },
-
-      // Question words
-      { ru: 'Кто', en: 'Who' }, { ru: 'Что', en: 'What' }, { ru: 'Где', en: 'Where' },
-      { ru: 'Когда', en: 'When' }, { ru: 'Почему', en: 'Why' }, { ru: 'Как', en: 'How' },
-
-      // Common adjectives
-      { ru: 'Большой', en: 'Big' }, { ru: 'Маленький', en: 'Small' }, { ru: 'Хороший', en: 'Good' },
-      { ru: 'Плохой', en: 'Bad' }, { ru: 'Новый', en: 'New' }, { ru: 'Старый', en: 'Old' }
-    ];
-
-    const verbGloss = {
-      думать: 'To think', отдыхать: 'To relax, to rest', гулять: 'To go for a walk', уметь: 'To know how to do something',
-      читать: 'To read', работать: 'To work', говорить: 'To speak', ужинать: 'To have dinner', мечтать: 'To dream about',
-      знать: 'To know', жить: 'To live', понимать: 'To understand', писать: 'To write', играть: 'To play',
-      учиться: 'To study', мочь: 'To be able to / can', делать: 'To do', обедать: 'To have lunch', танцевать: 'To dance',
-      завтракать: 'To have breakfast', спать: 'To sleep', рисовать: 'To draw', петь: 'To sing', готовить: 'To cook',
-      слушать: 'To listen', смотреть: 'To watch / to look', бегать: 'To run', плавать: 'To swim', путешествовать: 'To travel',
-      любить: 'To love / to like', хотеть: 'To want', видеть: 'To see', слышать: 'To hear', ждать: 'To wait',
-      давать: 'To give', брать: 'To take', покупать: 'To buy', продавать: 'To sell', вставать: 'To get up',
-      идти: 'To go (on foot)', ехать: 'To go (by transport)'
-    };
-
-    const STORAGE_KEY = 'russian-conj-tally-v1';
-    const QUESTION_STATS_KEY = 'russian-conj-question-stats-v1';
-    const AUDIO_MUTE_KEY = 'russian-drills-audio-muted-v1';
-    const AUDIO_SLOW_KEY = 'russian-drills-audio-slow-v1';
-    const AUDIO_MANIFEST_URL = 'audio/manifest.json';
-    const APP_LAST_UPDATED = '2026-06-27';
+    let STORAGE_KEY, QUESTION_STATS_KEY, AUDIO_MUTE_KEY, AUDIO_SLOW_KEY, AUDIO_MANIFEST_URL, APP_LAST_UPDATED;
     
     let tally = { correct:0, incorrect:0, attempts:0 };
     let questionStats = {};
@@ -510,8 +403,6 @@
 
     function saveState(){
       try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tally)); }catch(e){ console.warn('Failed to save state', e); }
-      
-      // Prune question stats if it gets too large to prevent localStorage bloat
       const keys = Object.keys(questionStats);
       if (keys.length > 500) {
         keys.slice(0, 250).forEach(k => delete questionStats[k]); 
@@ -526,7 +417,7 @@
 
     function openResetModal(){ resetModalReturnFocus = document.activeElement; resetModalEl.hidden = false; resetConfirmBtn.focus(); }
     function closeResetModal(){ resetModalEl.hidden = true; if(resetModalReturnFocus && typeof resetModalReturnFocus.focus === 'function'){ resetModalReturnFocus.focus(); } }
-    function confirmReset(){ resetState(); lastResultEl.textContent = '—'; closeResetModal(); }
+    function confirmReset(){ resetState(); lastResultEl.textContent = ui.messages.defaultResult; closeResetModal(); }
 
     function getQuestionStat(key){
       const stat = questionStats[key];
@@ -563,9 +454,6 @@
     function buildPrompt(pronounKey, verbKey){ const pron = pronouns[pronounKey].cyr; return `${pron} — ${verbKey}`; }
     function pronounToConjKey(pronKey){ if(pronKey === 'ona' || pronKey === 'ono') return 'on'; return pronKey; }
 
-    // Pre-compute unique verb forms to prevent infinite loops in option generation
-    const allUniqueVerbForms = Array.from(new Set([].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)))));
-
     function makeOptions(correctForm, verbKey, optionCount = 4){
       const opts = new Set(); opts.add(correctForm);
       const sameVerbForms = Object.values(verbs[verbKey].conjugations).filter(f=>f!==correctForm); shuffle(sameVerbForms);
@@ -577,7 +465,7 @@
       while(opts.size<optionCount && sameVerbForms.length>0) opts.add(sameVerbForms.shift());
       while(opts.size<optionCount && otherForms.length>0) opts.add(otherForms.shift());
       
-      // Safe fallback loop using pre-shuffled unique forms
+      const allUniqueVerbForms = Array.from(new Set([].concat(...Object.keys(verbs).map(k=>Object.values(verbs[k].conjugations)))));
       const fallbackForms = [...allUniqueVerbForms];
       shuffle(fallbackForms);
       let idx = 0;
@@ -588,14 +476,17 @@
       return shuffle(Array.from(opts));
     }
 
-    const conjugationToInfinitive = Object.values(verbs).reduce((acc, verb) => {
-      for (const form of Object.values(verb.conjugations)) { acc[form.toLowerCase()] = verb.infinitive; }
-      return acc;
-    }, {});
+    function getConjugationToInfinitive() {
+      return Object.values(verbs).reduce((acc, verb) => {
+        for (const form of Object.values(verb.conjugations)) { acc[form.toLowerCase()] = verb.infinitive; }
+        return acc;
+      }, {});
+    }
 
     function sanitizeVocabAnswer(ruWord) {
       const cleaned = ruWord.trim().replace(/^(Я|Ты|Он|Она|Оно|Мы|Вы|Они)\s+/i, '').replace(/[.,!?;:]+$/g, '').trim();
       const lowered = cleaned.toLowerCase();
+      const conjugationToInfinitive = getConjugationToInfinitive();
       return conjugationToInfinitive[lowered] || lowered;
     }
 
@@ -618,8 +509,8 @@
       if(muteBtn){
         muteBtn.innerHTML = `<span class="icon">${audioMuted ? '🔇' : '🔊'}</span>`;
         muteBtn.setAttribute('aria-pressed', String(!audioMuted));
-        muteBtn.setAttribute('aria-label', audioMuted ? 'Unmute audio' : 'Mute audio');
-        muteBtn.setAttribute('title', audioMuted ? 'Unmute audio' : 'Mute audio');
+        muteBtn.setAttribute('aria-label', audioMuted ? ui.labels.unmuteAudio : ui.labels.muteAudio);
+        muteBtn.setAttribute('title', audioMuted ? ui.labels.unmuteAudio : ui.labels.muteAudio);
       }
       if(audioMuted){
         audioPlayer.pause();
@@ -638,8 +529,8 @@
       if(speedBtn){
         speedBtn.innerHTML = `<span class="icon">${audioSlow ? '½×' : '1×'}</span>`;
         speedBtn.setAttribute('aria-pressed', String(audioSlow));
-        speedBtn.setAttribute('aria-label', audioSlow ? 'Use normal playback speed' : 'Use slower playback speed');
-        speedBtn.setAttribute('title', audioSlow ? 'Slow playback enabled' : 'Normal playback');
+        speedBtn.setAttribute('aria-label', audioSlow ? ui.labels.normalSpeed : ui.labels.slowerSpeed);
+        speedBtn.setAttribute('title', audioSlow ? ui.labels.slowPlaybackEnabled : ui.labels.normalPlayback);
       }
       audioPlayer.playbackRate = getPlaybackRate();
       if(persist){
@@ -665,26 +556,27 @@
       audioPlayer.play().catch(() => {});
     }
 
-    const normalizedVocabulary = vocabulary
-      .map((item) => {
-        const normalizedRu = sanitizeVocabAnswer(item.ru);
-        if (!normalizedRu) return null;
-        return { ru: toDisplayCase(normalizedRu), en: item.en };
-      })
-      .filter(Boolean);
+    function getVocabularyPool(){
+      const normalizedVocabulary = vocabulary
+        .map((item) => {
+          const normalizedRu = sanitizeVocabAnswer(item.ru);
+          if (!normalizedRu) return null;
+          return { ru: toDisplayCase(normalizedRu), en: item.en };
+        })
+        .filter(Boolean);
 
-    const fallbackVocabulary = Object.entries(verbGloss).map(([infinitive, en]) => ({ ru: toDisplayCase(infinitive), en }));
-    const vocabularyPool = normalizedVocabulary.length >= 4 ? normalizedVocabulary : fallbackVocabulary;
+      const fallbackVocabulary = Object.entries(verbGloss).map(([infinitive, en]) => ({ ru: toDisplayCase(infinitive), en }));
+      return normalizedVocabulary.length >= 4 ? normalizedVocabulary : fallbackVocabulary;
+    }
 
     let currentAnswer = null;
     
     function showQuestion(focus=true){
-      // Stop any currently playing audio to prevent overlap
       audioPlayer.pause();
       audioPlayer.currentTime = 0;
 
       optionsEl.innerHTML = '';
-      lastResultEl.textContent = '—';
+      lastResultEl.textContent = ui.messages.defaultResult;
       const mode = quizType?.value || 'pronouns';
 
       if(mode === 'numbers'){
@@ -711,7 +603,8 @@
           optionsEl.appendChild(btn);
         }
       } else if(mode === 'vocabulary'){
-        const vocabItems = vocabularyPool.map(v => ({ key: `vocabulary:${v.ru.toLowerCase()}`, item: v }));
+        const vocabPool = getVocabularyPool();
+        const vocabItems = vocabPool.map(v => ({ key: `vocabulary:${v.ru.toLowerCase()}`, item: v }));
         const chosenItem = pickWeightedQuestion(vocabItems, lastQuestionKey);
         const rawItem = chosenItem.item;
         currentAnswer = { mode:'vocabulary', en:rawItem.en, correctForm:rawItem.ru, questionKey: chosenItem.key };
@@ -721,7 +614,7 @@
         promptEl.setAttribute('aria-live','polite');
 
         const opts = new Set([rawItem.ru]);
-        const otherRussian = shuffle(vocabularyPool.filter(v=>v.en !== rawItem.en).map(v=>v.ru));
+        const otherRussian = shuffle(vocabPool.filter(v=>v.en !== rawItem.en).map(v=>v.ru));
         for(const rw of otherRussian){ opts.add(rw); if(opts.size >= 4) break; }
         const options = shuffle(Array.from(opts));
 
@@ -773,12 +666,12 @@
       const fallbackPronounAudio = currentAnswer.mode === 'pronouns' ? currentAnswer.verbKey : null;
       const playbackText = getAudioPathForText(correct) ? correct : (fallbackPronounAudio || correct);
       
-      if(isCorrect){ button.classList.add('correct'); tally.correct += 1; lastResultEl.textContent = 'Correct ✓'; }
+      if(isCorrect){ button.classList.add('correct'); tally.correct += 1; lastResultEl.textContent = ui.messages.correctResult; }
       else {
         button.classList.add('wrong');
         const correctBtn = all.find(b=>b.getAttribute('data-form')===correct);
         if(correctBtn) correctBtn.classList.add('correct');
-        tally.incorrect += 1; lastResultEl.textContent = 'Incorrect ✗';
+        tally.incorrect += 1; lastResultEl.textContent = ui.messages.incorrectResult;
       }
       
       playAudioForText(playbackText);
@@ -815,18 +708,59 @@
       if(event.key === 'Escape' && !resetModalEl.hidden){ closeResetModal(); }
     });
 
-    (function init(){
-      loadState();
-      loadAudioManifest();
-      const storedMute = localStorage.getItem(AUDIO_MUTE_KEY);
-      setMuteState(storedMute === null ? true : storedMute === 'true', false);
-      const storedSlow = localStorage.getItem(AUDIO_SLOW_KEY);
-      setSlowState(storedSlow === null ? true : storedSlow === 'true', false);
-      renderTally();
-      if(buildStampEl) buildStampEl.textContent = `Last updated: ${APP_LAST_UPDATED}`;
-      setTimeout(()=> showQuestion(true), 120);
+    function populateUI(){
+      STORAGE_KEY = config.storageKey;
+      QUESTION_STATS_KEY = config.questionStatsKey;
+      AUDIO_MUTE_KEY = config.audioMuteKey;
+      AUDIO_SLOW_KEY = config.audioSlowKey;
+      AUDIO_MANIFEST_URL = config.audioManifestUrl;
+      APP_LAST_UPDATED = config.appLastUpdated;
+      document.querySelector('h1').textContent = ui.appTitle;
+      nextBtn.textContent = ui.buttons.nextQuestion;
+      resetBtn.textContent = ui.buttons.resetTally;
+      resetCancelBtn.textContent = ui.buttons.cancel;
+      resetConfirmBtn.textContent = ui.buttons.reset;
+      quizType.innerHTML = '';
+      quizType.setAttribute('aria-label', ui.labels.quizType);
+      ui.quizTypes.forEach(qt => {
+        const opt = document.createElement('option');
+        opt.value = qt.value;
+        opt.textContent = qt.label;
+        quizType.appendChild(opt);
+      });
+      const tallyLabels = document.querySelectorAll('.tally .label');
+      if(tallyLabels[0]) tallyLabels[0].textContent = ui.labels.correct;
+      if(tallyLabels[1]) tallyLabels[1].textContent = ui.labels.incorrect;
+      if(tallyLabels[2]) tallyLabels[2].textContent = ui.labels.attempts;
+      document.getElementById('reset-modal-title').textContent = ui.modal.resetTitle;
+      document.getElementById('reset-modal-text').textContent = ui.modal.resetText;
+      optionsEl.setAttribute('aria-label', ui.labels.answerChoices);
+      document.querySelector('.audio-controls').setAttribute('aria-label', ui.labels.audioControls);
+      document.querySelector('.tally').setAttribute('aria-label', ui.labels.progressTally);
+      playAudioBtn.setAttribute('aria-label', ui.labels.playPronunciation);
+      playAudioBtn.setAttribute('title', ui.labels.playPronunciation);
+      replayAudioBtn.setAttribute('aria-label', ui.labels.replayPronunciation);
+      replayAudioBtn.setAttribute('title', ui.labels.replayPronunciation);
+    }
+
+    (async function init(){
+      try{
+        await loadDataFromJSON();
+        populateUI();
+        loadState();
+        loadAudioManifest();
+        const storedMute = localStorage.getItem(AUDIO_MUTE_KEY);
+        setMuteState(storedMute === null ? true : storedMute === 'true', false);
+        const storedSlow = localStorage.getItem(AUDIO_SLOW_KEY);
+        setSlowState(storedSlow === null ? true : storedSlow === 'true', false);
+        renderTally();
+        if(buildStampEl) buildStampEl.textContent = ui.messages.lastUpdated + APP_LAST_UPDATED;
+        promptEl.textContent = ui.messages.loading;
+        setTimeout(()=> showQuestion(true), 120);
+      }catch(e){
+        if(promptEl) promptEl.textContent = ui.messages?.errorLoading || 'Error loading data. Please refresh the page.';
+      }
     })();
-    
     window._russianConj = { verbs, pronouns, showQuestion, resetState };
 </script>
 </body>
