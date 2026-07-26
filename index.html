@@ -15,6 +15,10 @@
       --wrong: #ef4444;
       --btn: #334155;
       --btn-hover: #475569;
+      --noun: #6366f1;
+      --verb: #10b981;
+      --adjective: #f59e0b;
+      --adverb: #ec4899;
     }
     * { box-sizing: border-box; }
     body {
@@ -230,6 +234,319 @@
       background: #991b1b;
     }
 
+    /* Lesson Filter Styles */
+    .lesson-filter-section {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .lesson-filter-section.collapsed {
+      padding: 12px 16px;
+    }
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .filter-header h3 {
+      margin: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-toggle {
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      font-size: 1.2rem;
+      padding: 4px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .filter-toggle.collapsed {
+      transform: rotate(-90deg);
+    }
+    .filter-content {
+      margin-top: 12px;
+    }
+    .filter-content.hidden {
+      display: none;
+    }
+    .filter-search {
+      width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid #475569;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .filter-search:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .filter-actions {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .filter-actions button {
+      flex: 1;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+    }
+    .lesson-checkboxes {
+      display: grid;
+      gap: 6px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .lesson-checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      background: rgba(51, 65, 85, 0.3);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .lesson-checkbox-item:hover {
+      background: rgba(51, 65, 85, 0.5);
+    }
+    .lesson-checkbox-item input[type="checkbox"] {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
+    .lesson-checkbox-label {
+      flex: 1;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .lesson-word-count {
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(148, 163, 184, 0.15);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .extras-toggle {
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .extras-toggle input[type="checkbox"] {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
+    .extras-toggle label {
+      flex: 1;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Word Preview Styles */
+    .word-preview-section {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .word-preview-section.collapsed {
+      padding: 12px 16px;
+    }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .preview-header h3 {
+      margin: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-toggle {
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      font-size: 1.2rem;
+      padding: 4px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .preview-toggle.collapsed {
+      transform: rotate(-90deg);
+    }
+    .preview-content {
+      margin-top: 12px;
+    }
+    .preview-content.hidden {
+      display: none;
+    }
+    .preview-search {
+      width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid #475569;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .preview-search:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .preview-stats {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .word-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .lesson-group {
+      margin-bottom: 16px;
+    }
+    .lesson-group-header {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      padding: 6px 8px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 6px;
+    }
+    .word-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 8px;
+      padding: 8px;
+      background: rgba(51, 65, 85, 0.3);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      align-items: center;
+    }
+    .word-item:hover {
+      background: rgba(51, 65, 85, 0.5);
+    }
+    .word-ru {
+      font-weight: 500;
+    }
+    .word-en {
+      color: var(--muted);
+    }
+    .word-type-badge {
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .word-type-badge.noun {
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--noun);
+    }
+    .word-type-badge.verb {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--verb);
+    }
+    .word-type-badge.adjective {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--adjective);
+    }
+    .word-type-badge.adverb {
+      background: rgba(236, 72, 153, 0.2);
+      color: var(--adverb);
+    }
+
+    /* Settings Modal Styles */
+    #settings-btn {
+      width: auto;
+      padding: 8px 10px;
+      min-width: 36px;
+      font-size: 1.1rem;
+    }
+    .settings-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(2, 6, 23, 0.78);
+      z-index: 30;
+      overflow-y: auto;
+    }
+    .settings-modal-backdrop[hidden] {
+      display: none;
+    }
+    .settings-modal {
+      width: min(100%, 540px);
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.42);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .settings-modal h2 {
+      margin: 0 0 20px;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .settings-modal-section {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #334155;
+    }
+    .settings-modal-section:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .settings-close-btn {
+      float: right;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      padding: 0;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .settings-close-btn:hover {
+      color: var(--text);
+    }
+
     @media (max-width: 520px) {
       body {
         padding: 12px;
@@ -288,6 +605,7 @@
       <div class="controls">
         <select id="quiz-type"></select>
         <button id="next-btn" type="button"></button>
+        <button id="settings-btn" type="button" title="Settings" aria-label="Settings">⚙️</button>
         <button id="reset-btn" type="button"></button>
       </div>
     </header>
@@ -326,6 +644,46 @@
     </div>
   </div>
 
+  <div id="settings-modal" class="settings-modal-backdrop" hidden>
+    <div class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+      <button type="button" class="settings-close-btn" onclick="closeSettingsModal()" aria-label="Close settings">&times;</button>
+      <h2 id="settings-modal-title">⚙️ Settings</h2>
+
+      <!-- Lesson Filter Section -->
+      <div class="settings-modal-section">
+        <div class="filter-header" onclick="toggleFilterSection()">
+          <h3><span>📚</span> <span>Lesson Filter</span></h3>
+          <button class="filter-toggle" type="button" aria-label="Toggle filter">▼</button>
+        </div>
+        <div id="filter-content" class="filter-content">
+          <input type="text" id="filter-search" class="filter-search" placeholder="Search lessons..." />
+          <div class="filter-actions">
+            <button type="button" id="select-all-btn" onclick="selectAllLessons()">Select All</button>
+            <button type="button" id="clear-all-btn" onclick="clearAllLessons()">Clear All</button>
+          </div>
+          <div id="lesson-checkboxes" class="lesson-checkboxes"></div>
+          <div class="extras-toggle">
+            <input type="checkbox" id="extras-checkbox" />
+            <label for="extras-checkbox">Include "Extras" (unmatched vocabulary)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Word Preview Section -->
+      <div class="settings-modal-section">
+        <div class="preview-header" onclick="togglePreviewSection()">
+          <h3><span>👁️</span> <span>Word Preview</span> <span id="preview-count" class="lesson-word-count">0</span></h3>
+          <button class="preview-toggle" type="button" aria-label="Toggle preview">▼</button>
+        </div>
+        <div id="preview-content" class="preview-content">
+          <input type="text" id="preview-search" class="preview-search" placeholder="Search words..." />
+          <div id="preview-stats" class="preview-stats"></div>
+          <div id="word-list" class="word-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
     let verbs = {};
     let pronouns = {};
@@ -334,6 +692,12 @@
     let verbGloss = {};
     let config = {};
     let ui = {};
+    let lessons = [];
+
+    // Lesson filtering state
+    let selectedLessons = new Set();
+    let includeExtras = false;
+    let lessonAccuracy = {};  // Track accuracy per lesson for cluster weighting
 
     async function loadDataFromJSON(){
       try{
@@ -347,6 +711,15 @@
         verbGloss = data.verbGloss || {};
         config = data.config || {};
         ui = data.ui || {};
+        lessons = data.lessons || [];
+        
+        // Initialize lesson accuracy tracking
+        lessons.forEach(lesson => {
+          lessonAccuracy[lesson.label] = { correct: 0, total: 0 };
+        });
+        if (includeExtras) {
+          lessonAccuracy['Extras'] = { correct: 0, total: 0 };
+        }
       }catch(e){
         console.error('Failed to load data.json:', e);
         throw e;
@@ -383,7 +756,10 @@
     const resetModalEl = document.getElementById('reset-modal');
     const resetCancelBtn = document.getElementById('reset-cancel-btn');
     const resetConfirmBtn = document.getElementById('reset-confirm-btn');
+    const settingsBtn = document.getElementById('settings-btn');
+    const settingsModalEl = document.getElementById('settings-modal');
     let resetModalReturnFocus = null;
+    let settingsModalReturnFocus = null;
 
     function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
 
@@ -419,6 +795,9 @@
     function closeResetModal(){ resetModalEl.hidden = true; if(resetModalReturnFocus && typeof resetModalReturnFocus.focus === 'function'){ resetModalReturnFocus.focus(); } }
     function confirmReset(){ resetState(); lastResultEl.textContent = ui.messages.defaultResult; closeResetModal(); }
 
+    function openSettingsModal(){ settingsModalReturnFocus = document.activeElement; settingsModalEl.hidden = false; }
+    function closeSettingsModal(){ settingsModalEl.hidden = true; if(settingsModalReturnFocus && typeof settingsModalReturnFocus.focus === 'function'){ settingsModalReturnFocus.focus(); } }
+
     function getQuestionStat(key){
       const stat = questionStats[key];
       if(!stat) return { correct:0, incorrect:0 };
@@ -448,6 +827,82 @@
       let target = Math.random() * totalWeight;
       for(const item of candidates){ target -= getQuestionWeight(item.key); if(target <= 0) return item; }
       return candidates[candidates.length - 1];
+    }
+
+    function pickWeightedVocabulary(vocabPool, excludedKey) {
+      // Pick vocabulary using SRS + cluster weighting
+      if (!vocabPool || vocabPool.length === 0) return null;
+      
+      const pool = vocabPool.filter(v => `vocabulary:${v.ru.toLowerCase()}` !== excludedKey);
+      const candidates = pool.length > 0 ? pool : vocabPool;
+      
+      let totalWeight = 0;
+      const weights = [];
+      
+      for (const item of candidates) {
+        const srsWeight = calculateSRSWeight(item.stats);
+        const clusterWeight = getClusterWeight(item.lesson);
+        const combinedWeight = srsWeight * clusterWeight;
+        weights.push(combinedWeight);
+        totalWeight += combinedWeight;
+      }
+      
+      if (totalWeight <= 0) {
+        return candidates[Math.floor(Math.random() * candidates.length)];
+      }
+      
+      let target = Math.random() * totalWeight;
+      for (let i = 0; i < candidates.length; i++) {
+        target -= weights[i];
+        if (target <= 0) return candidates[i];
+      }
+      
+      return candidates[candidates.length - 1];
+    }
+
+    function makeVocabularyOptions(correctItem, vocabPool, optionCount = 4) {
+      // 3 wrong answers, same type, from cumulative selected lessons
+      const cumulativeLessons = getCumulativeLessons();
+      const sameTypePool = vocabPool.filter(v => 
+        v.type === correctItem.type && 
+        v.ru !== correctItem.ru &&
+        cumulativeLessons.has(v.lesson)
+      );
+      
+      const opts = new Set([correctItem.ru]);
+      shuffle(sameTypePool);
+      
+      for (const item of sameTypePool) {
+        opts.add(item.ru);
+        if (opts.size >= optionCount) break;
+      }
+      
+      // If not enough same-type options, add different types from cumulative lessons
+      if (opts.size < optionCount) {
+        const otherPool = vocabPool.filter(v => 
+          v.ru !== correctItem.ru && 
+          !opts.has(v.ru) &&
+          cumulativeLessons.has(v.lesson)
+        );
+        shuffle(otherPool);
+        
+        for (const item of otherPool) {
+          opts.add(item.ru);
+          if (opts.size >= optionCount) break;
+        }
+      }
+      
+      // Final fallback: any vocabulary item
+      if (opts.size < optionCount) {
+        const fallback = vocabPool.filter(v => v.ru !== correctItem.ru && !opts.has(v.ru));
+        shuffle(fallback);
+        for (const item of fallback) {
+          opts.add(item.ru);
+          if (opts.size >= optionCount) break;
+        }
+      }
+      
+      return shuffle(Array.from(opts));
     }
 
     function getSelectedVerbs(){ return Object.keys(verbs); }
@@ -556,17 +1011,309 @@
       audioPlayer.play().catch(() => {});
     }
 
+    // === Lesson Filter Functions ===
+    function toggleFilterSection() {
+      const content = document.getElementById('filter-content');
+      const toggle = document.querySelector('.filter-toggle');
+      const section = document.getElementById('lesson-filter-section');
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        toggle.classList.remove('collapsed');
+        section.classList.remove('collapsed');
+      } else {
+        content.classList.add('hidden');
+        toggle.classList.add('collapsed');
+        section.classList.add('collapsed');
+      }
+    }
+
+    function togglePreviewSection() {
+      const content = document.getElementById('preview-content');
+      const toggle = document.querySelector('.preview-toggle');
+      const section = document.getElementById('word-preview-section');
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        toggle.classList.remove('collapsed');
+        section.classList.remove('collapsed');
+      } else {
+        content.classList.add('hidden');
+        toggle.classList.add('collapsed');
+        section.classList.add('collapsed');
+      }
+    }
+
+    function initializeLessonFilter() {
+      const container = document.getElementById('lesson-checkboxes');
+      const filterSearch = document.getElementById('filter-search');
+      const extrasCheckbox = document.getElementById('extras-checkbox');
+      
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      lessons.forEach(lesson => {
+        const item = document.createElement('div');
+        item.className = 'lesson-checkbox-item';
+        item.dataset.lessonLabel = lesson.label.toLowerCase();
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `lesson-${lesson.id}`;
+        checkbox.value = lesson.label;
+        checkbox.checked = selectedLessons.has(lesson.label);
+        checkbox.addEventListener('change', onLessonCheckboxChange);
+        
+        const label = document.createElement('label');
+        label.htmlFor = `lesson-${lesson.id}`;
+        label.className = 'lesson-checkbox-label';
+        label.textContent = lesson.label;
+        
+        const count = document.createElement('span');
+        count.className = 'lesson-word-count';
+        count.textContent = lesson.wordCount;
+        
+        item.appendChild(checkbox);
+        item.appendChild(label);
+        item.appendChild(count);
+        container.appendChild(item);
+      });
+      
+      // Filter search
+      if (filterSearch) {
+        filterSearch.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          const items = container.querySelectorAll('.lesson-checkbox-item');
+          items.forEach(item => {
+            const label = item.dataset.lessonLabel;
+            item.style.display = label.includes(query) ? 'flex' : 'none';
+          });
+        });
+      }
+      
+      // Extras checkbox
+      if (extrasCheckbox) {
+        extrasCheckbox.checked = includeExtras;
+        extrasCheckbox.addEventListener('change', (e) => {
+          includeExtras = e.target.checked;
+          updateWordPreview();
+        });
+      }
+    }
+
+    function selectAllLessons() {
+      selectedLessons.clear();
+      lessons.forEach(lesson => selectedLessons.add(lesson.label));
+      const checkboxes = document.querySelectorAll('#lesson-checkboxes input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = true);
+      updateWordPreview();
+    }
+
+    function clearAllLessons() {
+      selectedLessons.clear();
+      const checkboxes = document.querySelectorAll('#lesson-checkboxes input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = false);
+      updateWordPreview();
+    }
+
+    function onLessonCheckboxChange(e) {
+      const lesson = e.target.value;
+      if (e.target.checked) {
+        selectedLessons.add(lesson);
+      } else {
+        selectedLessons.delete(lesson);
+      }
+      updateWordPreview();
+    }
+
+    function getFilteredVocabulary() {
+      if (selectedLessons.size === 0 && !includeExtras) {
+        return vocabulary;  // No filter, return all
+      }
+      
+      return vocabulary.filter(item => {
+        if (selectedLessons.has(item.lesson)) return true;
+        if (includeExtras && item.lesson === 'Extras') return true;
+        return false;
+      });
+    }
+
+    function getCumulativeLessons() {
+      // For distractors: current selected lessons + all previous lessons
+      // Assumes lessons are in order
+      const cumulative = new Set();
+      let shouldInclude = false;
+      
+      lessons.forEach(lesson => {
+        if (selectedLessons.has(lesson.label)) {
+          shouldInclude = true;
+        }
+        if (shouldInclude) {
+          cumulative.add(lesson.label);
+        }
+      });
+      
+      if (includeExtras) cumulative.add('Extras');
+      
+      return cumulative;
+    }
+
+    function updateWordPreview() {
+      const filtered = getFilteredVocabulary();
+      const previewCount = document.getElementById('preview-count');
+      const previewStats = document.getElementById('preview-stats');
+      const wordList = document.getElementById('word-list');
+      const previewSearch = document.getElementById('preview-search');
+      
+      if (previewCount) {
+        previewCount.textContent = filtered.length;
+      }
+      
+      // Group by lesson
+      const grouped = {};
+      filtered.forEach(item => {
+        if (!grouped[item.lesson]) grouped[item.lesson] = [];
+        grouped[item.lesson].push(item);
+      });
+      
+      // Stats
+      const typeCount = {};
+      filtered.forEach(item => {
+        typeCount[item.type] = (typeCount[item.type] || 0) + 1;
+      });
+      const statsText = Object.entries(typeCount)
+        .map(([type, count]) => `${type}: ${count}`)
+        .join(' | ');
+      if (previewStats) {
+        previewStats.textContent = statsText;
+      }
+      
+      // Render word list
+      if (wordList) {
+        wordList.innerHTML = '';
+        
+        const searchQuery = previewSearch ? previewSearch.value.toLowerCase() : '';
+        
+        Object.keys(grouped).sort().forEach(lessonLabel => {
+          const words = grouped[lessonLabel];
+          
+          // Filter by search
+          const filteredWords = words.filter(w => 
+            !searchQuery || 
+            w.ru.toLowerCase().includes(searchQuery) || 
+            w.en.toLowerCase().includes(searchQuery)
+          );
+          
+          if (filteredWords.length === 0) return;
+          
+          const groupDiv = document.createElement('div');
+          groupDiv.className = 'lesson-group';
+          
+          const header = document.createElement('div');
+          header.className = 'lesson-group-header';
+          header.textContent = `${lessonLabel} (${filteredWords.length})`;
+          groupDiv.appendChild(header);
+          
+          filteredWords.forEach(word => {
+            const wordDiv = document.createElement('div');
+            wordDiv.className = 'word-item';
+            
+            const ruSpan = document.createElement('div');
+            ruSpan.className = 'word-ru';
+            ruSpan.textContent = word.ru;
+            
+            const enSpan = document.createElement('div');
+            enSpan.className = 'word-en';
+            enSpan.textContent = word.en;
+            
+            const typeBadge = document.createElement('div');
+            typeBadge.className = `word-type-badge ${word.type.toLowerCase()}`;
+            typeBadge.textContent = word.type;
+            
+            wordDiv.appendChild(ruSpan);
+            wordDiv.appendChild(enSpan);
+            wordDiv.appendChild(typeBadge);
+            groupDiv.appendChild(wordDiv);
+          });
+          
+          wordList.appendChild(groupDiv);
+        });
+      }
+      
+      // Preview search
+      if (previewSearch && !previewSearch.hasAttribute('data-listener')) {
+        previewSearch.setAttribute('data-listener', 'true');
+        previewSearch.addEventListener('input', () => updateWordPreview());
+      }
+    }
+
+    function showHideLessonUI() {
+      const mode = quizType?.value || 'pronouns';
+      
+      if (mode === 'vocabulary' || mode === 'pronouns') {
+        if (settingsBtn) settingsBtn.style.display = 'block';
+      } else {
+        if (settingsBtn) settingsBtn.style.display = 'none';
+      }
+    }
+
     function getVocabularyPool(){
-      const normalizedVocabulary = vocabulary
+      // Get filtered vocabulary based on selected lessons
+      const filtered = getFilteredVocabulary();
+      
+      const normalizedVocabulary = filtered
         .map((item) => {
           const normalizedRu = sanitizeVocabAnswer(item.ru);
           if (!normalizedRu) return null;
-          return { ru: toDisplayCase(normalizedRu), en: item.en };
+          return { 
+            ru: toDisplayCase(normalizedRu), 
+            en: item.en, 
+            lesson: item.lesson,
+            type: item.type,
+            stats: item.stats || { attempts: 0, correct: 0, lastSeen: null }
+          };
         })
         .filter(Boolean);
 
-      const fallbackVocabulary = Object.entries(verbGloss).map(([infinitive, en]) => ({ ru: toDisplayCase(infinitive), en }));
+      const fallbackVocabulary = Object.entries(verbGloss).map(([infinitive, en]) => ({ 
+        ru: toDisplayCase(infinitive), 
+        en,
+        lesson: 'Extras',
+        type: 'Verb',
+        stats: { attempts: 0, correct: 0, lastSeen: null }
+      }));
       return normalizedVocabulary.length >= 4 ? normalizedVocabulary : fallbackVocabulary;
+    }
+
+    function calculateSRSWeight(stats) {
+      // SRS Weight: (unseen?10:0) + (1-accuracy)*5 + (daysSinceLastSeen*0.5)
+      const unseen = stats.attempts === 0 ? 10 : 0;
+      const accuracy = stats.attempts > 0 ? stats.correct / stats.attempts : 0;
+      const accuracyWeight = (1 - accuracy) * 5;
+      
+      let daysSinceLastSeen = 0;
+      if (stats.lastSeen) {
+        const lastSeenDate = new Date(stats.lastSeen);
+        const now = new Date();
+        const diffTime = Math.abs(now - lastSeenDate);
+        daysSinceLastSeen = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      }
+      const timeWeight = daysSinceLastSeen * 0.5;
+      
+      return unseen + accuracyWeight + timeWeight;
+    }
+
+    function getClusterWeight(lesson) {
+      // Cluster Weight: track accuracy per lesson. If >85%, reduce weight 50%
+      const accuracy = lessonAccuracy[lesson];
+      if (!accuracy || accuracy.total === 0) return 1.0;
+      
+      const lessonAcc = accuracy.correct / accuracy.total;
+      if (lessonAcc > 0.85) {
+        return 0.5;  // Reduce weight by 50%
+      }
+      return 1.0;
     }
 
     let currentAnswer = null;
@@ -604,19 +1351,27 @@
         }
       } else if(mode === 'vocabulary'){
         const vocabPool = getVocabularyPool();
-        const vocabItems = vocabPool.map(v => ({ key: `vocabulary:${v.ru.toLowerCase()}`, item: v }));
-        const chosenItem = pickWeightedQuestion(vocabItems, lastQuestionKey);
-        const rawItem = chosenItem.item;
-        currentAnswer = { mode:'vocabulary', en:rawItem.en, correctForm:rawItem.ru, questionKey: chosenItem.key };
-        lastQuestionKey = chosenItem.key;
-        currentPromptAudioText = rawItem.ru;
-        promptEl.textContent = rawItem.en;
+        if (vocabPool.length === 0) {
+          promptEl.textContent = 'No words selected. Choose lessons.';
+          promptEl.setAttribute('aria-live','polite');
+          return;
+        }
+        
+        const chosenItem = pickWeightedVocabulary(vocabPool, lastQuestionKey);
+        currentAnswer = { 
+          mode:'vocabulary', 
+          en:chosenItem.en, 
+          correctForm:chosenItem.ru, 
+          questionKey: `vocabulary:${chosenItem.ru.toLowerCase()}`,
+          lesson: chosenItem.lesson,
+          stats: chosenItem.stats
+        };
+        lastQuestionKey = currentAnswer.questionKey;
+        currentPromptAudioText = chosenItem.ru;
+        promptEl.textContent = chosenItem.en;
         promptEl.setAttribute('aria-live','polite');
 
-        const opts = new Set([rawItem.ru]);
-        const otherRussian = shuffle(vocabPool.filter(v=>v.en !== rawItem.en).map(v=>v.ru));
-        for(const rw of otherRussian){ opts.add(rw); if(opts.size >= 4) break; }
-        const options = shuffle(Array.from(opts));
+        const options = makeVocabularyOptions(chosenItem, vocabPool, 4);
 
         for(const optText of options){
           const btn = document.createElement('button'); btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = optText;
@@ -625,20 +1380,62 @@
           optionsEl.appendChild(btn);
         }
       } else {
-        const selectedVerbs = getSelectedVerbs();
+        // Verb conjugations with lesson filtering
+        // Get filtered verbs based on selected lessons
+        let filteredVerbs = Object.keys(verbs);
+        if (selectedLessons.size > 0) {
+          filteredVerbs = filteredVerbs.filter(verbKey => {
+            const lesson = verbs[verbKey].lesson || 'Extras';
+            return selectedLessons.has(lesson);
+          });
+        }
+        
+        // If includeExtras is enabled and no verbs found, try again with Extras
+        if (filteredVerbs.length === 0 && includeExtras) {
+          filteredVerbs = Object.keys(verbs).filter(verbKey => {
+            const lesson = verbs[verbKey].lesson || 'Extras';
+            return lesson === 'Extras';
+          });
+        }
+        
+        // Fallback: use all verbs if nothing selected
+        if (filteredVerbs.length === 0) {
+          filteredVerbs = Object.keys(verbs);
+        }
+        
+        if (filteredVerbs.length === 0) {
+          promptEl.textContent = 'No verbs available.';
+          promptEl.setAttribute('aria-live','polite');
+          return;
+        }
+        
         const pronounKeys = Object.keys(pronouns);
         const pronounVerbItems = [];
-        for(const verbKey of selectedVerbs){
+        for(const verbKey of filteredVerbs){
           for(const pronounKey of pronounKeys){
-            pronounVerbItems.push({ key: `pronouns:${verbKey}:${pronounKey}`, verbKey, pronounKey });
+            pronounVerbItems.push({ 
+              key: `pronouns:${verbKey}:${pronounKey}`, 
+              verbKey, 
+              pronounKey,
+              lesson: verbs[verbKey].lesson || 'Extras'
+            });
           }
         }
+        
         const chosenItem = pickWeightedQuestion(pronounVerbItems, lastQuestionKey);
         const verbKey = chosenItem.verbKey;
         const pronounKey = chosenItem.pronounKey;
         const conjKey = pronounToConjKey(pronounKey);
         const correctForm = verbs[verbKey].conjugations[conjKey];
-        currentAnswer = { mode:'pronouns', verbKey, pronounKey, correctForm, conjKey, questionKey: chosenItem.key };
+        currentAnswer = { 
+          mode:'pronouns', 
+          verbKey, 
+          pronounKey, 
+          correctForm, 
+          conjKey, 
+          questionKey: chosenItem.key,
+          lesson: chosenItem.lesson
+        };
         lastQuestionKey = chosenItem.key;
         currentPromptAudioText = verbKey;
         promptEl.textContent = buildPrompt(pronounKey, verbKey);
@@ -674,6 +1471,14 @@
         tally.incorrect += 1; lastResultEl.textContent = ui.messages.incorrectResult;
       }
       
+      // Track lesson accuracy for cluster weighting
+      if (currentAnswer.lesson && lessonAccuracy[currentAnswer.lesson]) {
+        lessonAccuracy[currentAnswer.lesson].total += 1;
+        if (isCorrect) {
+          lessonAccuracy[currentAnswer.lesson].correct += 1;
+        }
+      }
+      
       playAudioForText(playbackText);
       if(currentAnswer && currentAnswer.questionKey) updateQuestionStat(currentAnswer.questionKey, isCorrect);
       tally.attempts += 1; renderTally(); saveState();
@@ -698,14 +1503,22 @@
     });
     
     nextBtn.addEventListener('click', ()=> showQuestion(true));
-    quizType.addEventListener('change', ()=> showQuestion(true));
+    quizType.addEventListener('change', ()=> { 
+      showHideLessonUI();
+      showQuestion(true); 
+    });
+    settingsBtn.addEventListener('click', openSettingsModal);
     resetBtn.addEventListener('click', openResetModal);
     resetCancelBtn.addEventListener('click', closeResetModal);
     resetConfirmBtn.addEventListener('click', confirmReset);
     resetModalEl.addEventListener('click', (event)=>{ if(event.target === resetModalEl) closeResetModal(); });
+    settingsModalEl.addEventListener('click', (event)=>{ if(event.target === settingsModalEl) closeSettingsModal(); });
     
     document.addEventListener('keydown', (event)=>{
-      if(event.key === 'Escape' && !resetModalEl.hidden){ closeResetModal(); }
+      if(event.key === 'Escape') {
+        if (!resetModalEl.hidden) closeResetModal();
+        if (!settingsModalEl.hidden) closeSettingsModal();
+      }
     });
 
     function populateUI(){
@@ -747,6 +1560,7 @@
       try{
         await loadDataFromJSON();
         populateUI();
+        initializeLessonFilter();
         loadState();
         loadAudioManifest();
         const storedMute = localStorage.getItem(AUDIO_MUTE_KEY);
@@ -756,6 +1570,7 @@
         renderTally();
         if(buildStampEl) buildStampEl.textContent = ui.messages.lastUpdated + APP_LAST_UPDATED;
         promptEl.textContent = ui.messages.loading;
+        showHideLessonUI();
         setTimeout(()=> showQuestion(true), 120);
       }catch(e){
         if(promptEl) promptEl.textContent = ui.messages?.errorLoading || 'Error loading data. Please refresh the page.';
