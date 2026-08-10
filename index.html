@@ -1564,7 +1564,7 @@
         loadState();
         loadAudioManifest();
         const storedMute = localStorage.getItem(AUDIO_MUTE_KEY);
-        setMuteState(storedMute === null ? true : storedMute === 'true', false);
+        setMuteState(storedMute === null ? false : storedMute === 'true', false);
         const storedSlow = localStorage.getItem(AUDIO_SLOW_KEY);
         setSlowState(storedSlow === null ? true : storedSlow === 'true', false);
         renderTally();
