@@ -72,7 +72,7 @@
         "vy": "хотите",
         "oni": "хотят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "мочь": {
       "infinitive": "мочь",
@@ -84,7 +84,7 @@
         "vy": "можете",
         "oni": "могут"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "любить": {
       "infinitive": "любить",
@@ -96,7 +96,7 @@
         "vy": "любите",
         "oni": "любят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "думать": {
       "infinitive": "думать",
@@ -108,7 +108,7 @@
         "vy": "думаете",
         "oni": "думают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "знать": {
       "infinitive": "знать",
@@ -120,7 +120,7 @@
         "vy": "знаете",
         "oni": "знают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "понимать": {
       "infinitive": "понимать",
@@ -132,7 +132,7 @@
         "vy": "понимаете",
         "oni": "понимают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "говорить": {
       "infinitive": "говорить",
@@ -144,7 +144,7 @@
         "vy": "говорите",
         "oni": "говорят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "делать": {
       "infinitive": "делать",
@@ -156,7 +156,7 @@
         "vy": "делаете",
         "oni": "делают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "видеть": {
       "infinitive": "видеть",
@@ -168,7 +168,7 @@
         "vy": "видите",
         "oni": "видят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "слышать": {
       "infinitive": "слышать",
@@ -180,7 +180,7 @@
         "vy": "слышите",
         "oni": "слышат"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "идти": {
       "infinitive": "идти",
@@ -192,7 +192,7 @@
         "vy": "идёте",
         "oni": "идут"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "ехать": {
       "infinitive": "ехать",
@@ -204,7 +204,7 @@
         "vy": "едете",
         "oni": "едут"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "есть": {
       "infinitive": "есть",
@@ -216,7 +216,7 @@
         "vy": "едите",
         "oni": "едят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "пить": {
       "infinitive": "пить",
@@ -228,7 +228,7 @@
         "vy": "пьёте",
         "oni": "пьют"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "давать": {
       "infinitive": "давать",
@@ -240,7 +240,7 @@
         "vy": "даёте",
         "oni": "дают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "брать": {
       "infinitive": "брать",
@@ -252,7 +252,7 @@
         "vy": "берёте",
         "oni": "берут"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "жить": {
       "infinitive": "жить",
@@ -264,7 +264,7 @@
         "vy": "живёте",
         "oni": "живут"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "работать": {
       "infinitive": "работать",
@@ -276,7 +276,7 @@
         "vy": "работаете",
         "oni": "работают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "смотреть": {
       "infinitive": "смотреть",
@@ -288,7 +288,7 @@
         "vy": "смотрите",
         "oni": "смотрят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "слушать": {
       "infinitive": "слушать",
@@ -300,7 +300,7 @@
         "vy": "слушаете",
         "oni": "слушают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "ждать": {
       "infinitive": "ждать",
@@ -312,7 +312,7 @@
         "vy": "ждёте",
         "oni": "ждут"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "писать": {
       "infinitive": "писать",
@@ -324,7 +324,7 @@
         "vy": "пишете",
         "oni": "пишут"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "читать": {
       "infinitive": "читать",
@@ -336,7 +336,7 @@
         "vy": "читаете",
         "oni": "читают"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "играть": {
       "infinitive": "играть",
@@ -348,7 +348,7 @@
         "vy": "играете",
         "oni": "играют"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "спать": {
       "infinitive": "спать",
@@ -360,7 +360,7 @@
         "vy": "спите",
         "oni": "спят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "стоять": {
       "infinitive": "стоять",
@@ -372,7 +372,7 @@
         "vy": "стоите",
         "oni": "стоят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "сидеть": {
       "infinitive": "сидеть",
@@ -384,7 +384,7 @@
         "vy": "сидите",
         "oni": "сидят"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     },
     "лежать": {
       "infinitive": "лежать",
@@ -396,7 +396,7 @@
         "vy": "лежите",
         "oni": "лежат"
       },
-      "lesson": "Core Base"
+      "lesson": "Core"
     }
   },
   "pronouns": {
@@ -460,7 +460,7 @@
     {
       "ru": "хотеть",
       "en": "To want",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -471,7 +471,7 @@
     {
       "ru": "мочь",
       "en": "To be able to / can",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -482,7 +482,7 @@
     {
       "ru": "любить",
       "en": "To love / to like",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -493,7 +493,7 @@
     {
       "ru": "думать",
       "en": "To think",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -504,7 +504,7 @@
     {
       "ru": "знать",
       "en": "To know",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -515,7 +515,7 @@
     {
       "ru": "понимать",
       "en": "To understand",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -526,7 +526,7 @@
     {
       "ru": "говорить",
       "en": "To speak",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -537,7 +537,7 @@
     {
       "ru": "делать",
       "en": "To do",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -548,7 +548,7 @@
     {
       "ru": "видеть",
       "en": "To see",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -559,7 +559,7 @@
     {
       "ru": "слышать",
       "en": "To hear",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -570,7 +570,7 @@
     {
       "ru": "идти",
       "en": "To go (on foot)",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -581,7 +581,7 @@
     {
       "ru": "ехать",
       "en": "To go (by transport)",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -592,7 +592,7 @@
     {
       "ru": "есть",
       "en": "To eat",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -603,7 +603,7 @@
     {
       "ru": "пить",
       "en": "To drink",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -614,7 +614,7 @@
     {
       "ru": "давать",
       "en": "To give",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -625,7 +625,7 @@
     {
       "ru": "брать",
       "en": "To take",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -636,7 +636,7 @@
     {
       "ru": "жить",
       "en": "To live",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -647,7 +647,7 @@
     {
       "ru": "работать",
       "en": "To work",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -658,7 +658,7 @@
     {
       "ru": "смотреть",
       "en": "To watch / to look",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -669,7 +669,7 @@
     {
       "ru": "слушать",
       "en": "To listen",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -680,7 +680,7 @@
     {
       "ru": "ждать",
       "en": "To wait",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -691,7 +691,7 @@
     {
       "ru": "писать",
       "en": "To write",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -702,7 +702,7 @@
     {
       "ru": "читать",
       "en": "To read",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -713,7 +713,7 @@
     {
       "ru": "играть",
       "en": "To play",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -724,7 +724,7 @@
     {
       "ru": "спать",
       "en": "To sleep",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -735,7 +735,7 @@
     {
       "ru": "стоять",
       "en": "To stand",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -746,7 +746,7 @@
     {
       "ru": "сидеть",
       "en": "To sit",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -757,7 +757,7 @@
     {
       "ru": "лежать",
       "en": "To lie",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Verb",
       "stats": {
         "attempts": 0,
@@ -768,7 +768,7 @@
     {
       "ru": "здесь",
       "en": "Here",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -779,7 +779,7 @@
     {
       "ru": "там",
       "en": "There",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -790,7 +790,7 @@
     {
       "ru": "близко",
       "en": "Close",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -801,7 +801,7 @@
     {
       "ru": "сейчас",
       "en": "Now",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -812,7 +812,7 @@
     {
       "ru": "сегодня",
       "en": "Today",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -823,7 +823,7 @@
     {
       "ru": "завтра",
       "en": "Tomorrow",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -834,7 +834,7 @@
     {
       "ru": "вчера",
       "en": "Yesterday",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -845,7 +845,7 @@
     {
       "ru": "всегда",
       "en": "Always",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -856,7 +856,7 @@
     {
       "ru": "часто",
       "en": "Often",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -867,7 +867,7 @@
     {
       "ru": "иногда",
       "en": "Sometimes",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -878,7 +878,7 @@
     {
       "ru": "редко",
       "en": "Rarely",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -889,7 +889,7 @@
     {
       "ru": "никогда",
       "en": "Never",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -900,7 +900,7 @@
     {
       "ru": "обычно",
       "en": "Usually",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -911,7 +911,7 @@
     {
       "ru": "уже",
       "en": "Already",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -922,7 +922,7 @@
     {
       "ru": "давно",
       "en": "For a long time",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -933,7 +933,7 @@
     {
       "ru": "недавно",
       "en": "Recently",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -944,7 +944,7 @@
     {
       "ru": "потом",
       "en": "After",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adverb",
       "stats": {
         "attempts": 0,
@@ -955,7 +955,7 @@
     {
       "ru": "большой",
       "en": "Big",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -966,7 +966,7 @@
     {
       "ru": "маленький",
       "en": "Small",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -977,7 +977,7 @@
     {
       "ru": "хороший",
       "en": "Good",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -988,7 +988,7 @@
     {
       "ru": "плохой",
       "en": "Bad",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -999,7 +999,7 @@
     {
       "ru": "новый",
       "en": "New",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1010,7 +1010,7 @@
     {
       "ru": "старый",
       "en": "Old",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1021,7 +1021,7 @@
     {
       "ru": "длинный",
       "en": "Long",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1032,7 +1032,7 @@
     {
       "ru": "короткий",
       "en": "Short",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1043,7 +1043,7 @@
     {
       "ru": "легкий",
       "en": "Easy",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1054,7 +1054,7 @@
     {
       "ru": "трудный",
       "en": "Difficult",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1065,7 +1065,7 @@
     {
       "ru": "тяжелый",
       "en": "Heavy",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1076,7 +1076,7 @@
     {
       "ru": "красивый",
       "en": "Beautiful",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1087,7 +1087,7 @@
     {
       "ru": "дорогой",
       "en": "Expensive",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1098,7 +1098,7 @@
     {
       "ru": "дешевый",
       "en": "Cheap",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1109,7 +1109,7 @@
     {
       "ru": "быстрый",
       "en": "Fast",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1120,7 +1120,7 @@
     {
       "ru": "медленный",
       "en": "Slow",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1131,7 +1131,7 @@
     {
       "ru": "молодой",
       "en": "Young",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1142,7 +1142,7 @@
     {
       "ru": "высокий",
       "en": "High",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1153,7 +1153,7 @@
     {
       "ru": "горячий",
       "en": "Hot",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1164,7 +1164,7 @@
     {
       "ru": "холодный",
       "en": "Cold",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1175,7 +1175,7 @@
     {
       "ru": "простой",
       "en": "Simple",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Adjective",
       "stats": {
         "attempts": 0,
@@ -1186,7 +1186,7 @@
     {
       "ru": "человек",
       "en": "Person",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1197,7 +1197,7 @@
     {
       "ru": "дом",
       "en": "House",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1208,7 +1208,7 @@
     {
       "ru": "семья",
       "en": "Family",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1219,7 +1219,7 @@
     {
       "ru": "мир",
       "en": "World",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1230,7 +1230,7 @@
     {
       "ru": "жизнь",
       "en": "Life",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1241,7 +1241,7 @@
     {
       "ru": "город",
       "en": "City",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1252,7 +1252,7 @@
     {
       "ru": "работа",
       "en": "Work",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1263,7 +1263,7 @@
     {
       "ru": "вода",
       "en": "Water",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1274,7 +1274,7 @@
     {
       "ru": "хлеб",
       "en": "Bread",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1285,7 +1285,7 @@
     {
       "ru": "время",
       "en": "Time",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1296,7 +1296,7 @@
     {
       "ru": "год",
       "en": "Year",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1307,7 +1307,7 @@
     {
       "ru": "месяц",
       "en": "Month",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1318,7 +1318,7 @@
     {
       "ru": "день",
       "en": "Day / Afternoon",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1329,7 +1329,7 @@
     {
       "ru": "вечер",
       "en": "Evening",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1340,7 +1340,7 @@
     {
       "ru": "утро",
       "en": "Morning",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1351,7 +1351,7 @@
     {
       "ru": "ночь",
       "en": "Night",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1362,7 +1362,7 @@
     {
       "ru": "место",
       "en": "Place",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1373,7 +1373,7 @@
     {
       "ru": "вещь",
       "en": "Thing",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1384,7 +1384,7 @@
     {
       "ru": "деньги",
       "en": "Money",
-      "lesson": "Core Base",
+      "lesson": "Core",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1395,7 +1395,150 @@
     {
       "ru": "друг",
       "en": "Friend",
-      "lesson": "Core Base",
+      "lesson": "Core",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "удобный",
+      "en": "Convenient",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "комфортный",
+      "en": "Comfortable",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "стабильный",
+      "en": "Stable",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "долгий",
+      "en": "Long (lasting a long time)",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "бесплатный",
+      "en": "Free",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "подземный",
+      "en": "Underground / subterranean",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "пробка",
+      "en": "Traffic jam / cork / blockage",
+      "lesson": "Block 1",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "во-первых",
+      "en": "Firstly / first of all",
+      "lesson": "Block 1",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "во-вторых",
+      "en": "Secondly",
+      "lesson": "Block 1",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "в-третьих",
+      "en": "Thirdly",
+      "lesson": "Block 1",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "популярный",
+      "en": "Popular",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "известный",
+      "en": "Famous / well-known",
+      "lesson": "Block 1",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "дорога",
+      "en": "Road / street / way / journey",
+      "lesson": "Block 1",
       "type": "Noun",
       "stats": {
         "attempts": 0,
@@ -1437,8 +1580,23 @@
   "lessons": [
     {
       "id": 1,
-      "label": "Core Base",
+      "label": "Core",
       "wordCount": 86
+    },
+    {
+      "id": 2,
+      "label": "Block 1",
+      "wordCount": 13
+    },
+    {
+      "id": 3,
+      "label": "Block 2",
+      "wordCount": 0
+    },
+    {
+      "id": 4,
+      "label": "Block 3",
+      "wordCount": 0
     }
   ]
 }
