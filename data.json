@@ -5,7 +5,7 @@
     "audioMuteKey": "russian-drills-audio-muted-v1",
     "audioSlowKey": "russian-drills-audio-slow-v1",
     "audioManifestUrl": "audio/manifest.json",
-    "appLastUpdated": "2026-08-11"
+    "appLastUpdated": "2026-08-23"
   },
   "ui": {
     "appTitle": "Russian Drills",
@@ -397,6 +397,30 @@
         "oni": "лежат"
       },
       "lesson": "Core"
+    },
+    "находиться": {
+      "infinitive": "находиться",
+      "conjugations": {
+        "ya": "нахожусь",
+        "ty": "находишься",
+        "on": "находится",
+        "my": "находимся",
+        "vy": "находитесь",
+        "oni": "находятся"
+      },
+      "lesson": "Block 2"
+    },
+    "путешествовать": {
+      "infinitive": "путешествовать",
+      "conjugations": {
+        "ya": "путешествую",
+        "ty": "путешествуешь",
+        "on": "путешествует",
+        "my": "путешествуем",
+        "vy": "путешествуете",
+        "oni": "путешествуют"
+      },
+      "lesson": "Block 2"
     }
   },
   "pronouns": {
@@ -1545,6 +1569,248 @@
         "correct": 0,
         "lastSeen": null
       }
+    },
+    {
+      "ru": "отпуск",
+      "en": "Vacation / time off",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "каникулы",
+      "en": "Holidays / school break",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "зимой",
+      "en": "In winter",
+      "lesson": "Block 2",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "летом",
+      "en": "In summer",
+      "lesson": "Block 2",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "весной",
+      "en": "In spring",
+      "lesson": "Block 2",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "осенью",
+      "en": "In autumn / in the fall",
+      "lesson": "Block 2",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "каждый",
+      "en": "Every / each",
+      "lesson": "Block 2",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "вечером",
+      "en": "In the evening",
+      "lesson": "Block 2",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "прекрасный",
+      "en": "Wonderful / beautiful",
+      "lesson": "Block 2",
+      "type": "Adjective",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "улица",
+      "en": "Street",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "находиться",
+      "en": "To be located / to be situated",
+      "lesson": "Block 2",
+      "type": "Verb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "далеко",
+      "en": "Far / far away",
+      "lesson": "Block 2",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "мост",
+      "en": "Bridge",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "река",
+      "en": "River",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "собор",
+      "en": "Cathedral",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "площадь",
+      "en": "Square",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "природа",
+      "en": "Nature",
+      "lesson": "Block 2",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "путешествовать",
+      "en": "To travel",
+      "lesson": "Block 2",
+      "type": "Verb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "раньше",
+      "en": "Before / previously",
+      "lesson": "Block 3",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "каждый день",
+      "en": "Every day",
+      "lesson": "Block 3",
+      "type": "Adverb",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "неделя",
+      "en": "Week",
+      "lesson": "Block 3",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
+    },
+    {
+      "ru": "час",
+      "en": "Hour",
+      "lesson": "Block 3",
+      "type": "Noun",
+      "stats": {
+        "attempts": 0,
+        "correct": 0,
+        "lastSeen": null
+      }
     }
   ],
   "verbGloss": {
@@ -1575,7 +1841,9 @@
     "спать": "To sleep",
     "стоять": "To stand",
     "сидеть": "To sit",
-    "лежать": "To lie"
+    "лежать": "To lie",
+    "находиться": "To be located / to be situated",
+    "путешествовать": "To travel"
   },
   "lessons": [
     {
@@ -1591,12 +1859,12 @@
     {
       "id": 3,
       "label": "Block 2",
-      "wordCount": 0
+      "wordCount": 18
     },
     {
       "id": 4,
       "label": "Block 3",
-      "wordCount": 0
+      "wordCount": 4
     }
   ]
 }
